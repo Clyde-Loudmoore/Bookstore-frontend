@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.26",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-no-inline-styles": "^1.0.5",
     "eslint-plugin-react-hooks": "^4.6.0",

@@ -1,9 +1,13 @@
-import React from 'react';
-import './App.css';
+import AppContainer from './App.styled';
+import Header from './ui/containers/Header/Header';
+import Footer from './ui/containers/Footer/Footer';
 
 function App() {
   return (
-    <h1>Hello!</h1>
+    <AppContainer>
+      <Header />
+      <Footer />
+    </AppContainer>
   );
 }
 
