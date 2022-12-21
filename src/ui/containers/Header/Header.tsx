@@ -1,7 +1,7 @@
-import HeaderWrapper from "./Header.styled";
-import Logo from './images/logo-header.png'
-import Search from './images/Search.png'
-import Button from "../../components/button/Button";
+import HeaderWrapper from './Header.styled';
+import Logo from './images/logo-header.png';
+import Search from './images/Search.png';
+import Button from '../../components/button/Button';
 
 const Header = () => {
   return (
@@ -12,14 +12,14 @@ const Header = () => {
         <div className="search__field-icon">
           <img src={Search} alt="search" />
         </div>
-        <div >
+        <div>
           <input className="search__input" name="catalog" type="text" placeholder="Search" />
         </div>
       </div>
 
       <Button value="Log In/ Sing Up" />
     </HeaderWrapper>
-  )
+  );
 };
 
 export default Header;

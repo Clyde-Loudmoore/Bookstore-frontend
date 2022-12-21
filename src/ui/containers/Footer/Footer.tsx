@@ -1,6 +1,6 @@
-import FooterWrapper from "./Footer.styled";
-import Logo from './images/logo-footer.png'
-import Map from './images/map.png'
+import FooterWrapper from './Footer.styled';
+import Logo from './images/logo-footer.png';
+import Map from './images/map.png';
 
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
         <img src={Map} alt="map" />
       </div>
     </FooterWrapper>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
