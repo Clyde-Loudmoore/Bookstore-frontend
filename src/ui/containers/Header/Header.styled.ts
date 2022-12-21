@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
 
-  padding: 24px 80px 40px 80px;
+  padding: 24px 0 40px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,45 +15,36 @@ const HeaderWrapper = styled.header`
   margin: 0 43px 0 127px;
   };
 
-  @media (max-width: 1008px) {
-    padding: 20px 11px 45px 15px;
+  @media (min-width: 834px) and (max-width: 1439px) {
+    padding: 20px 0 45px 0;
     .header__search-title{
       margin: 0 73px 0 50px;
     }
   }
 
-  @media (max-width: 826px) {
-    .header__search-title{
-      margin: 0 17px 0 17px;
-    }
-} 
+  @media (min-width: 320px) and (max-width: 833px) {
 
-@media (max-width: 737px) {
-  .header__search-title{
-      margin: 0 17px 0 17px;
-    }
-  } 
-
-  @media (max-width: 697px) {
-    padding: 33px 15px 39px 15px;
+    padding: 33px 0 39px 0;
+    flex-wrap: wrap;
     justify-content: space-around;
 
     .header__logo-image{
       order: 1;
     }
+
     .header__search-title{
       order: 2;
+      margin: 0 17px 0 17px;
       font-size: 14px;
       line-height: 21px;
     }
-
-    flex-wrap: wrap;
 
     .header__logo-image{
       max-width: 62px;
       max-height: 31px;
     }
-} 
+}
+
 
 `;
 

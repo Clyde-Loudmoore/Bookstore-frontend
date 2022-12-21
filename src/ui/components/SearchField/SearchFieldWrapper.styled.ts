@@ -23,11 +23,9 @@ align-items: center;
     outline: none;
   }
 
-  @media (max-width: 697px) {
-    .header__search-field{
-      order: 4;
+  @media (max-width: 833px) {
+      order: 3;
       margin-top: 17px;
-    }
   }  
 
 `;
