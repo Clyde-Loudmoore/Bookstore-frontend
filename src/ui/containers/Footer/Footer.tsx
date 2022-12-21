@@ -12,12 +12,12 @@ const Footer = () => {
       </div>
 
       <div className="footer__map">
-        <ul>
-          <li>Home Page</li>
-          <li>Catalog</li>
-          <li>My Account</li>
-          <li>Cart</li>
-        </ul>
+
+        <p>Home Page</p>
+        <p>Catalog</p>
+        <p>My Account</p>
+        <p>Cart</p>
+
       </div>
 
       <div className="footer__location">
