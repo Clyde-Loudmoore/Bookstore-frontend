@@ -28,18 +28,15 @@ const HeaderWrapper = styled.header`
     flex-wrap: wrap;
     justify-content: space-around;
 
-    .header__logo-image{
-      order: 1;
-    }
-
     .header__search-title{
       order: 2;
       margin: 0 17px 0 17px;
       font-size: 14px;
       line-height: 21px;
     }
-
+    
     .header__logo-image{
+      order: 1;
       max-width: 62px;
       max-height: 31px;
     }

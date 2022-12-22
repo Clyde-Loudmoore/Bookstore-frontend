@@ -10,9 +10,8 @@ const Header = () => {
       <img className="header__logo-image" src={Logo} alt="app-logo" />
       <p className="header__search-title">Catalog</p>
 
-      <SearchField img={SearchIcon} />
-      <Button value="Log In/ Sing Up" />
-
+      <SearchField img={SearchIcon} placeholder="Search" />
+      <Button className="header__button" value="Log In/ Sing Up" />
     </HeaderWrapper>
   );
 };

@@ -3,11 +3,12 @@ import ButtonWrapper from './Button.styled';
 
 type PropsType = {
   value: string;
+  className: string;
 };
 
-const Button: React.FC<PropsType> = ({ value }) => {
+const Button: React.FC<PropsType> = ({ value, className }) => {
   return (
-    <ButtonWrapper>
+    <ButtonWrapper className={className}>
       {value}
     </ButtonWrapper>
   );

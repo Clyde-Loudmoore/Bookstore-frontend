@@ -1,22 +1,23 @@
 import SearchFieldWrapper from './SearchFieldWrapper.styled';
-import Search from './images/Search.png';
 
 type PropsType = {
   img: string;
+  placeholder: string;
+  className?: string;
 };
 
-const SearchField: React.FC<PropsType> = () => {
+const SearchField: React.FC<PropsType> = (props) => {
   return (
-    <SearchFieldWrapper>
+    <SearchFieldWrapper className={props.className}>
       <div className="search__field-icon">
-        <img src={Search} alt="search" />
+        <img src={props.img} alt="search" />
       </div>
-      <div>
+      <div className="search__input-wrapper">
         <input
           className="search__input"
           name="catalog"
           type="text"
-          placeholder="Search"
+          placeholder={props.placeholder}
         />
       </div>
     </SearchFieldWrapper>

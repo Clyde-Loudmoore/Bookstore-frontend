@@ -14,13 +14,20 @@ align-items: center;
     padding: 22px 22px 22px 26px;
   }
 
+  .search__input-wrapper{
+    width: 100%;
+  }
+
   .search__input {
+    width: 100%;
     height: 60px;
     background-color: #f0f4ef;
+    font: 400 16px/24px 'Poppins', sans-serif;
     border-radius: 16px;
     border: none;
     cursor: pointer;
     outline: none;
+
   }
 
   @media (max-width: 833px) {
