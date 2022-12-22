@@ -19,9 +19,9 @@ justify-content: space-between;
     margin: 9px 0 30px 0;
   }
 
-  img {
+  .SyngUpBG {
     max-width: 612px;
-    max-height: 552px;
+    height: 552px;
   }
   
   .sing-up__header{
@@ -32,6 +32,9 @@ justify-content: space-between;
   }
 
   .sing-up__button{
+    max-width: 166px;
+    width: 100%;
+    height: 44px;
     margin: 60px 0 0 0;
   }
 
@@ -48,15 +51,15 @@ justify-content: space-between;
       line-height:24px;
     }
 
-    img {
+    .SyngUpBG {
       max-width: 390px;
-      max-height: 333px;
+      height: 333px;
       margin-left: 20px;
     }
 
     .sing-up__button{
-    margin: 30px 0 0 0;
-  }
+      margin: 30px 0 0 0;
+    }
 
   }
 
@@ -80,9 +83,9 @@ justify-content: space-between;
     margin: 40px 0 60px 0;
   }
 
-  img {
+  .SyngUpBG {
       max-width: 290px;
-      max-height: 247px;
+      height: 247px;
       margin-left: 0;
     }
 

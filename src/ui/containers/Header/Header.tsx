@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
+
 import HeaderWrapper from './Header.styled';
-import Logo from './images/logo-header.png';
+
 import Button from '../../components/button/Button';
 import SearchField from '../../components/SearchField/SearchField';
 import SearchIcon from '../../components/SearchField/images/Search.png';
+
+import Logo from './images/logo-header.png';
 
 const Header = () => {
   return (
@@ -11,7 +15,12 @@ const Header = () => {
       <p className="header__search-title">Catalog</p>
 
       <SearchField img={SearchIcon} placeholder="Search" />
-      <Button className="header__button" value="Log In/ Sing Up" />
+      <Link to="login">
+        <Button className="header__button" value="Log In" />
+      </Link>
+      <Link to="singup">
+        <Button className="header__button" value="Syng Up" />
+      </Link>
     </HeaderWrapper>
   );
 };

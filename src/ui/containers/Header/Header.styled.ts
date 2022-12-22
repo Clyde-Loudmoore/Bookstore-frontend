@@ -7,6 +7,12 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
 
+  a{
+    max-width: 167px;
+    width: 100%;
+    margin-left: 30px;
+    order: 2;
+  }
 
   .header__search-title {
   font-weight: 500;
@@ -17,6 +23,13 @@ const HeaderWrapper = styled.header`
 
   @media (min-width: 834px) and (max-width: 1439px) {
     padding: 20px 0 45px 0;
+
+    a{
+      max-width: 127px;
+      height: 44px;
+      margin-left: 20px;
+    }
+
     .header__search-title{
       margin: 0 73px 0 50px;
     }
@@ -26,7 +39,13 @@ const HeaderWrapper = styled.header`
 
     padding: 33px 0 39px 0;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
+
+    a{
+      max-width: 100px;
+      height: 38px;
+      margin-left: 3px;
+    }
 
     .header__search-title{
       order: 2;

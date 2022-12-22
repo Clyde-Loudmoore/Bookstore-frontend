@@ -1,6 +1,7 @@
+import { BGFooter, FooterWrapper } from './Footer.styled';
+
 import Logo from './images/logo-footer.png';
 import Map from './images/map.png';
-import { BGFooter, FooterWrapper } from './Footer.styled';
 
 const Footer = () => {
   return (

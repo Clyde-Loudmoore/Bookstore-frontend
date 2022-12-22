@@ -1,6 +1,8 @@
 import SingUpWrapper from './SingUp.styled';
+
 import SearchField from '../../components/SearchField/SearchField';
 import Button from '../../components/button/Button';
+
 import MailIcon from './images/Mail.png';
 import EyeIcon from './images/Hide.png';
 import SyngUpBG from './images/SingUpBG.png';
@@ -24,7 +26,7 @@ const SingUp = () => {
         </div>
         <Button className="sing-up__button" value="Sing Up" />
       </form>
-      <img src={SyngUpBG} alt="syng-up" />
+      <img className="SyngUpBG" src={SyngUpBG} alt="syng-up" />
     </SingUpWrapper>
   );
 };
