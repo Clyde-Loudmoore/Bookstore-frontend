@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { BGFooter, FooterWrapper } from './Footer.styled';
 
 import Logo from './images/logo-footer.png';
@@ -15,11 +17,18 @@ const Footer = () => {
 
         <div className="footer__map">
 
-          <p>Home Page</p>
+          <Link to="/">
+            <p>Home Page</p>
+          </Link>
+          {/* <Link to="login"> */}
           <p>Catalog</p>
+          {/* </Link> */}
+          {/* <Link to="login"> */}
           <p>My Account</p>
+          {/* </Link> */}
+          {/* <Link to="login"> */}
           <p>Cart</p>
-
+          {/* </Link> */}
         </div>
 
         <div className="footer__location">

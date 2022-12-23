@@ -15,12 +15,14 @@ const Header = () => {
       <p className="header__search-title">Catalog</p>
 
       <SearchField img={SearchIcon} placeholder="Search" />
-      <Link to="login">
-        <Button className="header__button" value="Log In" />
-      </Link>
-      <Link to="singup">
-        <Button className="header__button" value="Syng Up" />
-      </Link>
+      <div className="header__button-wrapper">
+        <Link to="login">
+          <Button className="header__button" value="Log In" />
+        </Link>
+        <Link to="singup">
+          <Button className="header__button" value="Sing Up" />
+        </Link>
+      </div>
     </HeaderWrapper>
   );
 };
