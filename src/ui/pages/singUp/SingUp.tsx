@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 
 import SingUpWrapper from './SingUp.styled';
 
 import SearchField from '../../components/SearchField/SearchField';
 import Button from '../../components/button/Button';
+
+import user from '../../../validationSchemes/user';
 
 import MailIcon from './images/Mail.png';
 import EyeIcon from './images/Hide.png';
@@ -15,6 +17,7 @@ const SingUp = () => {
     <SingUpWrapper>
       <Formik
         initialValues={{ email: '', password: '', confPassword: '' }}
+        validationSchema={user.singUp}
         onSubmit={(values, actions) => {
           console.log(values);
           actions.setSubmitting(false);
@@ -30,6 +33,7 @@ const SingUp = () => {
                 img={MailIcon}
                 {...formik.getFieldProps('email')}
               />
+              <ErrorMessage name="email" />
               <p>Enter your email</p>
             </div>
             <div>
@@ -39,6 +43,7 @@ const SingUp = () => {
                 img={EyeIcon}
                 {...formik.getFieldProps('password')}
               />
+              <ErrorMessage name="password" />
               <p>Enter your password</p>
             </div>
             <div>
@@ -48,6 +53,7 @@ const SingUp = () => {
                 img={EyeIcon}
                 {...formik.getFieldProps('confPassword')}
               />
+              <ErrorMessage name="confPassword" />
               <p>Repeat your password without errors</p>
             </div>
             <Button className="sing-up__button" type="submit" value="Sing Up" />
