@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
 
@@ -16,7 +18,9 @@ import MailIcon from './images/mail.png';
 import EyeIcon from './images/hide.png';
 import SingInBG from './images/singInBG.png';
 
-const SingIn = () => {
+const SingIn: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
   const formik = useFormik({
@@ -28,13 +32,16 @@ const SingIn = () => {
         const user = await singIn(values);
         dispatch(setUser(user.data.user));
         Cookies.set('token', user.data.token);
+        if (location.state && Cookies.get('token')) {
+          navigate(location.state.from.pathname);
+        }
+        navigate('/');
       } catch (err) {
         console.log(err);
       }
     },
     validationSchema: user.singIn,
   });
-
   return (
     <StyledSingIn>
 

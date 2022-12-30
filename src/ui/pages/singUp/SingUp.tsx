@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import Cookies from 'js-cookie';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
+import Cookies from 'js-cookie';
 
 import StyledSingUp from './StyledSingUp.styled';
 
@@ -17,6 +18,8 @@ import EyeIcon from './images/hide.png';
 import SingUpBG from './images/singUpBG.png';
 
 const SingUp = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
   const formik = useFormik({
@@ -27,6 +30,10 @@ const SingUp = () => {
         const user = await singUp(values);
         dispatch(setUser(user.data.newUser));
         Cookies.set('token', user.data.token);
+        if (location.state && Cookies.get('token')) {
+          navigate(location.state.from.pathname);
+        }
+        navigate('/');
       } catch (err) {
         console.log(err);
       }

@@ -40,6 +40,13 @@ const StyledFooter = styled.footer`
     text-decoration: none;
   }
 
+  .footer__link-logo{
+    width: 88px;
+    height: 46px;
+    margin: 0;
+    padding: 0;
+  }
+
   @media (max-width: 1030px) {
     font-size: 16px;
     line-height: 24px;
