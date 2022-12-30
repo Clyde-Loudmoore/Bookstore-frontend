@@ -28,7 +28,7 @@ const SingUp = () => {
     onSubmit: async (values) => {
       try {
         const user = await singUp(values);
-        dispatch(setUser(user.data.newUser));
+        dispatch(setUser(user.data.user));
         Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
@@ -39,6 +39,8 @@ const SingUp = () => {
       }
     },
     validationSchema: user.singUp,
+    validateOnBlur: false,
+    validateOnChange: false,
   });
 
   return (
@@ -55,7 +57,7 @@ const SingUp = () => {
             type="text"
             {...formik.getFieldProps('email')}
           />
-          {formik.touched && formik.errors ? (
+          {formik.touched.email && formik.errors.email ? (
             <div className="input-error">{formik.errors.email}</div>
           ) : null}
 
@@ -69,7 +71,7 @@ const SingUp = () => {
             placeholder="Password"
             {...formik.getFieldProps('password')}
           />
-          {formik.touched && formik.errors ? (
+          {formik.touched.password && formik.errors.password ? (
             <div className="input-error">{formik.errors.password}</div>
           ) : null}
 
@@ -83,7 +85,7 @@ const SingUp = () => {
             img={EyeIcon}
             {...formik.getFieldProps('confPassword')}
           />
-          {formik.touched && formik.errors ? (
+          {formik.touched.confPassword && formik.errors.confPassword ? (
             <div className="input-error">{formik.errors.confPassword}</div>
           ) : null}
 

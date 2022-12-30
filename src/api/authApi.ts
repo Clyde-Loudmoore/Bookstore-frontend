@@ -9,5 +9,5 @@ export const singIn = (data: { email: string; password: string }) => {
 };
 
 export const singUp = (data: { email: string; password: string }) => {
-  return axiosInstance.post<{ newUser: UserType; token: string }>(`${AUTH_PATH}/sing-up`, data);
+  return axiosInstance.post<{ user: UserType; token: string }>(`${AUTH_PATH}/sing-up`, data);
 };

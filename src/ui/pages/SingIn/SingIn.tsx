@@ -41,6 +41,8 @@ const SingIn: React.FC = () => {
       }
     },
     validationSchema: user.singIn,
+    validateOnBlur: false,
+    validateOnChange: false,
   });
   return (
     <StyledSingIn>
@@ -57,7 +59,7 @@ const SingIn: React.FC = () => {
             type="text"
             {...formik.getFieldProps('email')}
           />
-          {formik.touched && formik.errors ? (
+          {formik.touched.email && formik.errors.email ? (
             <div className="input-error">{formik.errors.email}</div>
           ) : null}
 
@@ -72,7 +74,7 @@ const SingIn: React.FC = () => {
             placeholder="Password"
             {...formik.getFieldProps('password')}
           />
-          {formik.touched && formik.errors ? (
+          {formik.touched.password && formik.errors.password ? (
             <div className="input-error">{formik.errors.password}</div>
           ) : null}
 
