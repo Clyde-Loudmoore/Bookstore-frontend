@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import HomePage from '../pages/homePage/HomePage';
+import HomePage from '../pages/HomePage/HomePage';
 import SingUp from '../pages/singUp/SingUp';
-import LogIn from '../pages/logIn/LogIn';
+import LogIn from '../pages/SingIn/SingIn';
 
 const Navigation = () => {
   return (

@@ -4,6 +4,8 @@ const fullName = yup.string().max(25);
 
 const requiredEmail = yup.string().email('Invalid email address').required('Enter email');
 const requiredPassword = yup.string().min(4, 'The minimum password length is 4 characters').max(16, 'The maximum password length is 16 characters').required('Enter password');
+const requiredConfPassword = yup.string().oneOf([yup.ref('password'), null], 'Passwords don`t match').min(4, 'The minimum password length is 4 characters').max(16, 'The maximum password length is 16 characters')
+  .required('Enter password');
 const requiredParamsId = yup.number().integer().min(1).required();
 
 const sharedValidation = {
@@ -11,16 +13,17 @@ const sharedValidation = {
   requiredParamsId,
   requiredEmail,
   requiredPassword,
+  requiredConfPassword,
 };
 
 const singUp =
   yup.object({
     email: sharedValidation.requiredEmail,
     password: sharedValidation.requiredPassword,
-    confPassword: sharedValidation.requiredPassword,
+    confPassword: sharedValidation.requiredConfPassword,
   });
 
-const logIn =
+const singIn =
   yup.object({
     email: sharedValidation.requiredEmail,
     password: sharedValidation.requiredPassword,
@@ -40,4 +43,4 @@ const editUserPass =
     userId: sharedValidation.requiredParamsId,
   });
 
-export default { singUp, logIn, editUser, editUserPass };
+export default { singUp, singIn, editUser, editUserPass };

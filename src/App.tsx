@@ -1,18 +1,15 @@
-import Header from './ui/containers/Header/Header';
-import Footer from './ui/containers/Footer/Footer';
-import ContentWrapper from './ui/components/contentWrapper/Wrapper.styled';
+import Header from './ui/containers/Header';
+import Footer from './ui/containers/Footer';
+import Navigation from './ui/containers/NavigatingThroughComponents';
 
-import Navigation from './ui/components/ComponentWithNavigation';
-
-import AppContainer from './App.styled';
+import AppContainer, { GlobalStyles } from './App.styled';
 
 const App = () => {
   return (
     <AppContainer>
-      <ContentWrapper>
-        <Header />
-        <Navigation />
-      </ContentWrapper>
+      <GlobalStyles />
+      <Header />
+      <Navigation />
       <Footer />
     </AppContainer>
   );
