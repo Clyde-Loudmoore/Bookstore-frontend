@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
+import { AxiosError } from 'axios';
 
 import StyledSingIn from './StyledSingIn.styled';
 
@@ -19,6 +20,9 @@ import EyeIcon from './images/hide.png';
 import SingInBG from './images/singInBG.png';
 
 const SingIn: React.FC = () => {
+  const [errorEmailState, setErrorEmailState] = useState('');
+  const [errorPasswordState, setErrorPasswordState] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -37,13 +41,21 @@ const SingIn: React.FC = () => {
         }
         navigate('/');
       } catch (err) {
-        console.log(err);
+        if (err instanceof AxiosError && err.response?.status === 404) {
+          setErrorEmailState(err.response?.data.message);
+        } else {
+          setErrorEmailState('');
+        }
+        if (err instanceof AxiosError && err.response?.status === 400) {
+          setErrorPasswordState(err.response?.data.message);
+        } else {
+          setErrorPasswordState('');
+        }
       }
     },
     validationSchema: user.singIn,
-    validateOnBlur: false,
-    validateOnChange: false,
   });
+
   return (
     <StyledSingIn>
 
@@ -55,12 +67,15 @@ const SingIn: React.FC = () => {
 
           <InputField className="sing-in__input-field"
             img={MailIcon}
+            type="email"
             placeholder="Email"
-            type="text"
             {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email ? (
             <div className="input-error">{formik.errors.email}</div>
+          ) : null}
+          {errorEmailState ? (
+            <div className="input-error">{errorEmailState}</div>
           ) : null}
 
           <p className="sing-in__paragraph">Enter your email</p>
@@ -76,6 +91,9 @@ const SingIn: React.FC = () => {
           />
           {formik.touched.password && formik.errors.password ? (
             <div className="input-error">{formik.errors.password}</div>
+          ) : null}
+          {errorPasswordState ? (
+            <div className="input-error">{errorPasswordState}</div>
           ) : null}
 
           <p className="sing-in__paragraph">Enter your password</p>

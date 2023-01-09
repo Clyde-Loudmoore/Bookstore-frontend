@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
+import { AxiosError } from 'axios';
 
 import StyledSingUp from './StyledSingUp.styled';
 
@@ -17,7 +19,10 @@ import MailIcon from './images/mail.png';
 import EyeIcon from './images/hide.png';
 import SingUpBG from './images/singUpBG.png';
 
-const SingUp = () => {
+const SingUp: React.FC = () => {
+  const [errorEmailState, setErrorEmailState] = useState('');
+  const [errorPasswordState, setErrorPasswordState] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -35,12 +40,19 @@ const SingUp = () => {
         }
         navigate('/');
       } catch (err) {
-        console.log(err);
+        if (err instanceof AxiosError && err.response?.status === 404) {
+          setErrorEmailState(err.response?.data.message);
+        } else {
+          setErrorEmailState('');
+        }
+        if (err instanceof AxiosError && err.response?.status === 400) {
+          setErrorPasswordState(err.response?.data.message);
+        } else {
+          setErrorPasswordState('');
+        }
       }
     },
     validationSchema: user.singUp,
-    validateOnBlur: false,
-    validateOnChange: false,
   });
 
   return (
@@ -54,11 +66,14 @@ const SingUp = () => {
           <InputField className="sing-up__input-field"
             img={MailIcon}
             placeholder="Email"
-            type="text"
+            type="email"
             {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email ? (
             <div className="input-error">{formik.errors.email}</div>
+          ) : null}
+          {errorEmailState ? (
+            <div className="input-error">{errorEmailState}</div>
           ) : null}
 
           <p className="sing-up__paragraph">Enter your email</p>
@@ -73,6 +88,9 @@ const SingUp = () => {
           />
           {formik.touched.password && formik.errors.password ? (
             <div className="input-error">{formik.errors.password}</div>
+          ) : null}
+          {errorPasswordState ? (
+            <div className="input-error">{errorPasswordState}</div>
           ) : null}
 
           <p className="sing-up__paragraph">Enter your password</p>

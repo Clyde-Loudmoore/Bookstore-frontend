@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             <Button className="header__button" value="Sing Up" />
           </Link>
 
-          <Link className="header__button-link" to="login">
+          <Link className="header__button-link" to="singin">
             <Button className="header__button" value="Sing In" />
           </Link>
 
