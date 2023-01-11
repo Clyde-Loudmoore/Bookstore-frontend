@@ -36,9 +36,9 @@ const Header: React.FC = () => {
           <Button className="header__small-button" img={Heart} />
           {/* </Link> */}
 
-          {/* <Link className="header__small-button-link" to="singup"> */}
-          <Button className="header__small-button" img={User} />
-          {/* </Link> */}
+          <Link className="header__small-button-link" to="profile">
+            <Button className="header__small-button" img={User} />
+          </Link>
 
         </div>
       ) : (

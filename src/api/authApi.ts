@@ -11,3 +11,7 @@ export const singIn = (data: { email: string; password: string }) => {
 export const singUp = (data: { email: string; password: string }) => {
   return axiosInstance.post<{ user: UserType; token: string }>(`${AUTH_PATH}/sing-up`, data);
 };
+
+export const getUser = () => {
+  return axiosInstance.get<{ user: UserType }>(`${AUTH_PATH}/me`);
+};

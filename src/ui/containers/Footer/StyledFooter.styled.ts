@@ -7,6 +7,8 @@ const StyledFooter = styled.footer`
   line-height: 30px;
   color: #F0F4EF;
 
+  margin-top: auto;
+
   background-color: #0D1821;
   padding: 73px 80px;
 

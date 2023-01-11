@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
@@ -20,8 +20,8 @@ import EyeIcon from './images/hide.png';
 import SingInBG from './images/singInBG.png';
 
 const SingIn: React.FC = () => {
-  const [errorEmailState, setErrorEmailState] = useState('');
-  const [errorPasswordState, setErrorPasswordState] = useState('');
+  const [errorEmailState, setErrorEmailState] = React.useState('');
+  const [errorPasswordState, setErrorPasswordState] = React.useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -66,6 +66,7 @@ const SingIn: React.FC = () => {
         <div>
 
           <InputField className="sing-in__input-field"
+            id="email"
             img={MailIcon}
             type="email"
             placeholder="Email"
@@ -84,6 +85,7 @@ const SingIn: React.FC = () => {
         <div>
 
           <InputField className="sing-in__input-field"
+            id="password"
             img={EyeIcon}
             type="password"
             placeholder="Password"

@@ -13,23 +13,26 @@ type PropsType = {
   value?: string;
   formikError?: string;
   formikTouched?: boolean;
-  name?: string;
+  id?: string;
+  readonly?: boolean;
 };
 
 const InputField: React.FC<PropsType> = (props) => {
   return (
     <StyledInputField className={props.className}>
+      {/* {props.defaultValue} */}
 
       <img className="search__field-icon" src={props.img} alt="search" />
 
       <input
         className="search__input"
+        id={props.id}
         onChange={props.onChange}
         onBlur={props.onBlur}
-        value={props.value}
-        name={props.name}
         type={props.type}
         placeholder={props.placeholder}
+        readOnly={props.readonly}
+        value={props.value}
       />
 
       {props.formikError && <div id="feedback">{props.formikError}</div>}

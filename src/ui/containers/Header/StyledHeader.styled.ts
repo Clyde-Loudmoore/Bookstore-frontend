@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
     width: 48px;
     border-radius: 50%;
   }
-  
+
   @media (max-width: 834px) {
     padding: 20px 11px 45px 15px;
 

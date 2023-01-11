@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
 
               <div className="footer-banner__button-wrapper">
 
-                <Link className="footer-banner__link" to="login">
+                <Link className="footer-banner__link" to="singin">
                   <Button className="footer-banner__button" value="Sing In" />
                 </Link>
                 <Link className="footer-banner__link" to="singup">

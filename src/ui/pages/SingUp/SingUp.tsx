@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
@@ -20,8 +20,8 @@ import EyeIcon from './images/hide.png';
 import SingUpBG from './images/singUpBG.png';
 
 const SingUp: React.FC = () => {
-  const [errorEmailState, setErrorEmailState] = useState('');
-  const [errorPasswordState, setErrorPasswordState] = useState('');
+  const [errorEmailState, setErrorEmailState] = React.useState('');
+  const [errorPasswordState, setErrorPasswordState] = React.useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -64,6 +64,7 @@ const SingUp: React.FC = () => {
 
         <div>
           <InputField className="sing-up__input-field"
+            id="email"
             img={MailIcon}
             placeholder="Email"
             type="email"
@@ -81,6 +82,7 @@ const SingUp: React.FC = () => {
 
         <div>
           <InputField className="sing-up__input-field"
+            id="password"
             img={EyeIcon}
             type="password"
             placeholder="Password"
@@ -98,6 +100,7 @@ const SingUp: React.FC = () => {
 
         <div>
           <InputField className="sing-up__input-field"
+            id="confPassword"
             type="password"
             placeholder="Password replay"
             img={EyeIcon}
