@@ -19,6 +19,7 @@ import StyledProfile from './StyledProfile.styled';
 import Camera from './images/camera.png';
 import UserIcon from './images/user-icon.png';
 import Mail from './images/mail.png';
+import NoPhoto from './images/user-profile.png';
 
 import type { UserType } from '../../../types';
 
@@ -75,7 +76,9 @@ const ProfileUser: React.FC = () => {
     <StyledProfile>
 
       <div className="user-photo__wrapper">
-        <img className="user-avatar" src={avatar} />
+        {avatar !== 'http://localhost:4000/public/avatars/null' ? (<img className="user-avatar" src={avatar} />)
+          : (<img className="user-no-avatar" src={NoPhoto} />)
+        }
 
         <div className="user-photo__button">
           <label htmlFor="add-avatar" className="add-avatar">

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import NoPhoto from './images/user-profile.png';
-
 const StyledProfile = styled.main`
   margin: 0 80px 69px 80px;
   padding: 20px 0 0 0;
@@ -15,11 +13,16 @@ const StyledProfile = styled.main`
     width: 100%;
     max-height: 305px;
     position: relative;
-    background-image: url(${NoPhoto});
-    background-repeat: no-repeat;
-    background-position: center;
     background-color: #F0F4EF;
     border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user-no-avatar{
+    max-width: 151px;
+    max-height: 151px;
   }
 
   .user-avatar{
