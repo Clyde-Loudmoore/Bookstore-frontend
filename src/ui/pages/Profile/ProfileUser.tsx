@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 
-import { patchUser } from '../../../api/userApi';
+import { getUser } from '../../../api/authApi';
+import { patchUser, postAvatar } from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { setUser } from '../../../store/userSlise';
 import user from '../../../validationSchemes/user';
@@ -26,8 +28,28 @@ const ProfileUser: React.FC = () => {
   const [errorEmailState, setErrorEmailState] = React.useState('');
 
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
+  console.log(currentUser);
 
   const dispatch = useAppDispatch();
+
+  const uploadPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files;
+
+    if (selectedFile) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(selectedFile[0]);
+      fileReader.onload = async () => {
+        // console.log(e.target?.result);
+        try {
+          const user = await postAvatar(currentUser.id, currentUser.avatar);
+          dispatch(setUser(user.data.updatedUser));
+        } catch (err) {
+          const error = err as Error;
+          return toast.error(error.message);
+        }
+      };
+    }
+  };
 
   const userFormik = useFormik({
     initialValues: { fullName: currentUser.fullName, email: currentUser.email },
@@ -53,17 +75,14 @@ const ProfileUser: React.FC = () => {
     <StyledProfile>
 
       <div className="user-photo__wrapper">
-        {/* <img
-          src={DefaultProfileImg}
-          alt="User photo"
-          className="user-photo"
-          /> */}
 
         <div className="user-photo__button">
           <label htmlFor="add-avatar" className="add-avatar">
-            <input id="add-avatar" className="user-photo__input" type="image" src={Camera} />
+            <img src={Camera} alt="+" />
           </label>
+          <input id="add-avatar" className="user-photo__input" type="file" onChange={uploadPhoto} />
         </div>
+
       </div>
 
       <div className="form__wrapper">

@@ -13,6 +13,7 @@ export const GlobalStyles = createGlobalStyle`
   html, body, #root {
     height: 100%;
   }
+
 `;
 
 const AppContainer = styled.div`

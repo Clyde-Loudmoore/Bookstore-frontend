@@ -22,14 +22,15 @@ const StyledProfile = styled.main`
     border-radius: 16px;
   }
 
-  .add-avatar{
+  .add-avatar {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
-  /* .user-photo {
-    width: 100%;
-  } */
+  .user-photo__input {
+    display: none;
+  }
 
   .user-photo__button {
     background-color: #344966;

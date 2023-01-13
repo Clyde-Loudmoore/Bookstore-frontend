@@ -22,6 +22,7 @@ const ProfilePass: React.FC = () => {
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
 
   const passFormik = useFormik({
+    enableReinitialize: true,
     initialValues: { password: '', newPassword: '', confPassword: '' },
 
     onSubmit: async (values, actions) => {

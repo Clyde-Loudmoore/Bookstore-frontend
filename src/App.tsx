@@ -10,10 +10,12 @@ import { useAppDispatch } from './store';
 import { getMe } from './store/userSlise';
 import { getUser } from './api/authApi';
 
+// import Loading from './ui/components/Loading';
+
 import AppContainer, { GlobalStyles } from './App.styled';
 
 const App = () => {
-  const [loading, setLoading] = React.useState(true);
+  // const [loading, setLoading] = React.useState(true);
 
   const dispatch = useAppDispatch();
 
@@ -21,13 +23,13 @@ const App = () => {
     (async () => {
       const user = await getUser();
       dispatch(getMe(user.data.user));
-      setLoading(false);
+      // setLoading(false);
     })();
   }, [dispatch]);
 
-  if (loading) {
-    return null;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
     <AppContainer>
