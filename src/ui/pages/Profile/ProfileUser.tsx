@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 
-import { getUser } from '../../../api/authApi';
 import { patchUser, postAvatar } from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { setUser } from '../../../store/userSlise';
@@ -28,7 +27,6 @@ const ProfileUser: React.FC = () => {
   const [errorEmailState, setErrorEmailState] = React.useState('');
 
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
-  console.log(currentUser);
 
   const dispatch = useAppDispatch();
 
@@ -38,10 +36,10 @@ const ProfileUser: React.FC = () => {
     if (selectedFile) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(selectedFile[0]);
+
       fileReader.onload = async () => {
-        // console.log(e.target?.result);
         try {
-          const user = await postAvatar(currentUser.id, currentUser.avatar);
+          const user = await postAvatar(fileReader.result);
           dispatch(setUser(user.data.updatedUser));
         } catch (err) {
           const error = err as Error;
@@ -71,10 +69,13 @@ const ProfileUser: React.FC = () => {
     validationSchema: user.editUser,
   });
 
+  const avatar = currentUser.avatar;
+
   return (
     <StyledProfile>
 
       <div className="user-photo__wrapper">
+        <img className="user-avatar" src={avatar} />
 
         <div className="user-photo__button">
           <label htmlFor="add-avatar" className="add-avatar">

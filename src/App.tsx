@@ -10,26 +10,31 @@ import { useAppDispatch } from './store';
 import { getMe } from './store/userSlise';
 import { getUser } from './api/authApi';
 
-// import Loading from './ui/components/Loading';
+import Loading from './ui/components/Loading';
 
 import AppContainer, { GlobalStyles } from './App.styled';
 
 const App = () => {
-  // const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(true);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {
-      const user = await getUser();
-      dispatch(getMe(user.data.user));
-      // setLoading(false);
+      try {
+        const user = await getUser();
+        dispatch(getMe(user.data.user));
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
     })();
   }, [dispatch]);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <AppContainer>

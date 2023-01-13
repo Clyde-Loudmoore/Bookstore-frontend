@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import axiosInstance from './api';
 
 import type { UserType } from '../types';
 
 const USER_PATH = '/user';
 
-export const postAvatar = (userId: number, avatar: string) => {
-  return axiosInstance.post<{ updatedUser: UserType }>(`${USER_PATH}/${userId}`, avatar);
+export const postAvatar = (avatar: string | ArrayBuffer | null) => {
+  return axiosInstance.post<{ updatedUser: UserType }>(`${USER_PATH}/avatar/`, { avatar });
 };
 
 export const patchUser = (userId: number, data: { fullName: string; email: string }) => {

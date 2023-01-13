@@ -22,6 +22,10 @@ const StyledProfile = styled.main`
     border-radius: 16px;
   }
 
+  .user-avatar{
+    width: 100%;;
+  }
+
   .add-avatar {
     display: flex;
     align-items: center;

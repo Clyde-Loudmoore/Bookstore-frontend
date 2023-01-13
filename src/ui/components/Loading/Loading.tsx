@@ -12,6 +12,7 @@ const Loading = () => {
         wrapperStyle={{}}
         wrapperClass="dna-wrapper"
       />
+      <p className="loading__paragraph">Loading...</p>
     </StyledLoading>
   );
 };
