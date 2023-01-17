@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import axiosInstance from './api';
+import { axiosInstance } from './api';
 
 import type { UserType } from '../types';
 

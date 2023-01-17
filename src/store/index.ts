@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 
 import userReduser from './userSlise';
+import bookReduser from './bookSlice';
 
 const store = configureStore({
   reducer: {
     user: userReduser,
+    books: bookReduser,
   },
 });
 

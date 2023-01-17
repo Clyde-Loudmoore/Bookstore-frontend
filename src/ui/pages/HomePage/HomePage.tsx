@@ -5,6 +5,7 @@ import StyledHeaderBanner from './StyledHeaderBanner.styled';
 import StyledFooterBanner from './StyledFooterBanner.styled';
 
 import Button from '../../components/Button/Button';
+import Catalog from './Catalog/Catalog';
 
 import Castle from './images/castle.png';
 import Reader from './images/reader.png';
@@ -12,7 +13,7 @@ import Reader from './images/reader.png';
 import { useAppSelector } from '../../../store';
 
 const HomePage: React.FC = () => {
-  const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((store) => store.user.user);
 
   return (
     <main>
@@ -32,7 +33,7 @@ const HomePage: React.FC = () => {
               <img className="header-banner__reader" src={Reader} alt="Reader" />
             </div>
           </StyledHeaderBanner>
-          <section className="home-page__catalog" />
+          <Catalog />
         </>
       ) : (
         <>
@@ -52,7 +53,7 @@ const HomePage: React.FC = () => {
 
           </StyledHeaderBanner>
 
-          <section className="home-page__catalog" />
+          <Catalog />
 
           <StyledFooterBanner>
             <div className="footer-banner__castle-wrapper">

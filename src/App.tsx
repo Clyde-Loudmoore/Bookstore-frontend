@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
@@ -19,7 +19,7 @@ const App = () => {
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  React.useEffect(() => {
     (async () => {
       try {
         const user = await getUser();

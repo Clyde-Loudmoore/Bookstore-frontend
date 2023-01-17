@@ -3,7 +3,7 @@ import React from 'react';
 import StyledButton from './StyledButton.styled';
 
 type PropsType = {
-  value?: string;
+  value?: string | number;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   img?: string;

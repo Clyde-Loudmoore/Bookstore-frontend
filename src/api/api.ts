@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const BASE_URL = 'http://localhost:4000/api';
+export const BASE_URL = 'http://localhost:4000/api';
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: BASE_URL,
 });
 
@@ -18,5 +18,3 @@ axiosInstance.interceptors.request.use((request) => {
   }
   return request;
 });
-
-export default axiosInstance;

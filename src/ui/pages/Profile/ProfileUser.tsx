@@ -10,8 +10,8 @@ import { useAppDispatch, useAppSelector } from '../../../store';
 import { setUser } from '../../../store/userSlise';
 import user from '../../../validationSchemes/user';
 
-import Button from '../../components/Button/Button';
-import InputField from '../../components/InputField/InputField';
+import Button from '../../components/Button';
+import InputField from '../../components/InputField';
 import ProfilePass from './ProfilePass';
 
 import StyledProfile from './StyledProfile.styled';
@@ -71,12 +71,13 @@ const ProfileUser: React.FC = () => {
   });
 
   const avatar = currentUser.avatar;
+  const noAvatar = 'http://localhost:4000/public/avatars/null';
 
   return (
     <StyledProfile>
 
       <div className="user-photo__wrapper">
-        {avatar !== 'http://localhost:4000/public/avatars/null' ? (<img className="user-avatar" src={avatar} />)
+        {avatar !== noAvatar ? (<img className="user-avatar" src={avatar} />)
           : (<img className="user-no-avatar" src={NoPhoto} />)
         }
 
