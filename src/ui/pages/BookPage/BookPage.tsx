@@ -8,8 +8,8 @@ import type { BookType } from '../../../types';
 import StyledBookPage from './BookPage.styled';
 import StyledButton from '../../components/Button';
 
-import heart from './images/heart.png';
-import arrow from './images/backArrow.png';
+import heart from '../../../assets/icons/heart.png';
+import arrow from '../../../assets/icons/backArrow.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();

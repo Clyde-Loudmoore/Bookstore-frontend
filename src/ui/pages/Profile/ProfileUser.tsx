@@ -7,7 +7,7 @@ import { AxiosError } from 'axios';
 
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import { userSliceActions } from '../../../store/userSlise';
+import { userSliceActions } from '../../../store/Slise/userSlise';
 import user from '../../../validationSchemes/user';
 import type { UserType } from '../../../types';
 

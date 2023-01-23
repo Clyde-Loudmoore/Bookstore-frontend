@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 
 import { isDev } from '../config';
-import userReduser from './userSlise';
-import bookReduser from './bookSlice';
+import userReduser from './Slise/userSlise';
+import bookReduser from './Slise/bookSlice';
 
 const store = configureStore({
   reducer: {

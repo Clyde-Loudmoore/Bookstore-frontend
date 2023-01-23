@@ -3,6 +3,7 @@ const SINGIN = '/sing-in';
 const SINGUP = '/sing-up';
 const PROFILE = '/profile';
 const CATALOG = '/catalog';
+const BOOKPAGE = '/bookpage';
 
 export default {
   HOMEPAGE,
@@ -10,4 +11,5 @@ export default {
   SINGUP,
   PROFILE,
   CATALOG,
+  BOOKPAGE,
 };

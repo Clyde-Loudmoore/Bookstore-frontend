@@ -1,20 +1,17 @@
 /* eslint-disable no-console */
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
 
 import Navigation from './ui/containers/Navigation';
-
-import { useAppDispatch } from './store';
-import { userSliceActions } from './store/userSlise';
-import authApi from './api/authApi';
-
 import Loading from './ui/components/Loading';
-
 import { GlobalStyles } from './ui/components/GlobalStyles';
 
-import BookPage from './ui/pages/BookPage';
+import { useAppDispatch } from './store';
+import { userSliceActions } from './store/Slise/userSlise';
+import authApi from './api/authApi';
 
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -37,8 +34,19 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Header />
-      {/* <BookPage /> */}
       <Navigation />
       <Footer />
     </>

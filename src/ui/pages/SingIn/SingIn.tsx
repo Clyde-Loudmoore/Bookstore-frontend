@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
+import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 
-import StyledSingIn from './SingIn.styled';
-
-import authApi from '../../../api/authApi';
-import { useAppDispatch } from '../../../store';
-import { userSliceActions } from '../../../store/userSlise';
+import { useAppDispatch } from 'store';
+// import { userSliceActions } from '../../../store/Slise/userSlise';
+// import authApi from '../../../api/authApi';
 import user from '../../../validationSchemes/user';
+import userThunk from '../../../store/Thunk/userThunk';
 
+import StyledSingIn from './SingIn.styled';
 import StyledButton from '../../components/Button';
 import InputField from '../../components/InputField';
 
@@ -36,9 +36,10 @@ const SingIn: React.FC = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(false);
-        const user = await authApi.singIn(values);
-        dispatch(userSliceActions.setUser(user.data.user));
-        Cookies.set('token', user.data.token);
+        // const user = await authApi.singIn(values);
+        // userThunk.authorization(values);
+        dispatch(userThunk.authorization(values));
+        // Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }

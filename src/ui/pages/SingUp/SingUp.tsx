@@ -8,9 +8,10 @@ import { AxiosError } from 'axios';
 import StyledSingUp from './SingUp.styled';
 
 import { useAppDispatch } from '../../../store';
-import { userSliceActions } from '../../../store/userSlise';
-import authApi from '../../../api/authApi';
+// import { userSliceActions } from '../../../store/Slise/userSlise';
+// import authApi from '../../../api/authApi';
 import user from '../../../validationSchemes/user';
+import userThunk from '../../../store/Thunk/userThunk';
 
 import InputField from '../../components/InputField';
 import StyledButton from '../../components/Button';
@@ -35,9 +36,10 @@ const SingUp: React.FC = () => {
 
     onSubmit: async (values) => {
       try {
-        const user = await authApi.singUp(values);
-        dispatch(userSliceActions.setUser(user.data.user));
-        Cookies.set('token', user.data.token);
+        // const user = await authApi.singUp(values);
+        // dispatch(userSliceActions.setUser(user.data.user));
+        dispatch(userThunk.authorization(values));
+        // Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }

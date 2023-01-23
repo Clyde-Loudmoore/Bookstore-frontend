@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../../../store';
-import { getAllBooks } from '../../../../store/bookThunk';
+import { getAllBooks } from '../../../../store/Thunk/bookThunk';
 
+// import PriceSlider from '../../../components/PriceSlider/PriceSlider';
 import StyledCatalod from './Catalog.styled';
 import StyledButton from '../../../components/Button';
 
@@ -49,10 +51,9 @@ const Catalog: React.FC = () => {
             <option value="Encyclopedia">Encyclopedia</option>
           </select>
 
-          {/* <select name="price" className="sort-by-price">
-            <option> */}
-          {/* <PriceSlider /> */}
-          {/* </option>
+          {/* <select>
+            <option value={<PriceSlider />} />
+            <PriceSlider />
           </select> */}
 
           <select name="bookinfo" className="sotr-by-bookinfo">
@@ -70,10 +71,12 @@ const Catalog: React.FC = () => {
           return (
 
             <div className="book__wrapper" key={book.id}>
-              <div className="book-cover">
-                <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
-                <img className="book-cover-img" src={book.bookCover} />
-              </div>
+              <Link className="catalog__book-cover-link" to="bookpage">
+                <div className="book-cover">
+                  <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
+                  <img className="book-cover-img" src={book.bookCover} />
+                </div>
+              </Link>
               <p className="book-title">{book.title}</p>
               <p className="book-author">{book.author}</p>
               {/* <StarRating /> */}
