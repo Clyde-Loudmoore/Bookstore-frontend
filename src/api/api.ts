@@ -1,8 +1,12 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const BASE_URL = 'http://localhost:4000/api';
 
-const tokenHelper = { get: () => 'null', set: (a: string) => null };
+const tokenHelper = {
+  get: () => { return Cookies.get('token'); },
+  set: (a: string) => Cookies.set('token', a),
+};
 
 const getAuthHeader = (token = tokenHelper.get()) => `Bearer ${token}`;
 

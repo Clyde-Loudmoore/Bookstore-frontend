@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
+import Cookies from 'js-cookie';
 
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
@@ -38,7 +39,6 @@ const ProfileUser: React.FC = () => {
 
   const uploadPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files;
-
     if (selectedFile) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(selectedFile[0]);

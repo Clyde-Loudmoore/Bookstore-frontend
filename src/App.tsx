@@ -21,15 +21,14 @@ const App = () => {
   React.useEffect(() => {
     (async () => {
       const response = await authApi.getUser();
-
       dispatch(userSliceActions.setUser(response.data.user));
       setIsLoading(false);
     })();
   }, [dispatch]);
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

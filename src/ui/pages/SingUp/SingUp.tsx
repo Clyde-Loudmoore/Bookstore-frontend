@@ -6,12 +6,12 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import StyledSingUp from './SingUp.styled';
-
+import authApi from 'api/authApi';
 import { useAppDispatch } from '../../../store';
 import sharedValidation from '../../../validation/sharedValidationFields';
 import userThunk from '../../../store/Thunk/userThunk';
 
+import StyledSingUp from './SingUp.styled';
 import InputField from '../../components/InputField';
 import StyledButton from '../../components/Button';
 
@@ -42,7 +42,9 @@ const SingUp: React.FC = () => {
 
     onSubmit: async (values) => {
       try {
+        const user = await authApi.singIn(values);
         dispatch(userThunk.authorization(values));
+        Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }
