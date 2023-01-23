@@ -1,20 +1,19 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 export const BASE_URL = 'http://localhost:4000/api';
 
+const tokenHelper = { get: () => 'null', set: (a: string) => null };
+
+const getAuthHeader = (token = tokenHelper.get()) => `Bearer ${token}`;
+
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
+  headers: {
+    authorization: getAuthHeader(),
+  },
 });
 
-axiosInstance.interceptors.request.use((request) => {
-  const token = Cookies.get('token');
-  if (token) {
-    // eslint-disable-next-line no-param-reassign
-    request.headers = {
-      ...request.headers,
-      authorization: `Bearer ${token}`,
-    };
-  }
-  return request;
-});
+export const setApiToken = (token: string) => {
+  tokenHelper.set(token);
+  axiosInstance.defaults.headers.authorization = getAuthHeader(token);
+};

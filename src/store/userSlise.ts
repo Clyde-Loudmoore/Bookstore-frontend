@@ -15,13 +15,8 @@ const userSlice = createSlice({
     setUser: (store, { payload }: PayloadAction<UserType>) => {
       store.user = payload;
     },
-    getMe: (store, { payload }: PayloadAction<UserType>) => {
-      store.user = payload;
-    },
   },
 });
-
-export const { setUser, getMe } = userSlice.actions;
 
 export const userSliceActions = userSlice.actions;
 

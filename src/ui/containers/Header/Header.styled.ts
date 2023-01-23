@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-
   padding: 24px 80px 40px 80px;
   display: flex;
   justify-content: space-between;
@@ -29,10 +28,10 @@ const StyledHeader = styled.header`
   }
 
   .header__small-button-wrapper{
-      display: flex;
-      gap: 27px;
-      margin-left: 81px;
-    }
+    display: flex;
+    gap: 27px;
+    margin-left: 81px;
+  }
 
   .header__small-button{
     width: 48px;
@@ -125,17 +124,17 @@ const StyledHeader = styled.header`
     }
   }
 
-@media (max-width: 366px) {
-  .header__button-wrapper {
-    flex-direction: column;
-    max-width: 75px;
-    gap: 1px;
-    }
+  @media (max-width: 366px) {
+    .header__button-wrapper {
+      flex-direction: column;
+      max-width: 75px;
+      gap: 1px;
+      }
 
-  .header__button {
-    padding:3px;
-    }
-}
+    .header__button {
+      padding:3px;
+      }
+  }
 `;
 
 export default StyledHeader;

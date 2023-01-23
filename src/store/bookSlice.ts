@@ -6,7 +6,7 @@ import { getAllBooks } from './bookThunk';
 import type { BookType } from '../types';
 
 const getInitialStore = () => ({
-  books: [] as BookType[] | [],
+  books: [] as BookType[],
 });
 
 const bookSlice = createSlice({
@@ -14,9 +14,10 @@ const bookSlice = createSlice({
   initialState: getInitialStore,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllBooks.fulfilled, (store, action) => {
-      store.books = action.payload.books;
-    });
+    builder
+      .addCase(getAllBooks.fulfilled, (store, { payload }) => {
+        store.books = payload.books;
+      });
   },
 });
 

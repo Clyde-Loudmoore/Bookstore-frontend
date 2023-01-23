@@ -1,16 +1,13 @@
 /* eslint-disable no-console */
 import React from 'react';
 
-import StyledCatalod from './StyledCatalog';
-
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllBooks } from '../../../../store/bookThunk';
 
-import PriceSlider from './Slider';
-import StarRating from './StarRating';
-import Button from '../../../components/Button';
+import StyledCatalod from './Catalog.styled';
+import StyledButton from '../../../components/Button';
 
-import Heart from './images/heart.png';
+import heart from '../../../../assets/icons/heart.png';
 
 const Catalog: React.FC = () => {
   const books = useAppSelector((store) => store.books.books);
@@ -53,9 +50,9 @@ const Catalog: React.FC = () => {
           </select>
 
           {/* <select name="price" className="sort-by-price">
-            <option>
-              <PriceSlider />
-            </option>
+            <option> */}
+          {/* <PriceSlider /> */}
+          {/* </option>
           </select> */}
 
           <select name="bookinfo" className="sotr-by-bookinfo">
@@ -74,13 +71,13 @@ const Catalog: React.FC = () => {
 
             <div className="book__wrapper" key={book.id}>
               <div className="book-cover">
-                <Button className="book-selected" type="submit" img={Heart} />
+                <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
                 <img className="book-cover-img" src={book.bookCover} />
               </div>
               <p className="book-title">{book.title}</p>
               <p className="book-author">{book.author}</p>
               {/* <StarRating /> */}
-              <Button className="book-price_button" type="submit" value={`$${book.price} USD`} />
+              <StyledButton className="book-price_button" type="submit">${book.price} USD</StyledButton>
             </div>
 
           );

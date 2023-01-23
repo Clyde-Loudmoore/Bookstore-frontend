@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledInputField = styled.div`
+const StyledInputField = styled.div<{ isError: boolean }>`
   max-width: 630px;
   width: 100%;
   max-height: 64px;

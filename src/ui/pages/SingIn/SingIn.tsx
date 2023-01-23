@@ -5,23 +5,26 @@ import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 
-import StyledSingIn from './StyledSingIn.styled';
+import StyledSingIn from './SingIn.styled';
 
-import { singIn } from '../../../api/authApi';
+import authApi from '../../../api/authApi';
 import { useAppDispatch } from '../../../store';
-import { setUser } from '../../../store/userSlise';
+import { userSliceActions } from '../../../store/userSlise';
 import user from '../../../validationSchemes/user';
 
-import Button from '../../components/Button';
+import StyledButton from '../../components/Button';
 import InputField from '../../components/InputField';
 
-import MailIcon from './images/mail.png';
-import EyeIcon from './images/hide.png';
-import SingInBG from './images/singInBG.png';
+import mailIcon from '../../../assets/icons/mail.png';
+import showEye from '../../../assets/icons/showEye.png';
+import hideEye from '../../../assets/icons/hideEye.png';
+import singInBG from '../../../assets/images/singInBG.png';
 
 const SingIn: React.FC = () => {
   const [errorEmailState, setErrorEmailState] = React.useState('');
   const [errorPasswordState, setErrorPasswordState] = React.useState('');
+  const [hidePassword, setHidePassword] = React.useState('password');
+  const [eyeLook, setEyeLook] = React.useState(hideEye);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,8 +36,8 @@ const SingIn: React.FC = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(false);
-        const user = await singIn(values);
-        dispatch(setUser(user.data.user));
+        const user = await authApi.singIn(values);
+        dispatch(userSliceActions.setUser(user.data.user));
         Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
@@ -56,6 +59,16 @@ const SingIn: React.FC = () => {
     validationSchema: user.singIn,
   });
 
+  const getPassword = () => {
+    if (hidePassword === 'password' && eyeLook === hideEye) {
+      setHidePassword('text');
+      setEyeLook(showEye);
+    } else {
+      setHidePassword('password');
+      setEyeLook(hideEye);
+    }
+  };
+
   return (
     <StyledSingIn>
 
@@ -67,17 +80,17 @@ const SingIn: React.FC = () => {
 
           <InputField className="sing-in__input-field"
             id="email"
-            img={MailIcon}
+            img={mailIcon}
             type="email"
             placeholder="Email"
             {...formik.getFieldProps('email')}
           />
-          {formik.touched.email && formik.errors.email ? (
-            <div className="input-error">{formik.errors.email}</div>
-          ) : null}
-          {errorEmailState ? (
-            <div className="input-error">{errorEmailState}</div>
-          ) : null}
+          {formik.touched.email && formik.errors.email
+            ? (<div className="input-error">{formik.errors.email}</div>)
+            : null}
+          {errorEmailState
+            ? (<div className="input-error">{errorEmailState}</div>)
+            : null}
 
           <p className="sing-in__paragraph">Enter your email</p>
         </div>
@@ -86,25 +99,26 @@ const SingIn: React.FC = () => {
 
           <InputField className="sing-in__input-field"
             id="password"
-            img={EyeIcon}
-            type="password"
+            img={eyeLook}
+            onClick={getPassword}
+            type={hidePassword}
             placeholder="Password"
             {...formik.getFieldProps('password')}
           />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="input-error">{formik.errors.password}</div>
-          ) : null}
-          {errorPasswordState ? (
-            <div className="input-error">{errorPasswordState}</div>
-          ) : null}
+          {formik.touched.password && formik.errors.password
+            ? (<div className="input-error">{formik.errors.password}</div>)
+            : null}
+          {errorPasswordState
+            ? (<div className="input-error">{errorPasswordState}</div>)
+            : null}
 
           <p className="sing-in__paragraph">Enter your password</p>
         </div>
 
-        <Button className="sing-in__button" type="submit" value="Sing In" />
+        <StyledButton className="sing-in__button" type="submit">Sing In</StyledButton>
       </form>
 
-      <img className="singInBG" src={SingInBG} alt="Sing-in" />
+      <img className="singInBG" src={singInBG} alt="Sing-in" />
     </StyledSingIn>
   );
 };

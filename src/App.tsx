@@ -4,45 +4,44 @@ import React from 'react';
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
 
-import Navigation from './ui/containers/NavigatingThroughComponents';
+import Navigation from './ui/containers/Navigation';
 
 import { useAppDispatch } from './store';
-import { getMe } from './store/userSlise';
-import { getUser } from './api/authApi';
+import { userSliceActions } from './store/userSlise';
+import authApi from './api/authApi';
 
 import Loading from './ui/components/Loading';
 
-import AppContainer, { GlobalStyles } from './App.styled';
+import { GlobalStyles } from './ui/components/GlobalStyles';
+
+import BookPage from './ui/pages/BookPage';
 
 const App = () => {
-  const [loading, setLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     (async () => {
-      try {
-        const user = await getUser();
-        dispatch(getMe(user.data.user));
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
+      const response = await authApi.getUser();
+
+      dispatch(userSliceActions.setUser(response.data.user));
+      setIsLoading(false);
     })();
   }, [dispatch]);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   return (
-    <AppContainer>
+    <>
       <GlobalStyles />
       <Header />
+      {/* <BookPage /> */}
       <Navigation />
       <Footer />
-    </AppContainer>
+    </>
   );
 };
 

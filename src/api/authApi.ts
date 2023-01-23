@@ -4,14 +4,22 @@ import type { UserType } from '../types';
 
 const AUTH_PATH = '/auth';
 
-export const singIn = (data: { email: string; password: string }) => {
-  return axiosInstance.post<{ user: UserType; token: string }>(`${AUTH_PATH}/sing-in`, data);
+type AuthResponseType = { user: UserType; token: string };
+
+const singIn = (data: { email: string; password: string }) => {
+  return axiosInstance.post<AuthResponseType>(`${AUTH_PATH}/sing-in`, data);
 };
 
-export const singUp = (data: { email: string; password: string }) => {
-  return axiosInstance.post<{ user: UserType; token: string }>(`${AUTH_PATH}/sing-up`, data);
+const singUp = (data: { email: string; password: string }) => {
+  return axiosInstance.post<AuthResponseType>(`${AUTH_PATH}/sing-up`, data);
 };
 
-export const getUser = () => {
+const getUser = () => {
   return axiosInstance.get<{ user: UserType }>(`${AUTH_PATH}/me`);
+};
+
+export default {
+  singIn,
+  singUp,
+  getUser,
 };

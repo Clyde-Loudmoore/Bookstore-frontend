@@ -5,23 +5,26 @@ import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 
-import StyledSingUp from './StyledSingUp.styled';
+import StyledSingUp from './SingUp.styled';
 
 import { useAppDispatch } from '../../../store';
-import { setUser } from '../../../store/userSlise';
-import { singUp } from '../../../api/authApi';
+import { userSliceActions } from '../../../store/userSlise';
+import authApi from '../../../api/authApi';
 import user from '../../../validationSchemes/user';
 
 import InputField from '../../components/InputField';
-import Button from '../../components/Button';
+import StyledButton from '../../components/Button';
 
-import MailIcon from './images/mail.png';
-import EyeIcon from './images/hide.png';
-import SingUpBG from './images/singUpBG.png';
+import mailIcon from '../../../assets/icons/mail.png';
+import showEye from '../../../assets/icons/showEye.png';
+import hideEye from '../../../assets/icons/hideEye.png';
+import singUpBG from '../../../assets/images/singUpBG.png';
 
 const SingUp: React.FC = () => {
   const [errorEmailState, setErrorEmailState] = React.useState('');
   const [errorPasswordState, setErrorPasswordState] = React.useState('');
+  const [hidePassword, sethidePassword] = React.useState('password');
+  const [eyeLook, setEyeLook] = React.useState(hideEye);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,8 +35,8 @@ const SingUp: React.FC = () => {
 
     onSubmit: async (values) => {
       try {
-        const user = await singUp(values);
-        dispatch(setUser(user.data.user));
+        const user = await authApi.singUp(values);
+        dispatch(userSliceActions.setUser(user.data.user));
         Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
@@ -55,6 +58,16 @@ const SingUp: React.FC = () => {
     validationSchema: user.singUp,
   });
 
+  const getPassword = () => {
+    if (hidePassword === 'password' && eyeLook === hideEye) {
+      sethidePassword('text');
+      setEyeLook(showEye);
+    } else {
+      sethidePassword('password');
+      setEyeLook(hideEye);
+    }
+  };
+
   return (
     <StyledSingUp>
 
@@ -65,17 +78,17 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="email"
-            img={MailIcon}
+            img={mailIcon}
             placeholder="Email"
             type="email"
             {...formik.getFieldProps('email')}
           />
-          {formik.touched.email && formik.errors.email ? (
-            <div className="input-error">{formik.errors.email}</div>
-          ) : null}
-          {errorEmailState ? (
-            <div className="input-error">{errorEmailState}</div>
-          ) : null}
+          {formik.touched.email && formik.errors.email
+            ? (<div className="input-error">{formik.errors.email}</div>)
+            : null}
+          {errorEmailState
+            ? (<div className="input-error">{errorEmailState}</div>)
+            : null}
 
           <p className="sing-up__paragraph">Enter your email</p>
         </div>
@@ -83,17 +96,18 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="password"
-            img={EyeIcon}
-            type="password"
+            img={eyeLook}
+            onClick={getPassword}
+            type={hidePassword}
             placeholder="Password"
             {...formik.getFieldProps('password')}
           />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="input-error">{formik.errors.password}</div>
-          ) : null}
-          {errorPasswordState ? (
-            <div className="input-error">{errorPasswordState}</div>
-          ) : null}
+          {formik.touched.password && formik.errors.password
+            ? (<div className="input-error">{formik.errors.password}</div>)
+            : null}
+          {errorPasswordState
+            ? (<div className="input-error">{errorPasswordState}</div>)
+            : null}
 
           <p className="sing-up__paragraph">Enter your password</p>
         </div>
@@ -101,22 +115,23 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="confPassword"
-            type="password"
+            img={eyeLook}
+            onClick={getPassword}
+            type={hidePassword}
             placeholder="Password replay"
-            img={EyeIcon}
             {...formik.getFieldProps('confPassword')}
           />
-          {formik.touched.confPassword && formik.errors.confPassword ? (
-            <div className="input-error">{formik.errors.confPassword}</div>
-          ) : null}
+          {formik.touched.confPassword && formik.errors.confPassword
+            ? (<div className="input-error">{formik.errors.confPassword}</div>)
+            : null}
 
           <p className="sing-up__paragraph">Repeat your password without errors</p>
         </div>
 
-        <Button className="sing-up__button" type="submit" value="Sing Up" />
+        <StyledButton className="sing-up__button" type="submit">Confirm</StyledButton>
       </form>
 
-      <img className="singUpBG" src={SingUpBG} alt="sing-up" />
+      <img className="singUpBG" src={singUpBG} alt="sing-up" />
     </StyledSingUp>
   );
 };

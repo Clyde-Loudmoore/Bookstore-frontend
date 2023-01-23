@@ -5,23 +5,21 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 
-import { patchUser, postAvatar } from '../../../api/userApi';
+import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import { setUser } from '../../../store/userSlise';
+import { userSliceActions } from '../../../store/userSlise';
 import user from '../../../validationSchemes/user';
+import type { UserType } from '../../../types';
 
-import Button from '../../components/Button';
+import StyledButton from '../../components/Button';
 import InputField from '../../components/InputField';
 import ProfilePass from './ProfilePass';
+import StyledProfile from './Profile.styled';
 
-import StyledProfile from './StyledProfile.styled';
-
-import Camera from './images/camera.png';
-import UserIcon from './images/user-icon.png';
-import Mail from './images/mail.png';
-import NoPhoto from './images/user-profile.png';
-
-import type { UserType } from '../../../types';
+import camera from '../../../assets/icons/camera.png';
+import man from '../../../assets/icons/man.png';
+import mail from '../../../assets/icons/mail.png';
+import noPhoto from '../../../assets/images/user-profile.png';
 
 const ProfileUser: React.FC = () => {
   const [infoAttribute, setInfoAttribute] = React.useState(true);
@@ -40,8 +38,8 @@ const ProfileUser: React.FC = () => {
 
       fileReader.onload = async () => {
         try {
-          const user = await postAvatar(fileReader.result);
-          dispatch(setUser(user.data.updatedUser));
+          const user = await userApi.postAvatar(fileReader.result as string);
+          dispatch(userSliceActions.setUser(user.data.updatedUser));
         } catch (err) {
           const error = err as Error;
           return toast.error(error.message);
@@ -56,8 +54,8 @@ const ProfileUser: React.FC = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(false);
-        const user = await patchUser(currentUser.id, values);
-        dispatch(setUser(user.data.updatedUser));
+        const user = await userApi.patchUser(currentUser.id, values);
+        dispatch(userSliceActions.setUser(user.data.updatedUser));
         setInfoAttribute(true);
       } catch (err) {
         if (err instanceof AxiosError && err.response?.status === 404) {
@@ -77,13 +75,14 @@ const ProfileUser: React.FC = () => {
     <StyledProfile>
 
       <div className="user-photo__wrapper">
-        {avatar !== noAvatar ? (<img className="user-avatar" src={avatar} />)
-          : (<img className="user-no-avatar" src={NoPhoto} />)
+        {avatar !== noAvatar
+          ? (<img className="user-avatar" src={avatar} />)
+          : (<img className="user-no-avatar" src={noPhoto} />)
         }
 
         <div className="user-photo__button">
           <label htmlFor="add-avatar" className="add-avatar">
-            <img src={Camera} alt="+" />
+            <img src={camera} alt="+" />
           </label>
           <input id="add-avatar" className="user-photo__input" type="file" onChange={uploadPhoto} />
         </div>
@@ -103,35 +102,35 @@ const ProfileUser: React.FC = () => {
             <label className="user-info__label">Your name</label>
             <InputField className="information-fullname__input-field profile-input"
               id="fullName"
-              img={UserIcon}
+              img={man}
               type="text"
               placeholder="Your full name"
-              readonly={infoAttribute}
+              disabled={infoAttribute}
               {...userFormik.getFieldProps('fullName')}
             />
-            {userFormik.touched.fullName && userFormik.errors.fullName ? (
-              <div className="input-error">{userFormik.errors.fullName}</div>
-            ) : null}
+            {userFormik.touched.fullName && userFormik.errors.fullName
+              ? (<div className="input-error">{userFormik.errors.fullName}</div>)
+              : null}
 
             <label className="user-info__label email__label">Your email</label>
             <InputField className="information-email__input-field profile-input"
               id="email"
-              img={Mail}
+              img={mail}
               type="email"
               placeholder="Email"
-              readonly={infoAttribute}
+              disabled={infoAttribute}
               {...userFormik.getFieldProps('email')}
             />
-            {userFormik.touched.email && userFormik.errors.email ? (
-              <div className="input-error">{userFormik.errors.email}</div>
-            ) : null}
-            {errorEmailState ? (
-              <div className="input-error">{errorEmailState}</div>
-            ) : null}
+            {userFormik.touched.email && userFormik.errors.email
+              ? (<div className="input-error">{userFormik.errors.email}</div>)
+              : null}
+            {errorEmailState
+              ? (<div className="input-error">{errorEmailState}</div>)
+              : null}
 
-            {!infoAttribute ? (
-              <Button className="profile__button" type="submit" value="Confirm" />
-            ) : null}
+            {!infoAttribute
+              ? (<StyledButton className="profile__button" type="submit">Confirm</StyledButton>)
+              : null}
           </div>
         </form>
 

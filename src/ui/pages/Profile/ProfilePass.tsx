@@ -5,19 +5,22 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 
-import { patchUserPass } from '../../../api/userApi';
+import userApi from '../../../api/userApi';
 import { useAppSelector } from '../../../store';
+import type { UserType } from '../../../types';
 import user from '../../../validationSchemes/user';
 
-import Button from '../../components/Button/Button';
-import InputField from '../../components/InputField/InputField';
+import StyledButton from '../../components/Button';
+import InputField from '../../components/InputField';
 
-import Hide from './images/hide.png';
-import type { UserType } from '../../../types';
+import showEye from '../../../assets/icons/showEye.png';
+import hideEye from '../../../assets/icons/hideEye.png';
 
 const ProfilePass: React.FC = () => {
   const [passAttribute, setPassAttribute] = React.useState(true);
   const [errorPasswordState, setErrorPasswordState] = React.useState('');
+  const [hidePassword, sethidePassword] = React.useState('password');
+  const [eyeLook, setEyeLook] = React.useState(hideEye);
 
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
 
@@ -28,7 +31,7 @@ const ProfilePass: React.FC = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(false);
-        await patchUserPass(currentUser.id, values);
+        await userApi.patchUserPass(currentUser.id, values);
 
         setPassAttribute(true);
       } catch (err) {
@@ -41,6 +44,16 @@ const ProfilePass: React.FC = () => {
     },
     validationSchema: user.editUserPass,
   });
+
+  const getPassword = () => {
+    if (hidePassword === 'password' && eyeLook === hideEye) {
+      sethidePassword('text');
+      setEyeLook(showEye);
+    } else {
+      sethidePassword('password');
+      setEyeLook(hideEye);
+    }
+  };
 
   return (
     <form className="form-pass__container" onSubmit={passFormik.handleSubmit}>
@@ -55,50 +68,53 @@ const ProfilePass: React.FC = () => {
         <label className="password__label">Your password</label>
         <InputField className="password__input-field profile-input"
           id="password"
-          img={Hide}
-          type="password"
+          img={eyeLook}
+          onClick={getPassword}
+          type={hidePassword}
           placeholder="Password"
-          readonly={passAttribute}
+          disabled={passAttribute}
           {...passFormik.getFieldProps('password')}
         />
-        {passFormik.touched && passFormik.errors.password ? (
-          <div className="input-error">{passFormik.errors.password}</div>
-        ) : null}
-        {errorPasswordState ? (
-          <div className="input-error">{errorPasswordState}</div>
-        ) : null}
+        {passFormik.touched && passFormik.errors.password
+          ? (<div className="input-error">{passFormik.errors.password}</div>)
+          : null}
+        {errorPasswordState
+          ? (<div className="input-error">{errorPasswordState}</div>)
+          : null}
 
-        {!passAttribute ? (
-          <>
+        {!passAttribute
+          ? (<>
             <InputField className="new-password__input-field profile-input"
               id="newPassword"
-              img={Hide}
-              type="password"
+              img={eyeLook}
+              onClick={getPassword}
+              type={hidePassword}
               placeholder="New password"
-              readonly={passAttribute}
+              disabled={passAttribute}
               {...passFormik.getFieldProps('newPassword')}
             />
-            {passFormik.touched.newPassword && passFormik.errors.newPassword ? (
-              <div className="input-error">{passFormik.errors.newPassword}</div>
-            ) : null}
+            {passFormik.touched.newPassword && passFormik.errors.newPassword
+              ? (<div className="input-error">{passFormik.errors.newPassword}</div>)
+              : null}
             <p className="password__paragraph">Enter your password</p>
 
             <InputField className="new-password__input-field profile-input"
               id="confPassword"
-              img={Hide}
-              type="password"
+              img={eyeLook}
+              onClick={getPassword}
+              type={hidePassword}
               placeholder="Password replay"
-              readonly={passAttribute}
+              disabled={passAttribute}
               {...passFormik.getFieldProps('confPassword')}
             />
-            {passFormik.touched.confPassword && passFormik.errors.confPassword ? (
-              <div className="input-error">{passFormik.errors.confPassword}</div>
-            ) : null}
+            {passFormik.touched.confPassword && passFormik.errors.confPassword
+              ? (<div className="input-error">{passFormik.errors.confPassword}</div>)
+              : null}
             <p className="new-password__paragraph">Repeat your password without errors</p>
 
-            <Button className="profile__button" type="submit" value="Confirm" />
-          </>
-        ) : null}
+            <StyledButton className="profile__button" type="submit">Confirm</StyledButton>
+             </>)
+          : null}
 
       </div>
 

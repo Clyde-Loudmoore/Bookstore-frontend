@@ -1,20 +1,22 @@
 import React from 'react';
 
-import StyledButton from './StyledButton.styled';
+import StyledButton from './Button.styled';
 
 type PropsType = {
-  value?: string | number;
+  // value?: string | number;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
-  img?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
-const Button: React.FC<PropsType> = (props) => {
+const Button: React.FC<PropsType & React.PropsWithChildren> = (props) => {
   return (
-    <StyledButton className={props.className} type={props.type} onClick={props.onClick}>
-      {props.value}
-      <img src={props.img} />
+    <StyledButton
+      className={props.className}
+      type={props.type}
+      onClick={props.onClick}
+    >
+      {props.children}
     </StyledButton>
   );
 };
