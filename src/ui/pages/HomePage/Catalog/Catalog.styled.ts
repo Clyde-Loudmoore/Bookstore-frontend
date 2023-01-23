@@ -42,7 +42,7 @@ const StyledCatalod = styled.section`
     left: 20px;
   }
 
-  .book-cover-img {
+  .book-cover-img, .catalog__book-cover-link {
     width: 100%;
     height: 100%;
     border-radius: 16px;

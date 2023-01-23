@@ -45,8 +45,8 @@ const SingIn: React.FC = () => {
         actions.setSubmitting(false);
         const user = await authApi.singIn(values);
         dispatch(userThunk.authorization(values));
-        const token = Cookies.set('token', user.data.token);
-        setApiToken(token as string);
+
+        setApiToken(user.data.token as string);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }

@@ -71,12 +71,12 @@ const Catalog: React.FC = () => {
           return (
 
             <div className="book__wrapper" key={book.id}>
-              <Link className="catalog__book-cover-link" to="bookpage">
-                <div className="book-cover">
-                  <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
+              <div className="book-cover">
+                <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
+                <Link className="catalog__book-cover-link" to="bookpage">
                   <img className="book-cover-img" src={book.bookCover} />
-                </div>
-              </Link>
+                </Link>
+              </div>
               <p className="book-title">{book.title}</p>
               <p className="book-author">{book.author}</p>
               {/* <StarRating /> */}

@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
+import { setApiToken } from 'api/api';
 import authApi from 'api/authApi';
 import { useAppDispatch } from '../../../store';
 import sharedValidation from '../../../validation/sharedValidationFields';
@@ -44,7 +45,8 @@ const SingUp: React.FC = () => {
       try {
         const user = await authApi.singIn(values);
         dispatch(userThunk.authorization(values));
-        Cookies.set('token', user.data.token);
+
+        setApiToken(user.data.token as string);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }

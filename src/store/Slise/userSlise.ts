@@ -25,6 +25,11 @@ const userSlice = createSlice({
       })
       .addCase(userThunk.authorization.fulfilled, (store, { payload }) => {
         store.user = payload;
+      })
+      .addCase(userThunk.getMe.fulfilled, (store, { payload }) => {
+        if (payload) {
+          store.user = payload;
+        }
       });
   },
 });

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -7,6 +8,12 @@ const tokenHelper = {
   get: () => { return Cookies.get('token'); },
   set: (a: string) => Cookies.set('token', a),
 };
+
+// const tokenHelper = {
+//   get: () => { return Cookies.get('token'); },
+//   set: (token: string) => { Cookies.set('token', token); },
+//   remove: () => { Cookies.remove('token'); },
+// };
 
 const getAuthHeader = (token = tokenHelper.get()) => `Bearer ${token}`;
 

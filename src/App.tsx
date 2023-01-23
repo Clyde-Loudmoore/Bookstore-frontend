@@ -9,9 +9,8 @@ import Navigation from './ui/containers/Navigation';
 import Loading from './ui/components/Loading';
 import { GlobalStyles } from './ui/components/GlobalStyles';
 
+import userThunk from './store/Thunk/userThunk';
 import { useAppDispatch } from './store';
-import { userSliceActions } from './store/Slise/userSlise';
-import authApi from './api/authApi';
 
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -20,8 +19,7 @@ const App = () => {
 
   React.useEffect(() => {
     (async () => {
-      const response = await authApi.getUser();
-      dispatch(userSliceActions.setUser(response.data.user));
+      dispatch(userThunk.getMe());
       setIsLoading(false);
     })();
   }, [dispatch]);
