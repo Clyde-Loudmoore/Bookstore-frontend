@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
+import * as yup from 'yup';
 
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userSliceActions } from '../../../store/Slise/userSlise';
-import user from '../../../validationSchemes/user';
+import sharedValidation from '../../../validationSchemes/sharedValidationFields';
 import type { UserType } from '../../../types';
 
 import StyledButton from '../../components/Button';
@@ -20,6 +21,12 @@ import camera from '../../../assets/icons/camera.png';
 import man from '../../../assets/icons/man.png';
 import mail from '../../../assets/icons/mail.png';
 import noPhoto from '../../../assets/images/user-profile.png';
+
+const EditUserSchema =
+  yup.object({
+    fullName: sharedValidation.fullName,
+    email: sharedValidation.requiredEmail,
+  });
 
 const ProfileUser: React.FC = () => {
   const [infoAttribute, setInfoAttribute] = React.useState(true);
@@ -65,7 +72,7 @@ const ProfileUser: React.FC = () => {
         }
       }
     },
-    validationSchema: user.editUser,
+    validationSchema: EditUserSchema,
   });
 
   const avatar = currentUser.avatar;

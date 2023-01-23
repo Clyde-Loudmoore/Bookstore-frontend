@@ -10,7 +10,7 @@ const requiredConfNewPassword = yup.string().oneOf([yup.ref('newPassword'), null
   .required('Enter password');
 const requiredParamsId = yup.number().integer().min(1).required();
 
-const sharedValidation = {
+const sharedValidationFields = {
   fullName,
   requiredParamsId,
   requiredEmail,
@@ -19,30 +19,4 @@ const sharedValidation = {
   requiredConfNewPassword,
 };
 
-const singUp =
-  yup.object({
-    email: sharedValidation.requiredEmail,
-    password: sharedValidation.requiredPassword,
-    confPassword: sharedValidation.requiredConfPassword,
-  });
-
-const singIn =
-  yup.object({
-    email: sharedValidation.requiredEmail,
-    password: sharedValidation.requiredPassword,
-  });
-
-const editUser =
-  yup.object({
-    fullName: sharedValidation.fullName,
-    email: sharedValidation.requiredEmail,
-  });
-
-const editUserPass =
-  yup.object({
-    password: sharedValidation.requiredPassword,
-    newPassword: sharedValidation.requiredPassword,
-    confPassword: sharedValidation.requiredConfNewPassword,
-  });
-
-export default { singUp, singIn, editUser, editUserPass };
+export default sharedValidationFields;

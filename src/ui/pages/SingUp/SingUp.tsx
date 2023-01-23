@@ -4,13 +4,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
+import * as yup from 'yup';
 
 import StyledSingUp from './SingUp.styled';
 
 import { useAppDispatch } from '../../../store';
-// import { userSliceActions } from '../../../store/Slise/userSlise';
-// import authApi from '../../../api/authApi';
-import user from '../../../validationSchemes/user';
+import sharedValidation from '../../../validationSchemes/sharedValidationFields';
 import userThunk from '../../../store/Thunk/userThunk';
 
 import InputField from '../../components/InputField';
@@ -20,6 +19,13 @@ import mailIcon from '../../../assets/icons/mail.png';
 import showEye from '../../../assets/icons/showEye.png';
 import hideEye from '../../../assets/icons/hideEye.png';
 import singUpBG from '../../../assets/images/singUpBG.png';
+
+const SingUpSchema =
+  yup.object({
+    email: sharedValidation.requiredEmail,
+    password: sharedValidation.requiredPassword,
+    confPassword: sharedValidation.requiredConfPassword,
+  });
 
 const SingUp: React.FC = () => {
   const [errorEmailState, setErrorEmailState] = React.useState('');
@@ -36,10 +42,7 @@ const SingUp: React.FC = () => {
 
     onSubmit: async (values) => {
       try {
-        // const user = await authApi.singUp(values);
-        // dispatch(userSliceActions.setUser(user.data.user));
         dispatch(userThunk.authorization(values));
-        // Cookies.set('token', user.data.token);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }
@@ -57,7 +60,7 @@ const SingUp: React.FC = () => {
         }
       }
     },
-    validationSchema: user.singUp,
+    validationSchema: SingUpSchema,
   });
 
   const getPassword = () => {

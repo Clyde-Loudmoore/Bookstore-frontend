@@ -4,17 +4,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
+import * as yup from 'yup';
 
 import userApi from '../../../api/userApi';
 import { useAppSelector } from '../../../store';
 import type { UserType } from '../../../types';
-import user from '../../../validationSchemes/user';
+import sharedValidation from '../../../validationSchemes/sharedValidationFields';
 
 import StyledButton from '../../components/Button';
 import InputField from '../../components/InputField';
 
 import showEye from '../../../assets/icons/showEye.png';
 import hideEye from '../../../assets/icons/hideEye.png';
+
+const editUserPassSchema =
+  yup.object({
+    password: sharedValidation.requiredPassword,
+    newPassword: sharedValidation.requiredPassword,
+    confPassword: sharedValidation.requiredConfNewPassword,
+  });
 
 const ProfilePass: React.FC = () => {
   const [passAttribute, setPassAttribute] = React.useState(true);
@@ -42,7 +50,7 @@ const ProfilePass: React.FC = () => {
         }
       }
     },
-    validationSchema: user.editUserPass,
+    validationSchema: editUserPassSchema,
   });
 
   const getPassword = () => {
