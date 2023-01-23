@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userSliceActions } from '../../../store/Slise/userSlise';
-import sharedValidation from '../../../validationSchemes/sharedValidationFields';
+import sharedValidation from '../../../validation/sharedValidationFields';
 import type { UserType } from '../../../types';
 
 import StyledButton from '../../components/Button';
@@ -45,7 +45,7 @@ const ProfileUser: React.FC = () => {
 
       fileReader.onload = async () => {
         try {
-          const user = await userApi.postAvatar(fileReader.result as string);
+          const user = await userApi.addAvatar(fileReader.result as string);
           dispatch(userSliceActions.setUser(user.data.updatedUser));
         } catch (err) {
           const error = err as Error;
@@ -61,7 +61,7 @@ const ProfileUser: React.FC = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(false);
-        const user = await userApi.patchUser(currentUser.id, values);
+        const user = await userApi.editUser(currentUser.id, values);
         dispatch(userSliceActions.setUser(user.data.updatedUser));
         setInfoAttribute(true);
       } catch (err) {

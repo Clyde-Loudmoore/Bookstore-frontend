@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import StyledSingUp from './SingUp.styled';
 
 import { useAppDispatch } from '../../../store';
-import sharedValidation from '../../../validationSchemes/sharedValidationFields';
+import sharedValidation from '../../../validation/sharedValidationFields';
 import userThunk from '../../../store/Thunk/userThunk';
 
 import InputField from '../../components/InputField';

@@ -7,7 +7,7 @@ import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
 import { useAppDispatch } from 'store';
-import sharedValidation from '../../../validationSchemes/sharedValidationFields';
+import sharedValidation from '../../../validation/sharedValidationFields';
 import userThunk from '../../../store/Thunk/userThunk';
 
 import StyledSingIn from './SingIn.styled';

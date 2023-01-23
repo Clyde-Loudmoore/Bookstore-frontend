@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import userApi from '../../../api/userApi';
 import { useAppSelector } from '../../../store';
 import type { UserType } from '../../../types';
-import sharedValidation from '../../../validationSchemes/sharedValidationFields';
+import sharedValidation from '../../../validation/sharedValidationFields';
 
 import StyledButton from '../../components/Button';
 import InputField from '../../components/InputField';
@@ -39,7 +39,7 @@ const ProfilePass: React.FC = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(false);
-        await userApi.patchUserPass(currentUser.id, values);
+        await userApi.editUserPass(currentUser.id, values);
 
         setPassAttribute(true);
       } catch (err) {
