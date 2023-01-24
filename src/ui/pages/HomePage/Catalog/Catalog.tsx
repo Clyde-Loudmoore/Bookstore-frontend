@@ -2,12 +2,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import StarRating from 'ui/components/StarRating/StarRating';
+import StyledCatalod from './Catalog.styled';
+import StyledButton from '../../../components/Button';
+
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllBooks } from '../../../../store/thunks/bookThunk';
 
 // import PriceSlider from '../../../components/PriceSlider/PriceSlider';
-import StyledCatalod from './Catalog.styled';
-import StyledButton from '../../../components/Button';
 
 import heart from '../../../../assets/icons/heart.png';
 
@@ -79,7 +81,7 @@ const Catalog: React.FC = () => {
               </div>
               <p className="book-title">{book.title}</p>
               <p className="book-author">{book.author}</p>
-              {/* <StarRating /> */}
+              <StarRating />
               <StyledButton className="book-price_button" type="submit">${book.price} USD</StyledButton>
             </div>
 
