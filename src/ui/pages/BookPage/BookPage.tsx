@@ -13,19 +13,20 @@ import arrow from '../../../assets/icons/backArrow.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
+  console.log(oneBook);
 
-  const { id } = useParams();
+  const { bookId } = useParams();
 
   React.useEffect(() => {
     (async () => {
       try {
-        const book = await getBook(Number(id));
+        const book = await getBook(Number(bookId));
         setOneBook(book.data.book);
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [id]);
+  }, [bookId]);
 
   return (
     <StyledBookPage>

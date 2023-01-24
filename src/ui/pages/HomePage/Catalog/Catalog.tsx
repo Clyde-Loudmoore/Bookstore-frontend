@@ -73,7 +73,7 @@ const Catalog: React.FC = () => {
             <div className="book__wrapper" key={book.id}>
               <div className="book-cover">
                 <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
-                <Link className="catalog__book-cover-link" to="bookpage">
+                <Link className="catalog__book-cover-link" to={`books/${String(book.id)}`}>
                   <img className="book-cover-img" src={book.bookCover} />
                 </Link>
               </div>

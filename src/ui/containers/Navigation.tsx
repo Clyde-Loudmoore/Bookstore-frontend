@@ -26,7 +26,7 @@ const Navigation = () => {
             <Route path={constants.SINGUP} element={<SingUp />} />
              </>)
           : (<><Route path={constants.SINGIN} element={<HomePage />} />
-              <Route path={constants.SINGUP} element={<HomePage />} />
+            <Route path={constants.SINGUP} element={<HomePage />} />
              </>)
         }
         {user
@@ -35,7 +35,11 @@ const Navigation = () => {
         }
 
         <Route path={constants.CATALOG} element={<HomePage />} />
-        <Route path={constants.BOOKPAGE} element={<BookPage />} />
+
+        <Route path={constants.BOOKS}>
+          <Route path={constants.BOOKID} element={<BookPage />} />
+        </Route>
+
       </Routes>
     </Suspense>
   );
