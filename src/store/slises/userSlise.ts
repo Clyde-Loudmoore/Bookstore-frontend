@@ -2,7 +2,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import userThunk from 'store/Thunk/userThunk';
+import { getMe } from 'store/thunks/userThunk';
 
 import type { UserType } from 'types';
 
@@ -20,16 +20,8 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(userThunk.registration.fulfilled, (store, { payload }) => {
+      .addCase(getMe.fulfilled, (store, { payload }) => {
         store.user = payload;
-      })
-      .addCase(userThunk.authorization.fulfilled, (store, { payload }) => {
-        store.user = payload;
-      })
-      .addCase(userThunk.getMe.fulfilled, (store, { payload }) => {
-        if (payload) {
-          store.user = payload;
-        }
       });
   },
 });

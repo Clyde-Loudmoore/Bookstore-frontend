@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getAllBooks } from '../Thunk/bookThunk';
+import { getAllBooks } from '../thunks/bookThunk';
 
 import type { BookType } from '../../types';
 

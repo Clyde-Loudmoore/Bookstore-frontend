@@ -7,9 +7,8 @@ import Footer from './ui/containers/Footer';
 
 import Navigation from './ui/containers/Navigation';
 import Loading from './ui/components/Loading';
-import { GlobalStyles } from './ui/components/GlobalStyles';
 
-import userThunk from './store/Thunk/userThunk';
+import { getMe } from './store/thunks/userThunk';
 import { useAppDispatch } from './store';
 
 const App = () => {
@@ -19,7 +18,7 @@ const App = () => {
 
   React.useEffect(() => {
     (async () => {
-      dispatch(userThunk.getMe());
+      await dispatch(getMe());
       setIsLoading(false);
     })();
   }, [dispatch]);
@@ -30,7 +29,6 @@ const App = () => {
 
   return (
     <>
-      <GlobalStyles />
       <ToastContainer
         position="top-center"
         autoClose={9000}

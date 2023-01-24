@@ -3,7 +3,7 @@ import { useLottie } from 'lottie-react';
 
 import StyledLoading from './StyledLoading';
 
-import loader from './loading.json';
+import loader from '../../../utils/loading.json';
 
 const Loading = () => {
   const options = {

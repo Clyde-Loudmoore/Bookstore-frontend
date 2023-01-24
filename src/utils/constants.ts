@@ -1,17 +1,9 @@
-const HOMEPAGE = '/';
-const SINGIN = '/sing-in';
-const SINGUP = '/sing-up';
-const PROFILE = '/profile';
-const BOOKS = '/books';
-const BOOKID = ':bookId';
-const CATALOG = '/catalog';
-
-export default {
-  HOMEPAGE,
-  SINGIN,
-  SINGUP,
-  PROFILE,
-  BOOKS,
-  BOOKID,
-  CATALOG,
+export const ROUTE_PATHS = {
+  HOME_PAGE: '/',
+  SING_IN: '/sing-in',
+  SING_UP: '/sing-up',
+  PROFILE: '/profile',
+  BOOKS: '/books',
+  BOOK_ID: ':bookId',
+  CATALOG: '/catalog',
 };

@@ -5,7 +5,7 @@ import { useAppSelector } from 'store';
 
 import Loading from '../components/Loading';
 
-import constants from '../../utils/constants';
+import { ROUTE_PATHS } from '../../utils/constants';
 
 const HomePage = React.lazy(() => import('../pages/HomePage/HomePage'));
 const SingUp = React.lazy(() => import('../pages/SingUp'));
@@ -19,26 +19,23 @@ const Navigation = () => {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route path={constants.HOMEPAGE} element={<HomePage />} />
+        <Route path={ROUTE_PATHS.HOME_PAGE} element={<HomePage />} />
+        <Route path={ROUTE_PATHS.CATALOG} element={<HomePage />} />
+        <Route path={ROUTE_PATHS.SING_IN} element={<SingIn />} />
+        <Route path={ROUTE_PATHS.SING_UP} element={<SingUp />} />
+        <Route path={`${ROUTE_PATHS.BOOKS}/${ROUTE_PATHS.BOOK_ID}`} element={<BookPage />} />
 
-        {!user
-          ? (<><Route path={constants.SINGIN} element={<SingIn />} />
-            <Route path={constants.SINGUP} element={<SingUp />} />
-             </>)
-          : (<><Route path={constants.SINGIN} element={<HomePage />} />
-            <Route path={constants.SINGUP} element={<HomePage />} />
-             </>)
-        }
         {user
-          ? (<Route path={constants.PROFILE} element={<Profile />} />)
-          : (<Route path={constants.PROFILE} element={<HomePage />} />)
-        }
-
-        <Route path={constants.CATALOG} element={<HomePage />} />
-
-        <Route path={constants.BOOKS}>
-          <Route path={constants.BOOKID} element={<BookPage />} />
-        </Route>
+          ? (
+            <>
+              (<Route path={ROUTE_PATHS.PROFILE} element={<Profile />} />)
+            </>
+          )
+          : (
+            <>
+              (<Route path={ROUTE_PATHS.PROFILE} element={<HomePage />} />)
+            </>
+          )}
 
       </Routes>
     </Suspense>

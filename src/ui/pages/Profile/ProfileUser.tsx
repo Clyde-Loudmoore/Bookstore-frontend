@@ -9,8 +9,8 @@ import Cookies from 'js-cookie';
 
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import { userSliceActions } from '../../../store/Slise/userSlise';
-import sharedValidation from '../../../validation/sharedValidationFields';
+import { userSliceActions } from '../../../store/slises/userSlise';
+import sharedValidation from '../../../utils/sharedValidationFields';
 import type { UserType } from '../../../types';
 
 import StyledButton from '../../components/Button';

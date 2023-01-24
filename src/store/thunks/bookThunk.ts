@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getBooks } from '../../api/bookApi';
+import bookApi from '../../api/bookApi';
 
 export const getAllBooks = createAsyncThunk('getAllBooks', async () => {
-  const res = await getBooks();
+  const res = await bookApi.getBooks();
   return res.data.books;
 });

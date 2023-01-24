@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getBook } from '../../../api/bookApi';
+import bookApi from 'api/bookApi';
 import type { BookType } from '../../../types';
 
 import StyledBookPage from './BookPage.styled';
@@ -13,14 +13,13 @@ import arrow from '../../../assets/icons/backArrow.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
-  console.log(oneBook);
 
   const { bookId } = useParams();
 
   React.useEffect(() => {
     (async () => {
       try {
-        const book = await getBook(Number(bookId));
+        const book = await bookApi.getBook(Number(bookId));
         setOneBook(book.data.book);
       } catch (err) {
         console.log(err);

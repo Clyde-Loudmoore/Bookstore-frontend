@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../../../store';
-import { getAllBooks } from '../../../../store/Thunk/bookThunk';
+import { getAllBooks } from '../../../../store/thunks/bookThunk';
 
 // import PriceSlider from '../../../components/PriceSlider/PriceSlider';
 import StyledCatalod from './Catalog.styled';

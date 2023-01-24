@@ -7,6 +7,8 @@ import App from './App';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
 
+import { GlobalStyles } from './ui/containers/GlobalStyles';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(
@@ -15,6 +17,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <BrowserRouter>
+      <GlobalStyles />
       <App />
     </BrowserRouter>
   </Provider>,

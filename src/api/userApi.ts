@@ -6,7 +6,7 @@ import type { UserType } from '../types';
 const USER_PATH = '/user';
 
 const addAvatar = (avatar: string) => {
-  return axiosInstance.post<{ updatedUser: UserType }>(`${USER_PATH}/avatar/`, { avatar });
+  return axiosInstance.post<{ updatedUser: UserType }>(`${USER_PATH}/avatar`, { avatar });
 };
 
 const editUser = (userId: number, data: { fullName: string; email: string }) => {
@@ -14,7 +14,7 @@ const editUser = (userId: number, data: { fullName: string; email: string }) => 
 };
 
 const editUserPass = (userId: number, data: { password: string }) => {
-  return axiosInstance.patch<{ updatedUser: UserType }>(`${USER_PATH}/${userId}/password/`, data);
+  return axiosInstance.patch<{ updatedUser: UserType }>(`${USER_PATH}/${userId}/password`, data);
 };
 
 export default {

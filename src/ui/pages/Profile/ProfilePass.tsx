@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import userApi from '../../../api/userApi';
 import { useAppSelector } from '../../../store';
 import type { UserType } from '../../../types';
-import sharedValidation from '../../../validation/sharedValidationFields';
+import sharedValidation from '../../../utils/sharedValidationFields';
 
 import StyledButton from '../../components/Button';
 import InputField from '../../components/InputField';

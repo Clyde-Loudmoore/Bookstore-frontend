@@ -9,8 +9,8 @@ import * as yup from 'yup';
 import { setApiToken } from 'api/api';
 import { useAppDispatch } from 'store';
 import authApi from 'api/authApi';
-import sharedValidation from '../../../validation/sharedValidationFields';
-import userThunk from '../../../store/Thunk/userThunk';
+import { userSliceActions } from 'store/slises/userSlise';
+import sharedValidation from '../../../utils/sharedValidationFields';
 
 import StyledSingIn from './SingIn.styled';
 import StyledButton from '../../components/Button';
@@ -44,7 +44,7 @@ const SingIn: React.FC = () => {
       try {
         actions.setSubmitting(false);
         const user = await authApi.singIn(values);
-        dispatch(userThunk.authorization(values));
+        dispatch(userSliceActions.setUser(user.data.user));
 
         setApiToken(user.data.token as string);
         if (location.state && Cookies.get('token')) {
