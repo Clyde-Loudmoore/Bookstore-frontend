@@ -1,20 +1,20 @@
 /* eslint-disable no-console */
-import { axiosInstance } from './api';
+import api from './api';
 
 import type { UserType } from '../types';
 
 const USER_PATH = '/user';
 
 const addAvatar = (avatar: string) => {
-  return axiosInstance.post<{ updatedUser: UserType }>(`${USER_PATH}/avatar`, { avatar });
+  return api.axiosInstance.post<{ updatedUser: UserType }>(`${USER_PATH}/avatar`, { avatar });
 };
 
 const editUser = (userId: number, data: { fullName: string; email: string }) => {
-  return axiosInstance.patch<{ updatedUser: UserType }>(`${USER_PATH}/${userId}`, data);
+  return api.axiosInstance.patch<{ updatedUser: UserType }>(`${USER_PATH}/${userId}`, data);
 };
 
 const editUserPass = (userId: number, data: { password: string }) => {
-  return axiosInstance.patch<{ updatedUser: UserType }>(`${USER_PATH}/${userId}/password`, data);
+  return api.axiosInstance.patch(`${USER_PATH}/${userId}/password`, data);
 };
 
 export default {

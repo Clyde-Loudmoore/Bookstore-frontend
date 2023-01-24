@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import { setApiToken } from 'api/api';
+import api from 'api/api';
 import authApi from 'api/authApi';
 import { userSliceActions } from 'store/slises/userSlise';
 import { useAppDispatch } from '../../../store';
@@ -29,8 +29,6 @@ const SingUpSchema =
   });
 
 const SingUp: React.FC = () => {
-  const [errorEmailState, setErrorEmailState] = React.useState('');
-  const [errorPasswordState, setErrorPasswordState] = React.useState('');
   const [hidePassword, sethidePassword] = React.useState('password');
   const [eyeLook, setEyeLook] = React.useState(hideEye);
 
@@ -43,24 +41,17 @@ const SingUp: React.FC = () => {
 
     onSubmit: async (values) => {
       try {
-        const user = await authApi.singIn(values);
+        const user = await authApi.singUp({ email: values.email, password: values.password });
         dispatch(userSliceActions.setUser(user.data.user));
 
-        setApiToken(user.data.token as string);
+        api.setApiToken(user.data.token as string);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }
         navigate('/');
       } catch (err) {
-        if (err instanceof AxiosError && err.response?.status === 404) {
-          setErrorEmailState(err.response?.data.message);
-        } else {
-          setErrorEmailState('');
-        }
-        if (err instanceof AxiosError && err.response?.status === 400) {
-          setErrorPasswordState(err.response?.data.message);
-        } else {
-          setErrorPasswordState('');
+        if (err instanceof AxiosError && err.response?.data.error.path === 'email') {
+          formik.setFieldError('email', err.response?.data.message);
         }
       }
     },
@@ -95,9 +86,6 @@ const SingUp: React.FC = () => {
           {formik.touched.email && formik.errors.email
             ? (<div className="input-error">{formik.errors.email}</div>)
             : null}
-          {errorEmailState
-            ? (<div className="input-error">{errorEmailState}</div>)
-            : null}
 
           <p className="sing-up__paragraph">Enter your email</p>
         </div>
@@ -113,9 +101,6 @@ const SingUp: React.FC = () => {
           />
           {formik.touched.password && formik.errors.password
             ? (<div className="input-error">{formik.errors.password}</div>)
-            : null}
-          {errorPasswordState
-            ? (<div className="input-error">{errorPasswordState}</div>)
             : null}
 
           <p className="sing-up__paragraph">Enter your password</p>

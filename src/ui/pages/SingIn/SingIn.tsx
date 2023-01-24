@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import { setApiToken } from 'api/api';
+import api from 'api/api';
 import { useAppDispatch } from 'store';
 import authApi from 'api/authApi';
 import { userSliceActions } from 'store/slises/userSlise';
@@ -28,8 +28,6 @@ const SingInSchema =
   });
 
 const SingIn: React.FC = () => {
-  const [errorEmailState, setErrorEmailState] = React.useState('');
-  const [errorPasswordState, setErrorPasswordState] = React.useState('');
   const [hidePassword, setHidePassword] = React.useState('password');
   const [eyeLook, setEyeLook] = React.useState(hideEye);
 
@@ -46,21 +44,17 @@ const SingIn: React.FC = () => {
         const user = await authApi.singIn(values);
         dispatch(userSliceActions.setUser(user.data.user));
 
-        setApiToken(user.data.token as string);
+        api.setApiToken(user.data.token as string);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }
         navigate('/');
       } catch (err) {
-        if (err instanceof AxiosError && err.response?.status === 404) {
-          setErrorEmailState(err.response?.data.message);
-        } else {
-          setErrorEmailState('');
+        if (err instanceof AxiosError && err.response?.data.error.path === 'email') {
+          formik.setFieldError('email', err.response?.data.message);
         }
-        if (err instanceof AxiosError && err.response?.status === 400) {
-          setErrorPasswordState(err.response?.data.message);
-        } else {
-          setErrorPasswordState('');
+        if (err instanceof AxiosError && err.response?.data.error.path === 'password') {
+          formik.setFieldError('password', err.response?.data.message);
         }
       }
     },
@@ -96,9 +90,6 @@ const SingIn: React.FC = () => {
           {formik.touched.email && formik.errors.email
             ? (<div className="input-error">{formik.errors.email}</div>)
             : null}
-          {errorEmailState
-            ? (<div className="input-error">{errorEmailState}</div>)
-            : null}
 
           <p className="sing-in__paragraph">Enter your email</p>
         </div>
@@ -115,9 +106,6 @@ const SingIn: React.FC = () => {
           />
           {formik.touched.password && formik.errors.password
             ? (<div className="input-error">{formik.errors.password}</div>)
-            : null}
-          {errorPasswordState
-            ? (<div className="input-error">{errorPasswordState}</div>)
             : null}
 
           <p className="sing-in__paragraph">Enter your password</p>

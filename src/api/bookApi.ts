@@ -1,15 +1,15 @@
 import type { BookType } from '../types';
 
-import { axiosInstance } from './api';
+import api from './api';
 
 const BOOK_PATH = '/books';
 
 const getBooks = () => {
-  return axiosInstance.get<{ books: BookType[] }>(`${BOOK_PATH}/all-books`);
+  return api.axiosInstance.get<{ books: BookType[] }>(`${BOOK_PATH}/all-books`);
 };
 
 const getBook = (bookId: number) => {
-  return axiosInstance.get<{ book: BookType }>(`${BOOK_PATH}/${bookId}`);
+  return api.axiosInstance.get<{ book: BookType }>(`${BOOK_PATH}/${bookId}`);
 };
 
 export default {

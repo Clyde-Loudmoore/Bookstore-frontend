@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
-import Cookies from 'js-cookie';
 
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
@@ -31,7 +30,6 @@ const EditUserSchema =
 
 const ProfileUser: React.FC = () => {
   const [infoAttribute, setInfoAttribute] = React.useState(true);
-  const [errorEmailState, setErrorEmailState] = React.useState('');
 
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
 
@@ -65,10 +63,8 @@ const ProfileUser: React.FC = () => {
         dispatch(userSliceActions.setUser(user.data.updatedUser));
         setInfoAttribute(true);
       } catch (err) {
-        if (err instanceof AxiosError && err.response?.status === 404) {
-          setErrorEmailState(err.response?.data.message);
-        } else {
-          setErrorEmailState('');
+        if (err instanceof AxiosError) {
+          userFormik.setFieldError('email', err.response?.data.message);
         }
       }
     },
@@ -130,9 +126,6 @@ const ProfileUser: React.FC = () => {
             />
             {userFormik.touched.email && userFormik.errors.email
               ? (<div className="input-error">{userFormik.errors.email}</div>)
-              : null}
-            {errorEmailState
-              ? (<div className="input-error">{errorEmailState}</div>)
               : null}
 
             {!infoAttribute
