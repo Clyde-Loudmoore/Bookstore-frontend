@@ -5,7 +5,7 @@ import StyledFooter from './Footer.styled';
 import logo from '../../../assets/icons/logo-footer.png';
 import map from '../../../assets/icons/map.png';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <div className="footer__feedback">

@@ -1,27 +1,34 @@
 /* eslint-disable no-console */
 import React from 'react';
+import type { FormEventHandler } from 'react';
 import ReactSlider from 'react-slider';
 
 import StyledPriceSlider from './PriceSlider.styled';
 
-const PriceSlider = () => {
+import poligon from '../../../assets/images/polygon .png';
+
+export type PropsType = {
+  hidden?: boolean;
+  onClick?: FormEventHandler;
+};
+
+const PriceSlider: React.FC<PropsType> = (props) => {
   const [value, setValue] = React.useState([1, 100]);
 
   return (
-    <StyledPriceSlider>
+    <StyledPriceSlider hidden={props.hidden} onClick={props.onClick}>
+      <img className="poligon" src={poligon} />
       <ReactSlider
         value={value}
-        // onBeforeChange={(value, index) =>
-        // console.log(`onBeforeChange: ${JSON.stringify({ value, index })}`)}
-        // onChange={(value, index) => console.log(`onChange: ${JSON.stringify({ value, index })}`)}
         onChange={setValue}
-        // onAfterChange={(value, index) =>
-        // console.log(`onAfterChange: ${JSON.stringify({ value, index })}`)}
         className="horizontal-slider"
         thumbClassName="example-thumb"
         trackClassName="example-track"
-        renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-      />;
+      />
+      <div className="price-limit">
+        <p>$ {value[0]}</p>
+        <p>$ {value[1]}</p>
+      </div>
     </StyledPriceSlider>
   );
 };

@@ -3,7 +3,7 @@ import { Rating } from 'react-simple-star-rating';
 
 import StyledStarRating from './StarRating.styled';
 
-const StarRating = () => {
+const StarRating: React.FC = () => {
   const [rating, setRating] = React.useState(0);
 
   const handleRating = (rate: number) => {

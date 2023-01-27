@@ -13,7 +13,7 @@ import { userSliceActions } from 'store/slises/userSlise';
 import sharedValidation from '../../../utils/sharedValidationFields';
 
 import StyledSingIn from './SingIn.styled';
-import StyledButton from '../../components/Button';
+import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 
 import mailIcon from '../../../assets/icons/mail.png';
@@ -88,7 +88,9 @@ const SingIn: React.FC = () => {
             {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email
-            ? (<div className="input-error">{formik.errors.email}</div>)
+            ? (
+              <div className="input-error">{formik.errors.email}</div>
+            )
             : null}
 
           <p className="sing-in__paragraph">Enter your email</p>
@@ -105,13 +107,15 @@ const SingIn: React.FC = () => {
             {...formik.getFieldProps('password')}
           />
           {formik.touched.password && formik.errors.password
-            ? (<div className="input-error">{formik.errors.password}</div>)
+            ? (
+              <div className="input-error">{formik.errors.password}</div>
+            )
             : null}
 
           <p className="sing-in__paragraph">Enter your password</p>
         </div>
 
-        <StyledButton className="sing-in__button" type="submit">Sing In</StyledButton>
+        <Button className="sing-in__button" type="submit">Sing In</Button>
       </form>
 
       <img className="singInBG" src={singInBG} alt="Sing-in" />

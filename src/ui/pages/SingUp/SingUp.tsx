@@ -14,7 +14,7 @@ import sharedValidation from '../../../utils/sharedValidationFields';
 
 import StyledSingUp from './SingUp.styled';
 import InputField from '../../components/InputField';
-import StyledButton from '../../components/Button';
+import Button from '../../components/Button';
 
 import mailIcon from '../../../assets/icons/mail.png';
 import showEye from '../../../assets/icons/showEye.png';
@@ -84,7 +84,9 @@ const SingUp: React.FC = () => {
             {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email
-            ? (<div className="input-error">{formik.errors.email}</div>)
+            ? (
+              <div className="input-error">{formik.errors.email}</div>
+            )
             : null}
 
           <p className="sing-up__paragraph">Enter your email</p>
@@ -100,7 +102,9 @@ const SingUp: React.FC = () => {
             {...formik.getFieldProps('password')}
           />
           {formik.touched.password && formik.errors.password
-            ? (<div className="input-error">{formik.errors.password}</div>)
+            ? (
+              <div className="input-error">{formik.errors.password}</div>
+            )
             : null}
 
           <p className="sing-up__paragraph">Enter your password</p>
@@ -116,13 +120,15 @@ const SingUp: React.FC = () => {
             {...formik.getFieldProps('confPassword')}
           />
           {formik.touched.confPassword && formik.errors.confPassword
-            ? (<div className="input-error">{formik.errors.confPassword}</div>)
+            ? (
+              <div className="input-error">{formik.errors.confPassword}</div>
+            )
             : null}
 
           <p className="sing-up__paragraph">Repeat your password without errors</p>
         </div>
 
-        <StyledButton className="sing-up__button" type="submit">Confirm</StyledButton>
+        <Button className="sing-up__button" type="submit">Confirm</Button>
       </form>
 
       <img className="singUpBG" src={singUpBG} alt="sing-up" />

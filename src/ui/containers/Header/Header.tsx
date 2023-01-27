@@ -7,7 +7,7 @@ import { userSliceActions } from 'store/slises/userSlise';
 import type { UserType } from 'types';
 import { useAppSelector, useAppDispatch } from '../../../store';
 
-import StyledButton from '../../components/Button';
+import Button from '../../components/Button';
 import SearchField from '../../components/InputField';
 import StyledHeader from './Header.styled';
 
@@ -41,15 +41,15 @@ const Header: React.FC = () => {
           <div className="header__small-button-wrapper">
 
             <Link className="header__small-button-link" to="#">
-              <StyledButton className="header__small-button"><img src={cart} /></StyledButton>
+              <Button className="header__small-button"><img src={cart} /></Button>
             </Link>
 
             <Link className="header__small-button-link" to="#">
-              <StyledButton className="header__small-button"><img src={heart} /></StyledButton>
+              <Button className="header__small-button"><img src={heart} /></Button>
             </Link>
 
             <Link className="header__small-button-link" to="profile">
-              <StyledButton className="header__small-button"><img src={man} /></StyledButton>
+              <Button className="header__small-button"><img src={man} /></Button>
             </Link>
 
           </div>
@@ -58,11 +58,11 @@ const Header: React.FC = () => {
           <div className="header__button-wrapper">
 
             <Link className="header__button-link" to="sing-up">
-              <StyledButton className="header__button">Sing Up</StyledButton>
+              <Button className="header__button">Sing Up</Button>
             </Link>
 
             <Link className="header__button-link" to="sing-in">
-              <StyledButton className="header__button">Sing In</StyledButton>
+              <Button className="header__button">Sing In</Button>
             </Link>
 
           </div>

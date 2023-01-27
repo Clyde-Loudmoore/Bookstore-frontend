@@ -5,7 +5,7 @@ import StyledLoading from './StyledLoading';
 
 import loader from '../../../utils/loading.json';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   const options = {
     animationData: loader,
     loop: true,

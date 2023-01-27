@@ -6,12 +6,12 @@ import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
+import type { UserType } from 'types';
 import userApi from '../../../api/userApi';
 import { useAppSelector } from '../../../store';
-import type { UserType } from '../../../types';
 import sharedValidation from '../../../utils/sharedValidationFields';
 
-import StyledButton from '../../components/Button';
+import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 
 import showEye from '../../../assets/icons/showEye.png';
@@ -81,7 +81,8 @@ const ProfilePass: React.FC = () => {
           {...passFormik.getFieldProps('password')}
         />
         {passFormik.touched && passFormik.errors.password
-          ? (<div className="input-error">{passFormik.errors.password}</div>)
+          ? (
+            <div className="input-error">{passFormik.errors.password}</div>)
           : null}
 
         {!passAttribute
@@ -97,7 +98,8 @@ const ProfilePass: React.FC = () => {
                 {...passFormik.getFieldProps('newPassword')}
               />
               {passFormik.touched.newPassword && passFormik.errors.newPassword
-                ? (<div className="input-error">{passFormik.errors.newPassword}</div>)
+                ? (
+                  <div className="input-error">{passFormik.errors.newPassword}</div>)
                 : null}
               <p className="password__paragraph">Enter your password</p>
 
@@ -111,11 +113,12 @@ const ProfilePass: React.FC = () => {
                 {...passFormik.getFieldProps('confPassword')}
               />
               {passFormik.touched.confPassword && passFormik.errors.confPassword
-                ? (<div className="input-error">{passFormik.errors.confPassword}</div>)
+                ? (
+                  <div className="input-error">{passFormik.errors.confPassword}</div>)
                 : null}
               <p className="new-password__paragraph">Repeat your password without errors</p>
 
-              <StyledButton className="profile__button" type="submit">Confirm</StyledButton>
+              <Button className="profile__button" type="submit">Confirm</Button>
             </>
           )
           : null}

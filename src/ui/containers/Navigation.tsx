@@ -13,7 +13,7 @@ const SingIn = React.lazy(() => import('../pages/SingIn'));
 const Profile = React.lazy(() => import('../pages/Profile/ProfileUser'));
 const BookPage = React.lazy(() => import('../pages/BookPage'));
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   const user = useAppSelector((store) => store.user.user);
 
   return (

@@ -6,13 +6,13 @@ import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
+import type { UserType } from 'types';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userSliceActions } from '../../../store/slises/userSlise';
 import sharedValidation from '../../../utils/sharedValidationFields';
-import type { UserType } from '../../../types';
 
-import StyledButton from '../../components/Button';
+import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 import ProfilePass from './ProfilePass';
 import StyledProfile from './Profile.styled';
@@ -79,8 +79,12 @@ const ProfileUser: React.FC = () => {
 
       <div className="user-photo__wrapper">
         {avatar !== noAvatar
-          ? (<img className="user-avatar" src={avatar} />)
-          : (<img className="user-no-avatar" src={noPhoto} />)
+          ? (
+            <img className="user-avatar" src={avatar} />
+          )
+          : (
+            <img className="user-no-avatar" src={noPhoto} />
+          )
         }
 
         <div className="user-photo__button">
@@ -112,7 +116,8 @@ const ProfileUser: React.FC = () => {
               {...userFormik.getFieldProps('fullName')}
             />
             {userFormik.touched.fullName && userFormik.errors.fullName
-              ? (<div className="input-error">{userFormik.errors.fullName}</div>)
+              ? (
+                <div className="input-error">{userFormik.errors.fullName}</div>)
               : null}
 
             <label className="user-info__label email__label">Your email</label>
@@ -125,11 +130,15 @@ const ProfileUser: React.FC = () => {
               {...userFormik.getFieldProps('email')}
             />
             {userFormik.touched.email && userFormik.errors.email
-              ? (<div className="input-error">{userFormik.errors.email}</div>)
+              ? (
+                <div className="input-error">{userFormik.errors.email}</div>
+              )
               : null}
 
             {!infoAttribute
-              ? (<StyledButton className="profile__button" type="submit">Confirm</StyledButton>)
+              ? (
+                <Button className="profile__button" type="submit">Confirm</Button>
+              )
               : null}
           </div>
         </form>

@@ -3,20 +3,20 @@ import type { FocusEventHandler, FormEventHandler } from 'react';
 
 import StyledInputField from './InputField.styled';
 
-type PropsType = {
-  img: string;
-  placeholder?: string;
-  type?: string;
+export type PropsType = {
   className?: string;
+  isError?: boolean;
+  img?: string;
+  onClick?: FormEventHandler;
+  id?: string;
+  name?: string;
   onChange?: FormEventHandler;
   onBlur?: FocusEventHandler;
-  onClick?: FormEventHandler;
-  value?: string;
-  isError?: boolean;
-  helperText?: string;
-  id?: string;
+  type?: string;
+  placeholder?: string;
   disabled?: boolean;
-  name?: string;
+  value?: string;
+  helperText?: string;
 };
 
 const InputField: React.FC<PropsType> = (props) => {

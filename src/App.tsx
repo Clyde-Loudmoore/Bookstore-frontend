@@ -11,7 +11,7 @@ import Loading from './ui/components/Loading';
 import { getMe } from './store/thunks/userThunk';
 import { useAppDispatch } from './store';
 
-const App = () => {
+const App: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const dispatch = useAppDispatch();

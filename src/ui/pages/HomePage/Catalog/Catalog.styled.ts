@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const StyledCatalod = styled.section`
-    margin: 0 80px 155px 80px;
+  margin: 0 80px 155px 80px;
 
   .catalog__header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 24px;
   }
 
   .catalog__header h1 {
@@ -15,60 +15,18 @@ const StyledCatalod = styled.section`
     line-height: 60px;
   }
 
+  .dropdown-wrapper{
+    max-width: 630px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .catalog__books{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-
-  .book-cover {
-    max-width: 305px;
-    width: 100%;
-    max-height: 448px;
-    height: 100%;
-    margin-bottom: 30px;
-    position: relative;
-  }
-
-  .book-selected {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-
-  .book-cover-img, .catalog__book-cover-link {
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-  }
-
-  .book-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #344966;
-  }
-
-  .book-author {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #B9BAC3;
-    margin-bottom: 21px;
-  }
-
-  .book-rating {
-    margin-bottom: 32px;
-  }
-
-  .book-price_button {
-    margin-bottom: 60px;
   }
 
   @media (max-width: 1120px) {

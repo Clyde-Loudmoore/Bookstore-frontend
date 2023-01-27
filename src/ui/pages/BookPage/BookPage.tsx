@@ -3,10 +3,10 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import bookApi from 'api/bookApi';
-import type { BookType } from '../../../types';
+import type { BookType } from 'types';
 
 import StyledBookPage from './BookPage.styled';
-import StyledButton from '../../components/Button';
+import Button from '../../components/Button';
 
 import heart from '../../../assets/icons/heart.png';
 import arrow from '../../../assets/icons/backArrow.png';
@@ -33,7 +33,7 @@ const BookPage: React.FC = () => {
       <div className="book__wrapper">
 
         <div className="book-cover__wrapper">
-          <StyledButton className="book-selected" type="submit"><img src={heart} /></StyledButton>
+          <Button className="book-selected" type="submit"><img src={heart} /></Button>
           <img className="book-cover" src={oneBook?.bookCover} alt="Book" />
         </div>
 
@@ -56,12 +56,12 @@ const BookPage: React.FC = () => {
 
             <div className="paperback-wrapper">
               <label>Paperback</label>
-              <StyledButton className="paperback">Not available</StyledButton>
+              <Button className="paperback">Not available</Button>
             </div>
 
             <div className="hardcover-wrapper">
               <label>Hardcover</label>
-              <StyledButton className="hardcover">${oneBook?.price} USD</StyledButton>
+              <Button className="hardcover">${oneBook?.price} USD</Button>
             </div>
 
           </div>
