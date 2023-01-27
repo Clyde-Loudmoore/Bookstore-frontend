@@ -105,6 +105,14 @@ const StyledBookPage = styled.section`
     width: 100%;
     height: 50px;
   }
+
+  .elected {
+    opacity: 1;
+  }
+
+  .unelected {
+    opacity: 0.6;
+  }
   `;
 
 export default StyledBookPage;

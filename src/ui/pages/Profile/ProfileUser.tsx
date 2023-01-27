@@ -18,7 +18,7 @@ import ProfilePass from './ProfilePass';
 import StyledProfile from './Profile.styled';
 
 import camera from '../../../assets/icons/camera.png';
-import man from '../../../assets/icons/man.png';
+import userName from '../../../assets/icons/username.png';
 import mail from '../../../assets/icons/mail.png';
 import noPhoto from '../../../assets/images/user-profile.png';
 
@@ -109,7 +109,7 @@ const ProfileUser: React.FC = () => {
             <label className="user-info__label">Your name</label>
             <InputField className="information-fullname__input-field profile-input"
               id="fullName"
-              img={man}
+              img={userName}
               type="text"
               placeholder="Your full name"
               disabled={infoAttribute}

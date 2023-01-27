@@ -1,11 +1,9 @@
-/* eslint-disable no-console */
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import api from 'api/api';
 import { userSliceActions } from 'store/slises/userSlise';
 import type { UserType } from 'types';
-import { useAppSelector, useAppDispatch } from '../../../store';
+import { useAppSelector, useAppDispatch } from 'store';
 
 import Button from '../../components/Button';
 import SearchField from '../../components/InputField';
@@ -32,7 +30,10 @@ const Header: React.FC = () => {
 
   return (
     <StyledHeader>
-      <img className="header__logo-image" src={logo} alt="App logo" onClick={signOut} />
+      <Link to="/">
+        <img className="header__logo-image" src={logo} alt="App logo" onClick={signOut} />
+      </Link>
+
       <p className="header__search-title">Catalog</p>
 
       <SearchField img={searchIcon} placeholder="Search" />

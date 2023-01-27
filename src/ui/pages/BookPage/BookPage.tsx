@@ -5,14 +5,20 @@ import { useParams } from 'react-router-dom';
 import bookApi from 'api/bookApi';
 import type { BookType } from 'types';
 
+import StarRating from 'ui/components/StarRating';
+import Button from 'ui/components/Button';
 import StyledBookPage from './BookPage.styled';
-import Button from '../../components/Button';
 
-import heart from '../../../assets/icons/hideHeart.png';
+import hideHeart from '../../../assets/icons/hideHeart.png';
+import showHeart from '../../../assets/icons/showHeart.png';
 import arrow from '../../../assets/icons/backArrow.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
+  const [elected, setSelected] = React.useState(true);
+
+  const electedClass = 'elected';
+  const unelectedClass = 'unelected';
 
   const { bookId } = useParams();
 
@@ -33,7 +39,13 @@ const BookPage: React.FC = () => {
       <div className="book__wrapper">
 
         <div className="book-cover__wrapper">
-          <Button className="book-selected" type="submit"><img src={heart} /></Button>
+          <Button
+            className={`book-selected ${elected ? unelectedClass : electedClass}`}
+            type="submit"
+            onClick={() => setSelected(!elected)}
+          >
+            <img src={elected ? hideHeart : showHeart} />
+          </Button>
           <img className="book-cover" src={oneBook?.bookCover} alt="Book" />
         </div>
 
@@ -42,7 +54,9 @@ const BookPage: React.FC = () => {
           <h2 className="book-author">{oneBook?.author}</h2>
 
           <div className="book-rating__wrapper">
-            {/* <StarRating /> */}
+
+            <StarRating />
+
             <div className="book-rate">
               <img src={arrow} alt="<-" />
               <p>Rate this book</p>
