@@ -20,6 +20,17 @@ const StyledFilterByInfo = styled.div`
     top: -10px;
     left: 11px;
   }
+
+  @media (max-width: 835px) {
+    width: 255px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  @media (max-width: 350px) {
+    width: 290px;
+  }
 `;
 
 export default StyledFilterByInfo;

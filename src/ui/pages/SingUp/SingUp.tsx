@@ -30,7 +30,7 @@ const SingUpSchema =
 
 const SingUp: React.FC = () => {
   const [hidePassword, sethidePassword] = React.useState('password');
-  const [eyeLook, setEyeLook] = React.useState(hideEye);
+  const [eyeLook, setEyeLook] = React.useState(true);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -59,12 +59,12 @@ const SingUp: React.FC = () => {
   });
 
   const getPassword = () => {
-    if (hidePassword === 'password' && eyeLook === hideEye) {
+    if (hidePassword === 'password' && eyeLook) {
       sethidePassword('text');
-      setEyeLook(showEye);
+      setEyeLook(false);
     } else {
       sethidePassword('password');
-      setEyeLook(hideEye);
+      setEyeLook(true);
     }
   };
 
@@ -95,7 +95,7 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="password"
-            img={eyeLook}
+            img={eyeLook ? hideEye : showEye}
             onClick={getPassword}
             type={hidePassword}
             placeholder="Password"
@@ -113,7 +113,7 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="confPassword"
-            img={eyeLook}
+            img={eyeLook ? hideEye : showEye}
             onClick={getPassword}
             type={hidePassword}
             placeholder="Password replay"

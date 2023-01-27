@@ -46,6 +46,14 @@ const StyledPriceSlider = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 835px) {
+    width: 256px;
+  }
+
+  @media (max-width: 350px) {
+    width: 290px;
+  }
 `;
 
 export default StyledPriceSlider;

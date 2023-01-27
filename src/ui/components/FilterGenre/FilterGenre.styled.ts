@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledFilterGenre = styled.div`
   height: 320px;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 15px 15px 5px 15px;
   background: #F0F4EF;
   border-radius: 16px;
@@ -32,6 +33,13 @@ const StyledFilterGenre = styled.div`
     position: absolute;
     top: -10px;
     left: 11px;
+  }
+
+  @media (max-width: 835px) {
+    width: 290px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
   }
 `;
 

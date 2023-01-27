@@ -4,14 +4,14 @@ import type { FocusEventHandler, FormEventHandler } from 'react';
 import StyledInputField from './InputField.styled';
 
 export type PropsType = {
+  onChange?: FormEventHandler;
+  onBlur?: FocusEventHandler;
+  onClick?: FormEventHandler;
   className?: string;
   isError?: boolean;
   img?: string;
-  onClick?: FormEventHandler;
   id?: string;
   name?: string;
-  onChange?: FormEventHandler;
-  onBlur?: FocusEventHandler;
   type?: string;
   placeholder?: string;
   disabled?: boolean;

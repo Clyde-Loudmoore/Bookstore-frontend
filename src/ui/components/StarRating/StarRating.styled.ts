@@ -11,6 +11,18 @@ const StyledStarRating = styled.div`
     display: flex;
     gap: 32px;
   }
+
+  @media (max-width: 960px) {
+    span {
+      gap: 25px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    span {
+      gap: 0;
+    }
+  }
 `;
 
 export default StyledStarRating;

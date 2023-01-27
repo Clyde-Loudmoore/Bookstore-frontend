@@ -31,7 +31,7 @@ const StyledBook = styled.div`
     opacity: 0.6;
   }
 
-  .book-cover-img, .catalog__book-cover-link {
+  .book-cover-img {
     width: 100%;
     height: 100%;
     border-radius: 16px;
@@ -54,6 +54,56 @@ const StyledBook = styled.div`
 
   .book-price_button {
     margin-bottom: 60px;
+  }
+
+  @media (max-width: 960px) {
+    .book-cover {
+      max-width: 254px;
+      max-height: 372px;
+    }
+
+    .book-selected {
+      width: 38px;
+      height: 38px;
+      top: 16px;
+      left: 16px;
+    }
+  }
+
+  @media (max-width: 570px) {
+    .book-selected {
+      width: 25px;
+      height: 25px;
+      left: 19px;
+    }
+
+    .book-selected img {
+      width: 13px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .book-cover {
+      max-width: 132px;
+      max-height: 192px;
+      margin-bottom: 15px;
+    }
+    .book-title {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .book-author {
+      font-size: 14px;
+      line-height: 21px;
+      margin-bottom: 15px;
+    }
+
+    .book-price_button {
+      font-size: 14px;
+      line-height: 28px;
+      margin-bottom: 29px;
+    }
   }
 `;
 

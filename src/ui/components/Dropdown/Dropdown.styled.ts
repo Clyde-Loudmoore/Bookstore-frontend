@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const StyledDropdown = styled.div`
   width: 196px;
   padding: 10px 15px;
-  margin-bottom: 26px;
   color: #344966;
   font-weight: 500;
   font-size: 18px;
@@ -22,6 +21,20 @@ const StyledDropdown = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  @media (max-width: 1120px) {
+    width: 255px;
+  }
+
+  @media (max-width: 830px) {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 28px;
+  }
+
+  @media (max-width: 350px) {
+    width: 290px;
   }
 `;
 

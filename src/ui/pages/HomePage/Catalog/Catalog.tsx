@@ -23,30 +23,6 @@ const Catalog: React.FC = () => {
   const books = useAppSelector((store) => store.books.books);
   const dispatch = useAppDispatch();
 
-  const handleChangeActiveGenre = () => {
-    if (activeGenre) {
-      setActiveGenre(false);
-    } else {
-      setActiveGenre(true);
-    }
-  };
-
-  const handleChangeActivePrice = () => {
-    if (activePrice) {
-      setActivePrice(false);
-    } else {
-      setActivePrice(true);
-    }
-  };
-
-  const handleChangeActiveSort = () => {
-    if (activeSort) {
-      setActiveSort(false);
-    } else {
-      setActiveSort(true);
-    }
-  };
-
   React.useEffect(() => {
     (async () => {
       try {
@@ -64,15 +40,15 @@ const Catalog: React.FC = () => {
         <h1>Catalog</h1>
         <div className="dropdown-wrapper">
 
-          <Dropdown title="Genre" active={activeGenre} onClick={handleChangeActiveGenre}>
+          <Dropdown title="Genre" active={activeGenre} onClick={() => setActiveGenre(!activeGenre)}>
             <FilterGenre hidden={activeGenre} />
           </Dropdown>
 
-          <Dropdown title="Price" active={activePrice} onClick={handleChangeActivePrice}>
+          <Dropdown title="Price" active={activePrice} onClick={() => setActivePrice(!activePrice)}>
             <PriceSlider hidden={activePrice} />
           </Dropdown>
 
-          <Dropdown title="Sort by" active={activeSort} onClick={handleChangeActiveSort}>
+          <Dropdown title="Sort by" active={activeSort} onClick={() => setActiveSort(!activeSort)}>
             <FilterByInfo hidden={activeSort} />
           </Dropdown>
 

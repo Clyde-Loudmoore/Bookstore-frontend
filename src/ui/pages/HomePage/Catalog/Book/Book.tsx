@@ -21,19 +21,11 @@ const Book: React.FC<PropsType> = (props) => {
   const electedClass = 'elected';
   const unelectedClass = 'unelected';
 
-  const handleSelect = () => {
-    if (elected) {
-      setSelected(false);
-    } else {
-      setSelected(true);
-    }
-  };
-
   return (
     <StyledBook>
       <div className="book-cover">
-        <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={handleSelect}>
-          <img src={elected ? props.showImg : props.hideImg} />
+        <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={() => setSelected(!elected)}>
+          <img src={elected ? props.hideImg : props.showImg} />
         </Button>
         <Link className="catalog__book-cover-link" to={`books/${props.id}`}>
           <img className="book-cover-img" src={props.bookCover} />
