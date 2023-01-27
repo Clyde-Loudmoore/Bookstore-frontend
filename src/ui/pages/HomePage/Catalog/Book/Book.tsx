@@ -6,7 +6,8 @@ import StarRating from 'ui/components/StarRating';
 import StyledBook from './Book.styled';
 
 export type PropsType = {
-  img?: string;
+  showImg?: string;
+  hideImg: string;
   id?: string;
   bookCover?: string;
   title?: string;
@@ -15,11 +16,24 @@ export type PropsType = {
 };
 
 const Book: React.FC<PropsType> = (props) => {
+  const [elected, setSelected] = React.useState(true);
+
+  const electedClass = 'elected';
+  const unelectedClass = 'unelected';
+
+  const handleSelect = () => {
+    if (elected) {
+      setSelected(false);
+    } else {
+      setSelected(true);
+    }
+  };
+
   return (
     <StyledBook>
       <div className="book-cover">
-        <Button className="book-selected" type="submit">
-          <img src={props.img} />
+        <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={handleSelect}>
+          <img src={elected ? props.showImg : props.hideImg} />
         </Button>
         <Link className="catalog__book-cover-link" to={`books/${props.id}`}>
           <img className="book-cover-img" src={props.bookCover} />

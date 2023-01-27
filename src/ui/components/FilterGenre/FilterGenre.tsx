@@ -1,5 +1,6 @@
 import React from 'react';
 import type { FormEventHandler } from 'react';
+// import { useSearchParams } from 'react-router-dom';
 
 import type { GenreType } from 'types';
 
@@ -17,6 +18,19 @@ export type PropsType = {
 
 const FilterGenre: React.FC<PropsType> = (props) => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
+
+  // const [searchParams, setSearchParams] = useSearchParams();
+
+  // const handleFilterByGenre = () => {
+  //   let params: string;
+
+  //   bookGenre?.forEach((elem) => {
+  //     params = elem.genreName;
+  //     setSearchParams(params);
+  //   });
+  // };
+
+  // console.log(searchParams);
 
   React.useEffect(() => {
     (async () => {

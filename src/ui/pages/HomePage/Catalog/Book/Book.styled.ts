@@ -20,6 +20,15 @@ const StyledBook = styled.div`
     position: absolute;
     top: 20px;
     left: 20px;
+    opacity: 0.6;
+  }
+
+  .elected {
+    opacity: 1;
+  }
+
+  .unelected {
+    opacity: 0.6;
   }
 
   .book-cover-img, .catalog__book-cover-link {

@@ -8,7 +8,7 @@ import type { BookType } from 'types';
 import StyledBookPage from './BookPage.styled';
 import Button from '../../components/Button';
 
-import heart from '../../../assets/icons/heart.png';
+import heart from '../../../assets/icons/hideHeart.png';
 import arrow from '../../../assets/icons/backArrow.png';
 
 const BookPage: React.FC = () => {

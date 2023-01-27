@@ -13,7 +13,7 @@ import StyledHeader from './Header.styled';
 
 import searchIcon from '../../../assets/icons/search.png';
 import cart from '../../../assets/icons/cart.png';
-import heart from '../../../assets/icons/heart.png';
+import heart from '../../../assets/icons/hideHeart.png';
 import man from '../../../assets/icons/man.png';
 import logo from '../../../assets/icons/logo-header.png';
 

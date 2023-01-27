@@ -18,8 +18,14 @@ const StyledFilterGenre = styled.div`
   cursor: pointer;
 
   ::-webkit-scrollbar {
-    background-color: black;
+    background-color: #dce0dc;
     border-radius: 16px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #c6c9c5;
+    border-radius: 16px;
+    border: 3px solid grey;
   }
 
   .poligon {

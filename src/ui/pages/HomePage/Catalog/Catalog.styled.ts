@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledCatalod = styled.section`
-  margin: 0 80px 155px 80px;
+  margin: 0 80px 100px 80px;
 
   .catalog__header {
     display: flex;

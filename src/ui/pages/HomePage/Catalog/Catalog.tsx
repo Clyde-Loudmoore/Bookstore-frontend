@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 import React from 'react';
 
-import Dropdown from 'ui/components/Dropdown/Dropdown';
+import Dropdown from 'ui/components/Dropdown';
+import Pagination from 'ui/components/Pagination/Pagination';
 import FilterGenre from 'ui/components/FilterGenre';
-import FilterByInfo from 'ui/components/FilterByInfo/FilterByInfo';
+import FilterByInfo from 'ui/components/FilterByInfo';
 import StyledCatalod from './Catalog.styled';
 import PriceSlider from '../../../components/PriceSlider';
 import Book from './Book';
@@ -11,7 +12,8 @@ import Book from './Book';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllBooks } from '../../../../store/thunks/bookThunk';
 
-import heart from '../../../../assets/icons/heart.png';
+import hideHeart from '../../../../assets/icons/hideHeart.png';
+import showHeart from '../../../../assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
   const [activeGenre, setActiveGenre] = React.useState(true);
@@ -83,7 +85,8 @@ const Catalog: React.FC = () => {
 
             <Book
               key={book.id}
-              img={heart}
+              showImg={showHeart}
+              hideImg={hideHeart}
               id={String(book.id)}
               bookCover={book.bookCover}
               title={book.title}
@@ -94,6 +97,8 @@ const Catalog: React.FC = () => {
           );
         })}
       </div>
+
+      <Pagination />
 
     </StyledCatalod>
   );
