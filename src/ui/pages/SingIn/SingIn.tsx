@@ -17,7 +17,6 @@ import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 
 import mailIcon from '../../../assets/icons/mail.png';
-import showEye from '../../../assets/icons/showEye.png';
 import hideEye from '../../../assets/icons/hideEye.png';
 import singInBG from '../../../assets/images/singInBG.png';
 
@@ -28,9 +27,6 @@ const SingInSchema =
   });
 
 const SingIn: React.FC = () => {
-  const [hidePassword, setHidePassword] = React.useState('password');
-  const [eyeLook, setEyeLook] = React.useState(hideEye);
-
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -61,16 +57,6 @@ const SingIn: React.FC = () => {
     validationSchema: SingInSchema,
   });
 
-  const getPassword = () => {
-    if (hidePassword === 'password' && eyeLook === hideEye) {
-      setHidePassword('text');
-      setEyeLook(showEye);
-    } else {
-      setHidePassword('password');
-      setEyeLook(hideEye);
-    }
-  };
-
   return (
     <StyledSingIn>
 
@@ -100,9 +86,8 @@ const SingIn: React.FC = () => {
 
           <InputField className="sing-in__input-field"
             id="password"
-            img={eyeLook}
-            onClick={getPassword}
-            type={hidePassword}
+            img={hideEye}
+            type="password"
             placeholder="Password"
             {...formik.getFieldProps('password')}
           />

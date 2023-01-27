@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -14,7 +12,6 @@ import sharedValidation from '../../../utils/sharedValidationFields';
 import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 
-import showEye from '../../../assets/icons/showEye.png';
 import hideEye from '../../../assets/icons/hideEye.png';
 
 const editUserPassSchema =
@@ -26,8 +23,6 @@ const editUserPassSchema =
 
 const ProfilePass: React.FC = () => {
   const [passAttribute, setPassAttribute] = React.useState(true);
-  const [hidePassword, sethidePassword] = React.useState('password');
-  const [eyeLook, setEyeLook] = React.useState(hideEye);
 
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
 
@@ -50,16 +45,6 @@ const ProfilePass: React.FC = () => {
     validationSchema: editUserPassSchema,
   });
 
-  const getPassword = () => {
-    if (hidePassword === 'password' && eyeLook === hideEye) {
-      sethidePassword('text');
-      setEyeLook(showEye);
-    } else {
-      sethidePassword('password');
-      setEyeLook(hideEye);
-    }
-  };
-
   return (
     <form className="form-pass__container" onSubmit={passFormik.handleSubmit}>
 
@@ -73,9 +58,8 @@ const ProfilePass: React.FC = () => {
         <label className="password__label">Your password</label>
         <InputField className="password__input-field profile-input"
           id="password"
-          img={eyeLook}
-          onClick={getPassword}
-          type={hidePassword}
+          img={hideEye}
+          type="password"
           placeholder="Password"
           disabled={passAttribute}
           {...passFormik.getFieldProps('password')}
@@ -90,9 +74,8 @@ const ProfilePass: React.FC = () => {
             <>
               <InputField className="new-password__input-field profile-input"
                 id="newPassword"
-                img={eyeLook}
-                onClick={getPassword}
-                type={hidePassword}
+                img={hideEye}
+                type="password"
                 placeholder="New password"
                 disabled={passAttribute}
                 {...passFormik.getFieldProps('newPassword')}
@@ -105,9 +88,8 @@ const ProfilePass: React.FC = () => {
 
               <InputField className="new-password__input-field profile-input"
                 id="confPassword"
-                img={eyeLook}
-                onClick={getPassword}
-                type={hidePassword}
+                img={hideEye}
+                type="password"
                 placeholder="Password replay"
                 disabled={passAttribute}
                 {...passFormik.getFieldProps('confPassword')}

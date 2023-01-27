@@ -17,7 +17,6 @@ import InputField from '../../components/InputField';
 import Button from '../../components/Button';
 
 import mailIcon from '../../../assets/icons/mail.png';
-import showEye from '../../../assets/icons/showEye.png';
 import hideEye from '../../../assets/icons/hideEye.png';
 import singUpBG from '../../../assets/images/singUpBG.png';
 
@@ -29,9 +28,6 @@ const SingUpSchema =
   });
 
 const SingUp: React.FC = () => {
-  const [hidePassword, sethidePassword] = React.useState('password');
-  const [eyeLook, setEyeLook] = React.useState(true);
-
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -57,16 +53,6 @@ const SingUp: React.FC = () => {
     },
     validationSchema: SingUpSchema,
   });
-
-  const getPassword = () => {
-    if (hidePassword === 'password' && eyeLook) {
-      sethidePassword('text');
-      setEyeLook(false);
-    } else {
-      sethidePassword('password');
-      setEyeLook(true);
-    }
-  };
 
   return (
     <StyledSingUp>
@@ -95,9 +81,8 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="password"
-            img={eyeLook ? hideEye : showEye}
-            onClick={getPassword}
-            type={hidePassword}
+            img={hideEye}
+            type="password"
             placeholder="Password"
             {...formik.getFieldProps('password')}
           />
@@ -113,9 +98,8 @@ const SingUp: React.FC = () => {
         <div>
           <InputField className="sing-up__input-field"
             id="confPassword"
-            img={eyeLook ? hideEye : showEye}
-            onClick={getPassword}
-            type={hidePassword}
+            img={hideEye}
+            type="password"
             placeholder="Password replay"
             {...formik.getFieldProps('confPassword')}
           />

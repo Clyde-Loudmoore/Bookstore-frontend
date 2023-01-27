@@ -1,7 +1,9 @@
-/* eslint-disable no-console */
+import React from 'react';
 import type { FocusEventHandler, FormEventHandler } from 'react';
 
 import StyledInputField from './InputField.styled';
+
+import showEye from '../../../assets/icons/showEye.png';
 
 export type PropsType = {
   onChange?: FormEventHandler;
@@ -20,10 +22,17 @@ export type PropsType = {
 };
 
 const InputField: React.FC<PropsType> = (props) => {
+  const [eyeLook, setEyeLook] = React.useState(true);
+
   return (
     <StyledInputField className={props.className} isError={props.isError ?? false}>
 
-      <img className="search__field-icon" src={props.img} onClick={props.onClick} alt="+" />
+      <img
+        className="search__field-icon"
+        src={!eyeLook && props.type === 'password' ? showEye : props.img}
+        onClick={() => setEyeLook(!eyeLook)}
+        alt="+"
+      />
 
       <input
         className="search__input"
@@ -31,7 +40,7 @@ const InputField: React.FC<PropsType> = (props) => {
         name={props.name}
         onChange={props.onChange}
         onBlur={props.onBlur}
-        type={props.type}
+        type={!eyeLook && props.type === 'password' ? 'text' : props.type}
         placeholder={props.placeholder}
         disabled={props.disabled}
         value={props.value}
