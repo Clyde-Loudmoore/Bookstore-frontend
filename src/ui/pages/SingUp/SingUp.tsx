@@ -115,7 +115,7 @@ const SingUp: React.FC = () => {
         <Button className="sing-up__button" type="submit">Confirm</Button>
       </form>
 
-      <img className="singUpBG" src={singUpBG} alt="sing-up" />
+      <img className="singUpBG" src={singUpBG} alt="Sing Up" />
     </StyledSingUp>
   );
 };

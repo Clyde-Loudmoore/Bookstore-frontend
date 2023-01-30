@@ -3,7 +3,11 @@ import { Rating } from 'react-simple-star-rating';
 
 import StyledStarRating from './StarRating.styled';
 
-const StarRating: React.FC = () => {
+type PropsType = {
+  className?: string;
+};
+
+const StarRating: React.FC<PropsType> = (props) => {
   const [rating, setRating] = React.useState(0);
 
   const handleRating = (rate: number) => {
@@ -11,12 +15,13 @@ const StarRating: React.FC = () => {
   };
 
   return (
-    <StyledStarRating>
+    <StyledStarRating className={props.className}>
       <Rating
+        className="rating-item"
         onClick={handleRating}
         ratingValue={rating}
         transition
-        size={24}
+        size={25}
         fillColor="#BFCC94"
       />
       <div className="rating-value">

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Fairy from '../../../assets/images/tinker-bell.png';
-import Fairy2 from '../../../assets/images/tinker-bell2.png';
-import Fairy3 from '../../../assets/images/tinker-bell3.png';
+import Fairy from '../../../../assets/images/tinker-bell.png';
+import Fairy2 from '../../../../assets/images/tinker-bell2.png';
+import Fairy3 from '../../../../assets/images/tinker-bell3.png';
 
 const StyledFooterBanner = styled.section`
   margin:  0 80px 150px 80px;
@@ -101,7 +101,7 @@ const StyledFooterBanner = styled.section`
   }
 
   @media (max-width: 975px) {
-    background-position: right 0 top -80px;
+    background-position: right 0 top -60px;
     padding-right: 20px;
 
     .footer-banner__castle {

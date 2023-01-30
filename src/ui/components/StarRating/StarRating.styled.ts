@@ -6,23 +6,21 @@ const StyledStarRating = styled.div`
   justify-content: space-around;
   align-items: center;
   margin-bottom: 28px;
+  gap: 25px;
 
   span {
     display: flex;
-    gap: 32px;
   }
 
-  @media (max-width: 960px) {
-    span {
-      gap: 25px;
-    }
+  .rating-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
-  @media (max-width: 560px) {
-    span {
-      gap: 0;
-    }
-  }
+  @media (max-width: 585px) {
+    gap: 0;
+  } 
 `;
 
 export default StyledStarRating;

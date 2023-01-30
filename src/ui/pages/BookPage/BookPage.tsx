@@ -4,18 +4,25 @@ import { useParams } from 'react-router-dom';
 
 import bookApi from 'api/bookApi';
 import type { BookType } from 'types';
+import { useAppSelector } from 'store';
 
 import StarRating from 'ui/components/StarRating';
 import Button from 'ui/components/Button';
+import Comments from 'ui/components/Comments/Comments';
+import Recommendations from './Recommendations/Recommendations';
 import StyledBookPage from './BookPage.styled';
+import FooterBanner from '../HomePage/FooterBanner';
 
 import hideHeart from '../../../assets/icons/hideHeart.png';
 import showHeart from '../../../assets/icons/showHeart.png';
 import arrow from '../../../assets/icons/backArrow.png';
+import star from '../../../assets/icons/star.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
   const [elected, setSelected] = React.useState(true);
+
+  const user = useAppSelector((state) => state.user.user);
 
   const electedClass = 'elected';
   const unelectedClass = 'unelected';
@@ -36,7 +43,7 @@ const BookPage: React.FC = () => {
   return (
     <StyledBookPage>
 
-      <div className="book__wrapper">
+      <section className="book__wrapper">
 
         <div className="book-cover__wrapper">
           <Button
@@ -46,7 +53,7 @@ const BookPage: React.FC = () => {
           >
             <img src={elected ? hideHeart : showHeart} />
           </Button>
-          <img className="book-cover" src={oneBook?.bookCover} alt="Book" />
+          <img className="book-cover__img" src={oneBook?.bookCover} alt="Book" />
         </div>
 
         <div className="book-description__wrapper">
@@ -54,9 +61,8 @@ const BookPage: React.FC = () => {
           <h2 className="book-author">{oneBook?.author}</h2>
 
           <div className="book-rating__wrapper">
-
-            <StarRating />
-
+            <img className="star" src={star} alt="star" />
+            <StarRating className="book-rating" />
             <div className="book-rate">
               <img src={arrow} alt="<-" />
               <p>Rate this book</p>
@@ -69,12 +75,12 @@ const BookPage: React.FC = () => {
           <div className="book-buttons__wrapper">
 
             <div className="paperback-wrapper">
-              <label>Paperback</label>
+              <label className="label">Paperback</label>
               <Button className="paperback">Not available</Button>
             </div>
 
             <div className="hardcover-wrapper">
-              <label>Hardcover</label>
+              <label className="label">Hardcover</label>
               <Button className="hardcover">${oneBook?.price} USD</Button>
             </div>
 
@@ -82,7 +88,15 @@ const BookPage: React.FC = () => {
 
         </div>
 
-      </div>
+      </section>
+
+      <Comments />
+      {!user
+        ? (
+          <FooterBanner className="footer-banner" />
+        )
+        : null}
+      <Recommendations />
 
     </StyledBookPage>
   );

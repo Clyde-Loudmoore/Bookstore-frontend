@@ -16,7 +16,7 @@ const Pagination: React.FC = () => {
       <img src={arrowLeft} alt="<" />
       {arrLengthCircleItem.map((elem) => {
         return (
-          <CircleItem key={elem} currentImg={currentCircle} img={circle} />
+          <CircleItem key={+elem} currentImg={currentCircle} img={circle} />
         );
       })}
       <img src={arrowRight} alt=">" />

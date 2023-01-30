@@ -20,7 +20,6 @@ const StyledBook = styled.div`
     position: absolute;
     top: 20px;
     left: 20px;
-    opacity: 0.6;
   }
 
   .elected {
@@ -70,19 +69,7 @@ const StyledBook = styled.div`
     }
   }
 
-  @media (max-width: 570px) {
-    .book-selected {
-      width: 25px;
-      height: 25px;
-      left: 19px;
-    }
-
-    .book-selected img {
-      width: 13px;
-    }
-  }
-
-  @media (max-width: 560px) {
+  @media (max-width: 585px) {
     .book-cover {
       max-width: 132px;
       max-height: 192px;
@@ -103,6 +90,22 @@ const StyledBook = styled.div`
       font-size: 14px;
       line-height: 28px;
       margin-bottom: 29px;
+    }
+
+    .book-selected {
+      width: 25px;
+      height: 25px;
+      left: 19px;
+    }
+
+    .book-selected img {
+      width: 13px;
+    }
+
+    .book-price_button {
+      max-width: 135px;
+      width: 100%;
+      padding: 3px 21px;
     }
   }
 `;

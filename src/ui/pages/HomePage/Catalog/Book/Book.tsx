@@ -27,7 +27,7 @@ const Book: React.FC<PropsType> = (props) => {
         <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={() => setSelected(!elected)}>
           <img src={elected ? props.hideImg : props.showImg} />
         </Button>
-        <Link className="catalog__book-cover-link" to={`books/${props.id}`}>
+        <Link className="catalog__book-cover-link" to={`/books/${props.id}`}>
           <img className="book-cover-img" src={props.bookCover} />
         </Link>
       </div>

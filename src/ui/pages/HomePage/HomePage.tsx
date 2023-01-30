@@ -1,12 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import StyledHeaderBanner from './HeaderBanner.styled';
-import StyledFooterBanner from './FooterBanner.styled';
+import FooterBanner from './FooterBanner/FooterBanner';
 import Button from '../../components/Button';
 import Catalog from './Catalog/Catalog';
 
-import castle from '../../../assets/images/castle.png';
 import reader from '../../../assets/images/reader.png';
 
 import { useAppSelector } from '../../../store';
@@ -55,29 +53,8 @@ const HomePage: React.FC = () => {
             </StyledHeaderBanner>
 
             <Catalog />
+            <FooterBanner />
 
-            <StyledFooterBanner>
-              <div className="footer-banner__castle-wrapper">
-                <img className="footer-banner__castle" src={castle} alt="Castle" />
-              </div>
-
-              <div className="footer-banner__info">
-                <h1 className="footer-banner__header">Authorize now</h1>
-                <p>Authorize now and discover the fabulous world of books</p>
-
-                <div className="footer-banner__button-wrapper">
-
-                  <Link className="footer-banner__link" to="singin">
-                    <Button className="footer-banner__button">Sing In</Button>
-                  </Link>
-                  <Link className="footer-banner__link" to="singup">
-                    <Button className="footer-banner__button">Sing Up</Button>
-                  </Link>
-
-                </div>
-
-              </div>
-            </StyledFooterBanner>
           </>
         )
       }

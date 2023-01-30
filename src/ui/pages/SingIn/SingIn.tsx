@@ -103,7 +103,7 @@ const SingIn: React.FC = () => {
         <Button className="sing-in__button" type="submit">Sing In</Button>
       </form>
 
-      <img className="singInBG" src={singInBG} alt="Sing-in" />
+      <img className="singInBG" src={singInBG} alt="Sing In" />
     </StyledSingIn>
   );
 };
