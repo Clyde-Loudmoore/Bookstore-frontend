@@ -1,10 +1,12 @@
 import React from 'react';
+import type { ReactNode } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import StyledStarRating from './StarRating.styled';
 
 type PropsType = {
   className?: string;
+  children?: ReactNode;
 };
 
 const StarRating: React.FC<PropsType> = (props) => {
@@ -24,7 +26,8 @@ const StarRating: React.FC<PropsType> = (props) => {
         size={25}
         fillColor="#BFCC94"
       />
-      <div className="rating-value">
+      <div className="rating-value rating-value-catalog">
+        {props.children}
         {rating}
       </div>
     </StyledStarRating>

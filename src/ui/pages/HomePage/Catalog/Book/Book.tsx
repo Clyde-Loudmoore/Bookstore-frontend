@@ -5,6 +5,8 @@ import Button from 'ui/components/Button';
 import StarRating from 'ui/components/StarRating';
 import StyledBook from './Book.styled';
 
+import star from '../../../../../assets/icons/star.png';
+
 export type PropsType = {
   showImg?: string;
   hideImg: string;
@@ -13,6 +15,7 @@ export type PropsType = {
   title?: string;
   author?: string;
   price?: number;
+  img?: string;
 };
 
 const Book: React.FC<PropsType> = (props) => {

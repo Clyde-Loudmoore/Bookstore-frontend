@@ -4,18 +4,22 @@ const StyledBookPage = styled.section`
   margin: 20px 80px 50px 80px;
 
   .book__wrapper {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    display: grid;
+    column-gap: 128px;
+    grid-template-areas: 
+      "book-wrapper book-title"
+      "book-wrapper book-description";
   }
 
   .book-cover__wrapper {
-    max-width: 522px;
-    width: 100%;
-    max-height: 779px;
+    width: 522px;
+    height: 779px;
     position: relative;
-    flex-shrink: 0;
-    margin-right: 128px;
+    align-self: stretch;
+    grid-area: book-wrapper;
   }
   
   .book-cover__img {
@@ -56,12 +60,6 @@ const StyledBookPage = styled.section`
     gap: 14px;
   }
 
-  .star {
-    width: 24px;
-    height: 24px;
-    display: flex;
-  }
-
   .book-rating {
     display: flex;
     flex-direction: row-reverse;
@@ -82,11 +80,11 @@ const StyledBookPage = styled.section`
     height: 24px;
   }
 
-  .book-description__wrapper {
-    max-width: 1000px;
+  .book-title {
+    grid-area: book-title;
   }
 
-  .book-description__wrapper h1 {
+  .book-title h1 {
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
@@ -97,6 +95,10 @@ const StyledBookPage = styled.section`
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 31px;
+  }
+
+  .book-description {
+    grid-area: book-description;
   }
 
   .description-title {
@@ -156,13 +158,12 @@ const StyledBookPage = styled.section`
 
     .book__wrapper {
       margin-bottom: 88px;
+      column-gap: 21px;
     }
 
     .book-cover__wrapper {
-      max-width: 391px;
-      width: 100%;
-      max-height: 584px;
-      margin-right: 21px;
+      width: 391px;
+      height: 584px;
     }
 
     .book-selected {
@@ -180,14 +181,10 @@ const StyledBookPage = styled.section`
       font-size: 16px;
       line-height: 24px;
       flex-wrap: wrap;
+      margin-bottom: 0;
     }
 
-    .star {
-      width: 23px;
-      height: 23px;
-    }
-
-    .book-description__wrapper h1 {
+    .book-title h1 {
       font-size: 32px;
       line-height: 48px;
     }
@@ -237,12 +234,8 @@ const StyledBookPage = styled.section`
     }
 
     .book-cover__wrapper {
-      max-width: 135px;
-      width: 100%;
-      max-height: 202px;
-    }
-    
-    .book-cover__img {
+      width: 135px;
+      height: 202px;
     }
 
     .book-selected {
@@ -257,20 +250,15 @@ const StyledBookPage = styled.section`
       height: 13px;
     }
 
-    .star {
-      width: 14px;
-      height: 14px;
-      margin-right: 7px;
-    }
-
     .book-rating__wrapper {
       font-size: 12px;
       line-height: 18px;
     }
 
-    .book-description__wrapper h1 {
+    .book-title h1 {
       font-size: 18px;
       line-height: 20px;
+      margin-bottom: 14px;
     }
 
     .book-author {
@@ -309,18 +297,25 @@ const StyledBookPage = styled.section`
     }
   }
 
-  /* @media (max-width: 528px) {
-    display: grid;
-    grid-template-areas: "grid-header grid-body";
-
-    .grid-header {
-      grid-area: 'grid-header';
+  @media (max-width: 528px) {
+    .book__wrapper {
+      grid-template-areas: 
+        "book-wrapper book-title"
+        "book-description book-description";
+      grid-gap: 20px;
     }
 
-    .grid-body {
-      grid-area: 'grid-body';
+    .book-rating__wrapper {
+      flex-direction: column;
+      align-items: flex-start;
     }
-  } */
+
+    .book-rating {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 25px;
+    }
+  }
   `;
 
 export default StyledBookPage;

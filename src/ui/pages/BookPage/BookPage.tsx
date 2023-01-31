@@ -56,24 +56,26 @@ const BookPage: React.FC = () => {
           <img className="book-cover__img" src={oneBook?.bookCover} alt="Book" />
         </div>
 
-        <div className="book-description__wrapper">
+        <div className="book-title">
           <h1>{oneBook?.title}</h1>
           <h2 className="book-author">{oneBook?.author}</h2>
 
           <div className="book-rating__wrapper">
-            <img className="star" src={star} alt="star" />
-            <StarRating className="book-rating" />
+            <StarRating className="book-rating">
+            <img className="rating-value__image" src={star} alt="+" />
+            </StarRating>
             <div className="book-rate">
               <img src={arrow} alt="<-" />
               <p>Rate this book</p>
             </div>
           </div>
+        </div>
 
+        <div className="book-description">
           <h2 className="description-title">Description</h2>
           <p className="description-paragraph">{oneBook?.description}</p>
 
           <div className="book-buttons__wrapper">
-
             <div className="paperback-wrapper">
               <label className="label">Paperback</label>
               <Button className="paperback">Not available</Button>
@@ -83,7 +85,6 @@ const BookPage: React.FC = () => {
               <label className="label">Hardcover</label>
               <Button className="hardcover">${oneBook?.price} USD</Button>
             </div>
-
           </div>
 
         </div>

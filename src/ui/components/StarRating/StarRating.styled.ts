@@ -18,6 +18,17 @@ const StyledStarRating = styled.div`
     justify-content: space-between;
   }
 
+  .rating-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rating-value__image {
+    width: 19px;
+    height: 19px;
+  }
+
   @media (max-width: 585px) {
     gap: 0;
   } 
