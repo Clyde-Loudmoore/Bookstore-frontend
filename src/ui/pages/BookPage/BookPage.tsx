@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import bookApi from 'api/bookApi';
 import type { BookType } from 'types';
@@ -35,7 +36,8 @@ const BookPage: React.FC = () => {
         const book = await bookApi.getBook(Number(bookId));
         setOneBook(book.data.book);
       } catch (err) {
-        console.log(err);
+        const error = err as Error;
+        return toast.error(error.message);
       }
     })();
   }, [bookId]);
@@ -62,7 +64,7 @@ const BookPage: React.FC = () => {
 
           <div className="book-rating__wrapper">
             <StarRating className="book-rating">
-            <img className="rating-value__image" src={star} alt="+" />
+              <img className="rating-value__image" src={star} alt="+" />
             </StarRating>
             <div className="book-rate">
               <img src={arrow} alt="<-" />

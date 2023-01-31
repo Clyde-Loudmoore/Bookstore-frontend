@@ -8,7 +8,6 @@ import StyledPriceSlider from './PriceSlider.styled';
 import poligon from '../../../assets/images/polygon .png';
 
 export type PropsType = {
-  hidden?: boolean;
   onClick?: FormEventHandler;
 };
 
@@ -16,7 +15,7 @@ const PriceSlider: React.FC<PropsType> = (props) => {
   const [value, setValue] = React.useState([1, 100]);
 
   return (
-    <StyledPriceSlider hidden={props.hidden} onClick={props.onClick}>
+    <StyledPriceSlider onClick={props.onClick}>
       <img className="poligon" src={poligon} />
       <ReactSlider
         value={value}

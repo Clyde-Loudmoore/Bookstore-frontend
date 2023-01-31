@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { FormEventHandler, ReactNode } from 'react';
 
 import StyledDropdown from './Dropdown.styled';
@@ -13,13 +15,15 @@ type PropsType = {
 };
 
 const Dropdown: React.FC<PropsType> = (props) => {
+  const [active, setActive] = React.useState(false);
+
   return (
     <StyledDropdown>
-      <div className="wrapper" onClick={props.onClick}>
+      <div className="wrapper" onClick={() => setActive(!active)}>
         <p>{props.title}</p>
-        <img src={props.active ? arrowRight : arrowBottom} onClick={props.onClick} alt="+" />
+        <img src={!active ? arrowRight : arrowBottom} onClick={() => setActive(!active)} alt="+" />
       </div>
-      {props.children}
+      {active && props.children}
     </StyledDropdown>
   );
 };

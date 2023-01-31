@@ -7,7 +7,6 @@ import poligon from '../../../assets/images/polygon .png';
 
 export type PropsType = {
   onClick?: FormEventHandler;
-  hidden?: boolean;
 };
 
 const FilterByInfo: React.FC<PropsType> = (props) => {
@@ -20,7 +19,7 @@ const FilterByInfo: React.FC<PropsType> = (props) => {
   ];
 
   return (
-    <StyledFilterByInfo hidden={props.hidden} onClick={props.onClick}>
+    <StyledFilterByInfo onClick={props.onClick}>
       <img className="poligon" src={poligon} />
       {arrInfo.map((elem) => {
         return (

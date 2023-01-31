@@ -1,9 +1,13 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+
+import bookApi from 'api/bookApi';
 
 import Dropdown from 'ui/components/Dropdown';
 import Pagination from 'ui/components/Pagination/Pagination';
 import FilterGenre from 'ui/components/FilterGenre';
 import FilterByInfo from 'ui/components/FilterByInfo';
+import type { GenreType } from 'types';
 import StyledCatalod from './Catalog.styled';
 import PriceSlider from '../../../components/PriceSlider';
 import Book from './Book';
@@ -15,9 +19,7 @@ import hideHeart from '../../../../assets/icons/hideHeart.png';
 import showHeart from '../../../../assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
-  const [activeGenre, setActiveGenre] = React.useState(true);
-  const [activePrice, setActivePrice] = React.useState(true);
-  const [activeSort, setActiveSort] = React.useState(true);
+  const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
 
   const books = useAppSelector((store) => store.books.books);
   const dispatch = useAppDispatch();
@@ -25,9 +27,14 @@ const Catalog: React.FC = () => {
   React.useEffect(() => {
     (async () => {
       try {
+        const genre = await bookApi.getGenres();
+        const arrayGenre = genre.data.genres;
+        setBookGenre(arrayGenre);
+
         dispatch(getAllBooks());
       } catch (err) {
-        console.log(err);
+        const error = err as Error;
+        return toast.error(error.message);
       }
     })();
   }, [dispatch]);
@@ -39,16 +46,16 @@ const Catalog: React.FC = () => {
         <h1>Catalog</h1>
         <div className="dropdown-wrapper">
 
-          <Dropdown title="Genre" active={activeGenre} onClick={() => setActiveGenre(!activeGenre)}>
-            <FilterGenre hidden={activeGenre} />
+          <Dropdown title="Genre">
+            <FilterGenre genres={bookGenre} />
           </Dropdown>
 
-          <Dropdown title="Price" active={activePrice} onClick={() => setActivePrice(!activePrice)}>
-            <PriceSlider hidden={activePrice} />
+          <Dropdown title="Price">
+            <PriceSlider />
           </Dropdown>
 
-          <Dropdown title="Sort by" active={activeSort} onClick={() => setActiveSort(!activeSort)}>
-            <FilterByInfo hidden={activeSort} />
+          <Dropdown title="Sort by">
+            <FilterByInfo />
           </Dropdown>
 
         </div>

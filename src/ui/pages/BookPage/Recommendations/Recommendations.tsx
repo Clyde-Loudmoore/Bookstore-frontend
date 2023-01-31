@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 import Book from 'ui/pages/HomePage/Catalog/Book/Book';
 import StyledRecommendations from './Recommendations.styled';
@@ -18,7 +19,8 @@ const Recommendations: React.FC = () => {
       try {
         dispatch(getAllBooks());
       } catch (err) {
-        console.log(err);
+        const error = err as Error;
+        return toast.error(error.message);
       }
     })();
   }, [dispatch]);
