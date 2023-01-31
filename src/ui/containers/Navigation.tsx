@@ -12,6 +12,7 @@ const SingUp = React.lazy(() => import('../pages/SingUp'));
 const SingIn = React.lazy(() => import('../pages/SingIn'));
 const Profile = React.lazy(() => import('../pages/Profile/ProfileUser'));
 const BookPage = React.lazy(() => import('../pages/BookPage'));
+const Cart = React.lazy(() => import('../pages/Cart'));
 
 const Navigation: React.FC = () => {
   const user = useAppSelector((store) => store.user.user);
@@ -28,7 +29,10 @@ const Navigation: React.FC = () => {
         {user
           ? (
             <>
-              (<Route path={ROUTE_PATHS.PROFILE} element={<Profile />} />)
+              (
+              <Route path={ROUTE_PATHS.PROFILE} element={<Profile />} />
+              <Route path={ROUTE_PATHS.CART} element={<Cart />} />
+              )
             </>
           )
           : (

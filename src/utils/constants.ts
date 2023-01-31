@@ -6,4 +6,5 @@ export const ROUTE_PATHS = {
   BOOKS: '/books',
   BOOK_ID: ':bookId',
   CATALOG: '/catalog',
+  CART: '/cart',
 };

@@ -41,7 +41,7 @@ const Header: React.FC = () => {
         ? (
           <div className="header__small-button-wrapper">
 
-            <Link className="header__small-button-link" to="#">
+            <Link className="header__small-button-link" to="/cart">
               <Button className="header__small-button"><img src={cart} /></Button>
             </Link>
 

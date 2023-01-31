@@ -38,15 +38,15 @@ const Footer: React.FC = () => {
           <p>Home Page</p>
         </Link>
 
-        <Link className="footer__link" to="catalog">
+        <Link className="footer__link" to="/catalog">
           <p>Catalog</p>
         </Link>
 
-        <Link className="footer__link" to="profile">
+        <Link className="footer__link" to="/profile">
           <p>My Account</p>
         </Link>
 
-        <Link className="footer__link" to="#">
+        <Link className="footer__link" to="/cart">
           <p>Cart</p>
         </Link>
       </div>
