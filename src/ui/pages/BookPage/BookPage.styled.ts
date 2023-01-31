@@ -13,7 +13,6 @@ const StyledBookPage = styled.section`
     max-width: 522px;
     width: 100%;
     max-height: 779px;
-    height: 100%;
     position: relative;
     flex-shrink: 0;
     margin-right: 128px;
@@ -163,7 +162,6 @@ const StyledBookPage = styled.section`
       max-width: 391px;
       width: 100%;
       max-height: 584px;
-      height: 100%;
       margin-right: 21px;
     }
 
@@ -242,7 +240,6 @@ const StyledBookPage = styled.section`
       max-width: 135px;
       width: 100%;
       max-height: 202px;
-      height: 100%;
     }
     
     .book-cover__img {
@@ -311,6 +308,19 @@ const StyledBookPage = styled.section`
       margin: 0 0 60px 0;
     }
   }
+
+  /* @media (max-width: 528px) {
+    display: grid;
+    grid-template-areas: "grid-header grid-body";
+
+    .grid-header {
+      grid-area: 'grid-header';
+    }
+
+    .grid-body {
+      grid-area: 'grid-body';
+    }
+  } */
   `;
 
 export default StyledBookPage;

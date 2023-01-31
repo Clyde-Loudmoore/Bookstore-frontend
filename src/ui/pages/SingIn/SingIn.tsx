@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';

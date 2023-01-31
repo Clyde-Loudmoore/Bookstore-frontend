@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FormEventHandler } from 'react';
 
 import StyledFilterByInfo from './FilterByInfo.styled';

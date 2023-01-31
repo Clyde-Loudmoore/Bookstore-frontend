@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FormEventHandler, ReactNode } from 'react';
 
 import StyledDropdown from './Dropdown.styled';

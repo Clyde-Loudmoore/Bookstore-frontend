@@ -1,5 +1,3 @@
-import React from 'react';
-
 import StyledPagination from './Pagination.styled';
 import CircleItem from './CircleItem/CircleItem';
 
