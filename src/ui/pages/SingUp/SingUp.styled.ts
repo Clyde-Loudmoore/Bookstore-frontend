@@ -22,7 +22,7 @@ const StyledSingUp = styled.main`
     font-weight: ${(props) => props.theme.font_weight.medium};
     font-size: ${(props) => props.theme.font_size.fs14};
     line-height: ${(props) => props.theme.line_height.lh28};
-    color: ${(props) => props.theme.color.red};
+    color: ${(props) => props.theme.color.dark_blue};
     margin: 9px 0 30px 0;
   }
 

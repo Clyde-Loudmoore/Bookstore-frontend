@@ -14,16 +14,8 @@ const InfoItem: React.FC<PropsType> = (props) => {
   const DARK_GREY = 'colored__dark-grey';
   const DARK_BLUE = 'colored__dark-blue';
 
-  const colorText = () => {
-    if (color) {
-      setColor(false);
-    } else {
-      setColor(true);
-    }
-  };
-
   return (
-    <StyledInfoItem onClick={colorText}>
+    <StyledInfoItem onClick={() => setColor(!color)}>
       <p className={color ? DARK_GREY : DARK_BLUE}>{props.text}</p>
     </StyledInfoItem>
   );

@@ -17,7 +17,7 @@ const StyledSingIn = styled.main`
     line-height: ${(props) => props.theme.line_height.lh60};
     margin: 0 0 60px 0;
   }
-
+  
   .sing-in__paragraph {
     font-weight: ${(props) => props.theme.font_weight.medium};
     font-size: ${(props) => props.theme.font_size.fs14};

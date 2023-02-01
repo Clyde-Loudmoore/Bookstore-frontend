@@ -52,10 +52,9 @@ const ProfilePass: React.FC = () => {
 
         <div className="password__header">
           <h2>Password</h2>
-          <Link className="password-edit__link" to="#" onClick={() => setPassAttribute(false)}>Change password</Link>
+          <Link className="password-edit__link" to="#" onClick={() => setPassAttribute(!passAttribute)}>Change password</Link>
         </div>
 
-        <label className="password__label">Your password</label>
         <InputField className="password__input-field profile-input"
           id="password"
           img={hideEye}
@@ -63,7 +62,9 @@ const ProfilePass: React.FC = () => {
           placeholder="Password"
           disabled={passAttribute}
           {...passFormik.getFieldProps('password')}
-        />
+        >
+          <label className="password__label">Your password</label>
+        </InputField>
         {passFormik.touched && passFormik.errors.password
           ? (
             <div className="input-error">{passFormik.errors.password}</div>)

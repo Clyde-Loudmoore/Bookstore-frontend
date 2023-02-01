@@ -82,12 +82,9 @@ const StyledProfile = styled.main`
     align-items: center;
   }
 
-  .information-fullname__input-field {
-    margin-bottom: 9px;
-  }
-
-  .information-email__input-field {
-    margin-bottom: 9px;
+  .information-email__input-field, .information-fullname__input-field {
+    padding: 8px 0;
+    margin: 9px 0 9px 0;
   }
 
   .user-info__label {
@@ -95,8 +92,6 @@ const StyledProfile = styled.main`
     font-size: ${(props) => props.theme.font_size.fs14};
     line-height: ${(props) => props.theme.line_height.lh24};
     color: ${(props) => props.theme.color.dark_blue};
-    position: absolute;
-    left: 70px;
   }
 
   .users-password-data {
@@ -115,11 +110,10 @@ const StyledProfile = styled.main`
     font-size: ${(props) => props.theme.font_size.fs14};
     line-height: ${(props) => props.theme.line_height.lh24};
     color: ${(props) => props.theme.color.dark_blue};
-    position: absolute;
-    left: 70px;
   }
 
   .password__input-field {
+    padding: 8px 0;
     margin-bottom: 9px;
   }
 
@@ -200,7 +194,6 @@ const StyledProfile = styled.main`
 
     .user-info__label {
       font-size: ${(props) => props.theme.font_size.fs12};
-      top: 70px;
     }
     
     .email__label{

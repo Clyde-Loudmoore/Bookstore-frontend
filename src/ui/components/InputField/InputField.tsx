@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FocusEventHandler, FormEventHandler } from 'react';
+import type { FocusEventHandler, FormEventHandler, ReactNode } from 'react';
 
 import StyledInputField from './InputField.styled';
 
@@ -19,6 +19,7 @@ export type PropsType = {
   disabled?: boolean;
   value?: string;
   helperText?: string;
+  children?: ReactNode;
 };
 
 const InputField: React.FC<PropsType> = (props) => {
@@ -34,17 +35,20 @@ const InputField: React.FC<PropsType> = (props) => {
         alt="+"
       />
 
-      <input
-        className="search__input"
-        id={props.id}
-        name={props.name}
-        onChange={props.onChange}
-        onBlur={props.onBlur}
-        type={!eyeLook && props.type === 'password' ? 'text' : props.type}
-        placeholder={props.placeholder}
-        disabled={props.disabled}
-        value={props.value}
-      />
+      <div className="center-component">
+        {props.children}
+        <input
+          className="search__input"
+          id={props.id}
+          name={props.name}
+          onChange={props.onChange}
+          onBlur={props.onBlur}
+          type={!eyeLook && props.type === 'password' ? 'text' : props.type}
+          placeholder={props.placeholder}
+          disabled={props.disabled}
+          value={props.value}
+        />
+      </div>
 
       {props.helperText && <div>{props.helperText}</div>}
     </StyledInputField>

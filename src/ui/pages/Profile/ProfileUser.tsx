@@ -103,10 +103,9 @@ const ProfileUser: React.FC = () => {
 
             <div className="user-info__header">
               <h2>Personal information</h2>
-              <Link className="user-edit__link" to="#" onClick={() => setInfoAttribute(false)}>Change information</Link>
+              <Link className="user-edit__link" to="#" onClick={() => setInfoAttribute(!infoAttribute)}>Change information</Link>
             </div>
 
-            <label className="user-info__label">Your name</label>
             <InputField className="information-fullname__input-field profile-input"
               id="fullName"
               img={userName}
@@ -114,13 +113,14 @@ const ProfileUser: React.FC = () => {
               placeholder="Your full name"
               disabled={infoAttribute}
               {...userFormik.getFieldProps('fullName')}
-            />
+            >
+              <label className="user-info__label">Your name</label>
+            </InputField>
             {userFormik.touched.fullName && userFormik.errors.fullName
               ? (
                 <div className="input-error">{userFormik.errors.fullName}</div>)
               : null}
 
-            <label className="user-info__label email__label">Your email</label>
             <InputField className="information-email__input-field profile-input"
               id="email"
               img={mail}
@@ -128,7 +128,9 @@ const ProfileUser: React.FC = () => {
               placeholder="Email"
               disabled={infoAttribute}
               {...userFormik.getFieldProps('email')}
-            />
+            >
+              <label className="user-info__label email__label">Your email</label>
+            </InputField>
             {userFormik.touched.email && userFormik.errors.email
               ? (
                 <div className="input-error">{userFormik.errors.email}</div>
