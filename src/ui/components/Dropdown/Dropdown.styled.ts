@@ -3,10 +3,10 @@ import styled from 'styled-components';
 const StyledDropdown = styled.div`
   width: 196px;
   padding: 10px 15px;
-  color: #344966;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
+  color: ${(props) => props.theme.color.dark_blue};
+  font-weight: ${(props) => props.theme.font_weight.medium};
+  font-size: ${(props) => props.theme.font_size.fs18};
+  line-height: ${(props) => props.theme.lh28};
   background: #F0F4EF;
   border-radius: 16px;
   box-sizing: border-box;
@@ -28,9 +28,9 @@ const StyledDropdown = styled.div`
   }
 
   @media (max-width: 830px) {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 28px;
+      font-weight: ${(props) => props.theme.font_weight.medium};
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh28};
   }
 
   @media (max-width: 350px) {

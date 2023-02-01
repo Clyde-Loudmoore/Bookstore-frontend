@@ -13,19 +13,19 @@ const StyledEmptyCart = styled.div`
   }
 
   .cart-header {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
     margin-bottom: 20px;
   }
 
   .cart-text {
     max-width: 465px;
     margin-bottom: 60px;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs24};
+    line-height: ${(props) => props.theme.line_height.lh36};
+    color: ${(props) => props.theme.color.dark_blue};
   }
 
   .cart-button{
@@ -44,15 +44,15 @@ const StyledEmptyCart = styled.div`
     }
 
     .cart-header {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
     }
 
     .cart-text {
       max-width: 330px;
       margin-bottom: 50px;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
     }
   }
 
@@ -77,23 +77,23 @@ const StyledEmptyCart = styled.div`
 
     .cart-header {
       margin-bottom: 15px;
-      font-size: 18px;
-      line-height: 27px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
     }
 
     .cart-text {
       max-width: 250px;
       margin-bottom: 30px;
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
 
     .cart-button {
       padding: 10px 50px;
       width: 290px;
       margin-bottom: 40px;
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
   }
 

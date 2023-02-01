@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledPriceSlider = styled.div`
     padding: 60px 16px 40px 18px;
     width: 413px;
-    background-color: #F0F4EF;
+    background-color: #${(props) => props.theme.color.light};
     border-radius: 16px;
     box-sizing: border-box;
     position: absolute;
@@ -20,19 +20,19 @@ const StyledPriceSlider = styled.div`
   .example-thumb {
     width: 32px;
     height: 32px;
-    background-color: #F7F7FC;
-    border: 2px solid #BFCC94;
+    background-color: ${(props) => props.theme.color.light};
+    border: 2px solid ${(props) => props.theme.color.green};
     border-radius: 40px;
   }
 
   .example-track {
     height: 12px;
-    background-color: #D6D8E7;
+    background-color: ${(props) => props.theme.color.light_grey};
     border-radius: 40px;
   }
 
   .example-track-1 {
-    background-color: #BFCC94;
+    background-color: ${(props) => props.theme.color.green};
   }
 
   .horizontal-slider {

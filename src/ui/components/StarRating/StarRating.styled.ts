@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledStarRating = styled.div`
-  color: #B9BAC3;
+  color: ${(props) => props.theme.color.dark_grey};
   display: flex;
   justify-content: space-around;
   align-items: center;

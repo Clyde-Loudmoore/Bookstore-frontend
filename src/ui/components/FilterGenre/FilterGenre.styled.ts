@@ -5,12 +5,12 @@ const StyledFilterGenre = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 15px 15px 5px 15px;
-  background: #F0F4EF;
+  background: ${(props) => props.theme.color.light};
   border-radius: 16px;
-  color: #344966;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 28px;
+  color: ${(props) => props.theme.color.dark_blue};
+  font-weight: ${(props) => props.theme.font_weight.medium};
+  font-size: ${(props) => props.theme.font_size.fs16};
+  line-height: ${(props) => props.theme.line_height.lh28};
   box-sizing: border-box;
   position: absolute;
   top: 74px;
@@ -37,9 +37,7 @@ const StyledFilterGenre = styled.div`
 
   @media (max-width: 835px) {
     width: 290px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 28px;
+    font-size: ${(props) => props.theme.font_size.fs14};
   }
 `;
 

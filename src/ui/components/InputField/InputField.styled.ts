@@ -4,10 +4,8 @@ const StyledInputField = styled.div<{ isError: boolean }>`
   max-width: 630px;
   width: 100%;
   max-height: 64px;
-
   padding: 18px 0;
-
-  background-color: #f0f4ef;
+  background-color: ${(props) => props.theme.color.light};
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -19,10 +17,10 @@ const StyledInputField = styled.div<{ isError: boolean }>`
   .search__input {
     width: 100%;
     font: inherit;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.small};
+    font-size: ${(props) => props.theme.font_size.fs16};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
     background-color: #f0f4ef;
     border-radius: 16px;
     border: none;
@@ -32,8 +30,8 @@ const StyledInputField = styled.div<{ isError: boolean }>`
 
   @media (max-width: 781px) {
     .search__input {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
   }
   

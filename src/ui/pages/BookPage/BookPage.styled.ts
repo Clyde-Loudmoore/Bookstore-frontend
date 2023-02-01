@@ -67,10 +67,10 @@ const StyledBookPage = styled.section`
   }
 
   .book-rate {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #B9BAC4;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs16};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_grey};
     display: flex;
     gap: 7px;
   }
@@ -85,15 +85,15 @@ const StyledBookPage = styled.section`
   }
 
   .book-title h1 {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
   }
 
   .book-author {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs24};
+    line-height: ${(props) => props.theme.line_height.lh36};
     margin-bottom: 31px;
   }
 
@@ -102,17 +102,17 @@ const StyledBookPage = styled.section`
   }
 
   .description-title {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs24};
+    line-height: ${(props) => props.theme.line_height.lh36};
     margin-bottom: 10px;
   }
 
   .description-paragraph {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs16};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
     margin-bottom: 74px;
   }
 
@@ -122,27 +122,27 @@ const StyledBookPage = styled.section`
   }
 
   .label {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs16};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
   }
 
   .paperback {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
     max-width: 243px;
     width: 100%;
     padding: 10px, 50px;
-    background-color: #B9BAC4;
+    background-color: ${(props) => props.theme.color.dark_grey};
     margin-top: 10px;
   }
 
   .hardcover {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
     max-width: 216px;
     width: 100%;
     padding: 10px, 50px;
@@ -177,33 +177,33 @@ const StyledBookPage = styled.section`
     }
 
     .book-rating__wrapper {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
+      font-weight: ${(props) => props.theme.font_weight.medium};
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
       flex-wrap: wrap;
       margin-bottom: 0;
     }
 
     .book-title h1 {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
     }
 
     .book-author {
-      font-size: 20px;
-      line-height: 30px;
+      font-size: ${(props) => props.theme.font_size.fs20};
+      line-height: ${(props) => props.theme.line_height.lh30};
       margin-bottom: 21px;
     }
 
     .description-title {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
       margin-bottom: 22px;
     }
 
     .description-paragraph {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
       margin-bottom: 50px;
     }
 
@@ -251,42 +251,42 @@ const StyledBookPage = styled.section`
     }
 
     .book-rating__wrapper {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
 
     .book-title h1 {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh20};
       margin-bottom: 14px;
     }
 
     .book-author {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
       margin-bottom: 23px;
     }
 
     .description-title {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
       margin-bottom: 22px;
     }
 
     .description-paragraph {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
       margin-bottom: 30px;
     }
 
     .label {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
     }
 
     .paperback, .hardcover {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
       max-width: 135px;
       width: 100%;
       margin-top: 17px;

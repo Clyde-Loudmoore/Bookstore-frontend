@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const StyledRecommendations = styled.section`  
   .recommendations-header {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
     margin-bottom: 50px;
   }
 
@@ -22,8 +22,8 @@ const StyledRecommendations = styled.section`
 
   @media (max-width: 1410px) {
     .recommendations-header {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
     }
 
     .books-wrapper {
@@ -35,14 +35,14 @@ const StyledRecommendations = styled.section`
   @media (max-width: 1215px) {
     .books-wrapper {
       max-height: 700px;
-    height: 100%;
+      height: 100%;
     }
   }
 
   @media (max-width: 960px) {
     .recommendations-header {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
     }
 
     .books-wrapper {
@@ -53,8 +53,8 @@ const StyledRecommendations = styled.section`
 
   @media (max-width: 585px) {
     .recommendations-header {
-      font-size: 18px;
-      line-height: 27px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
       text-align: center;
       margin-bottom: 30px;
     }

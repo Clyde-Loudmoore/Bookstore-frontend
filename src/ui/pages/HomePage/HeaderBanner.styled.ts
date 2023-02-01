@@ -5,7 +5,7 @@ import Books2 from '../../../assets/images/booksBG2.png';
 const StyledHeaderBanner = styled.section`
   margin: 0 80px 110px 80px;
   padding: 80px 108px 96px 108px;
-  background-color: #F0F4EF;
+  background-color: ${(props) => props.theme.color.light};
   border-radius: 16px;
   
   background-image: url(${Books});
@@ -17,17 +17,17 @@ const StyledHeaderBanner = styled.section`
   align-items: center;
 
   .header-banner__header {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
     margin: 0 0 10px 0;
   }
 
   .header-banner__paragraph {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
+    color: ${(props) => props.theme.color.dark_blue};
     width: 210px;
     margin: 0 0 50px 0;
   }
@@ -61,14 +61,14 @@ const StyledHeaderBanner = styled.section`
 
   @media (max-width: 975px) {
     .header-banner__header {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
       margin: 0 0 15px 0;
     }
 
     .header-banner__paragraph {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
       width: 217px;
       margin: 0 0 40px 0;
     }
@@ -101,22 +101,22 @@ const StyledHeaderBanner = styled.section`
     background-position: left 0 top 28px;
 
     .header-banner__header {
-      font-size: 18px;
-      line-height: 27px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
       margin: 0 0 20px 0;
     }
 
     .header-banner__paragraph {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
       margin: 0 0 20px 0;
     }
 
     .header-banner__button {
       max-width: 200px;
       padding: 10px;
-      font-size:12px;
-      line-height:18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
 
     .header-banner__reader {

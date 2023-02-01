@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
   font: inherit;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
-  color: #F0F4EF;
+  font-weight: ${(props) => props.theme.font_weight.medium};
+  font-size: ${(props) => props.theme.font_size.fs20};
+  line-height: ${(props) => props.theme.line_height.lh30};
+  color: ${(props) => props.theme.color.light};
 
   margin-top: auto;
 
-  background-color: #0D1821;
+  background-color: ${(props) => props.theme.color.dark};
   padding: 73px 80px;
 
   display: flex;
@@ -38,7 +38,7 @@ const StyledFooter = styled.footer`
   }
 
   .footer__link {
-    color: #F0F4EF;
+    color: ${(props) => props.theme.color.light};
     text-decoration: none;
   }
 
@@ -82,8 +82,8 @@ const StyledFooter = styled.footer`
   }
 
   @media (max-width: 773px) {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: ${(props) => props.theme.font_size.fs16};
+    line-height: ${(props) => props.theme.line_height.lh24};
 
     .footer__location img {
       max-width: 291px;

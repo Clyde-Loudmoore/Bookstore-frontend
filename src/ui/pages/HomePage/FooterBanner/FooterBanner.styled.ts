@@ -33,16 +33,16 @@ const StyledFooterBanner = styled.section`
   }
 
   .footer-banner__header {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
     margin:  0 0 10px 0;
   }
 
   .footer-banner__info p {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
     margin: 0 0 50px 0;
     max-width: 415px;
   }
@@ -61,14 +61,14 @@ const StyledFooterBanner = styled.section`
 
   @media (max-width: 1350px) {
     .footer-banner__header {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
       margin:  0 0 22px 0;
     }
 
     .footer-banner__info p {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
       margin: 0 0 40px 0;
     }
 
@@ -140,14 +140,14 @@ const StyledFooterBanner = styled.section`
     }
 
     .footer-banner__header {
-      font-size: 18px;
-      line-height: 27px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
       margin:  0 0 20px 0;
     }
 
     .footer-banner__info p {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
       margin: 0 0 20px 0;
     }
 

@@ -37,17 +37,17 @@ const StyledBook = styled.div`
   }
 
   .book-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
+    color: ${(props) => props.theme.color.dark_blue};
   }
 
   .book-author {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #B9BAC3;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
+    color: ${(props) => props.theme.color.dark_grey};
     margin-bottom: 21px;
   }
 
@@ -76,19 +76,19 @@ const StyledBook = styled.div`
       margin-bottom: 15px;
     }
     .book-title {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
     }
 
     .book-author {
-      font-size: 14px;
-      line-height: 21px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh21};
       margin-bottom: 15px;
     }
 
     .book-price_button {
-      font-size: 14px;
-      line-height: 28px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh28};
       margin-bottom: 29px;
     }
 

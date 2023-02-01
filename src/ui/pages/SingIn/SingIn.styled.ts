@@ -12,17 +12,17 @@ const StyledSingIn = styled.main`
   }
 
   .sing-in__header {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
     margin: 0 0 60px 0;
   }
 
   .sing-in__paragraph {
-    font-weight: 500;
-    font-size: 14px;
-    line-height:28px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs14};
+    line-height: ${(props) => props.theme.line_height.lh28};
+    color: ${(props) => props.theme.color.dark_blue};
     margin: 9px 0 30px 0;
   }
 
@@ -37,12 +37,12 @@ const StyledSingIn = styled.main`
     margin: 30px 0 0 0;
   }
 
-  .sing-in__link{
+  .sing-in__link {
     max-width: 151px;
   }
 
-  .input-error{
-    color: red;
+  .input-error {
+    color: ${(props) => props.theme.color.red};
   }
 
   @media (max-width: 927px) {
@@ -59,14 +59,14 @@ const StyledSingIn = styled.main`
     padding: 0;
 
     .sing-in__header {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
       margin: 0 0 50px 0;
     }
 
     .sing-in__paragraph {
-      font-size: 13px;
-      line-height:24px;
+      font-size: ${(props) => props.theme.font_size.fs13};
+      line-height: ${(props) => props.theme.line_height.lh24};
       margin: 9px 0 15px 0;
     }
 
@@ -74,10 +74,10 @@ const StyledSingIn = styled.main`
       margin: 45px 0 0 0;
     }
 
-    .input-error{
-      color: red;
-      font-size: 14px;
-      line-height:26px;
+    .input-error {
+      color: ${(props) => props.theme.color.red};
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh26};
     }
   }
 
@@ -87,18 +87,18 @@ const StyledSingIn = styled.main`
     flex-direction: column;
 
     .sing-in__header {
-      font-size: 18px;
-      line-height: 27px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
       margin: 0 0 30px 0;
     }
 
     .sing-in__paragraph {
-      font-size: 12px;
-      line-height:18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
       margin: 5px 0 20px 0;
     }
 
-    .sing-in__input-field{
+    .sing-in__input-field {
       margin: 0;
     }
 
@@ -106,10 +106,10 @@ const StyledSingIn = styled.main`
       margin: 20px 0 60px 0;
     }
 
-    .input-error{
-      color: red;
-      font-size: 13px;
-      line-height:20px;
+    .input-error {
+      color: ${(props) => props.theme.color.red};
+      font-size: ${(props) => props.theme.font_size.fs13};
+      line-height: ${(props) => props.theme.line_height.lh20};
     }
 
   }

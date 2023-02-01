@@ -8,11 +8,11 @@ const StyledInfoItem = styled.div`
   gap: 10px;
   
   .colored__dark-grey {
-    color: #B9BAC3;
+    color: ${(props) => props.theme.color.dark_grey};
   }
 
   .colored__dark-blue {
-    color: #344966;
+    color: ${(props) => props.theme.color.dark_blue};
   }
 `;
 

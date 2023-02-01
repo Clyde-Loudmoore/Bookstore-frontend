@@ -10,9 +10,9 @@ const StyledCatalod = styled.section`
   }
 
   .catalog__header h1 {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs40};
+    line-height: ${(props) => props.theme.line_height.lh60};
   }
 
   .dropdown-wrapper {
@@ -36,8 +36,8 @@ const StyledCatalod = styled.section`
     }
     
     .catalog__header h1 {
-      font-size: 32px;
-      line-height: 48px;
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
       margin-bottom: 20px;
     }
 
@@ -53,13 +53,13 @@ const StyledCatalod = styled.section`
     }
 
     .book-title {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
     }
 
     .book-author {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
       margin-bottom: 22px;
     }
 
@@ -71,8 +71,8 @@ const StyledCatalod = styled.section`
     margin: 0 15px 87px 15px;
 
     .catalog__header h1 {
-      font-size: 18px;
-      line-height: 27px;
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
       margin-bottom: 13px;
     }
 

@@ -7,9 +7,9 @@ const StyledHeader = styled.header`
   align-items: center;
 
   .header__search-title {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs16};
+    line-height: ${(props) => props.theme.line_height.lh24};
     padding-left: 37px;
     margin: 0 43px 0 0;
   };
@@ -51,8 +51,8 @@ const StyledHeader = styled.header`
     padding: 20px 11px 45px 15px;
 
     .header__search-title {
-      font-size: 14px;
-      line-height: 12px;
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh12};
       padding-left: 17px;
       margin: 0 10px 0 0;
     };
@@ -66,8 +66,8 @@ const StyledHeader = styled.header`
     }
 
     .header__button {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
   }
 

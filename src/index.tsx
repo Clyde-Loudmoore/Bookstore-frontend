@@ -1,13 +1,14 @@
 import ReactDOM from 'react-dom/client';
-
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
+import theme from 'ui/containers/theme';
+import { GlobalStyles } from './ui/containers/GlobalStyles';
 import App from './App';
 
 import store from './store';
 import reportWebVitals from './reportWebVitals';
-
-import { GlobalStyles } from './ui/containers/GlobalStyles';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,7 +19,9 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <GlobalStyles />
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </Provider>,
 );

@@ -13,7 +13,7 @@ const StyledProfile = styled.main`
     width: 100%;
     max-height: 305px;
     position: relative;
-    background-color: #F0F4EF;
+    background-color: ${(props) => props.theme.color.light};
     border-radius: 16px;
     display: flex;
     justify-content: center;
@@ -40,7 +40,7 @@ const StyledProfile = styled.main`
   }
 
   .user-photo__button {
-    background-color: #344966;
+    background-color: ${(props) => props.theme.color.dark_blue};
     width: 48px;
     height:48px;
     border-radius: 50%;
@@ -62,17 +62,17 @@ const StyledProfile = styled.main`
   }
 
   .form__wrapper h2 {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    color: #0D1821;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs20};
+    line-height: ${(props) => props.theme.line_height.lh30};
+    color: ${(props) => props.theme.color.dark};
   }
 
   .form__wrapper a {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #8D9F4F;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs14};
+    line-height: ${(props) => props.theme.line_height.lh21};
+    color: ${(props) => props.theme.color.dark_green};
   }
 
   .user-info__header {
@@ -91,10 +91,10 @@ const StyledProfile = styled.main`
   }
 
   .user-info__label {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs14};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
     position: absolute;
     left: 70px;
   }
@@ -111,10 +111,10 @@ const StyledProfile = styled.main`
   }
 
   .password__label {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs14};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
     position: absolute;
     left: 70px;
   }
@@ -128,18 +128,18 @@ const StyledProfile = styled.main`
   }
   
   .password__paragraph {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs14};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
     margin-bottom: 10px;
   }
 
   .new-password__paragraph {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: #344966;
+    font-weight: ${(props) => props.theme.font_weight.medium};
+    font-size: ${(props) => props.theme.font_size.fs14};
+    line-height: ${(props) => props.theme.line_height.lh24};
+    color: ${(props) => props.theme.color.dark_blue};
     margin-bottom: 50px;
   }
 
@@ -153,8 +153,8 @@ const StyledProfile = styled.main`
     width: 100%;
   }
 
-  .input-error{
-    color: red;
+  .input-error {
+    color: ${(props) => props.theme.color.red};
     margin-bottom: 20px;
   }
 
@@ -178,14 +178,14 @@ const StyledProfile = styled.main`
     }
 
     .form__wrapper h2 {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: ${(props) => props.theme.font_size.fs16};
+      line-height: ${(props) => props.theme.line_height.lh24};
     }
 
     
     .form__wrapper a {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
     }
   }
 
@@ -199,7 +199,7 @@ const StyledProfile = styled.main`
     }
 
     .user-info__label {
-      font-size: 12px;
+      font-size: ${(props) => props.theme.font_size.fs12};
       top: 70px;
     }
     
@@ -214,7 +214,7 @@ const StyledProfile = styled.main`
     }
 
     .password__label {
-      font-size: 12px;
+      font-size: ${(props) => props.theme.font_size.fs12};
     }
 
 
