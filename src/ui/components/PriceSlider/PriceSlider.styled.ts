@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledPriceSlider = styled.div`
     padding: 60px 16px 40px 18px;
     width: 413px;
-    background-color: #${(props) => props.theme.color.light};
+    background-color: ${(props) => props.theme.color.light};
     border-radius: 16px;
     box-sizing: border-box;
     position: absolute;

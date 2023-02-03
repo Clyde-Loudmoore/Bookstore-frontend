@@ -65,6 +65,7 @@ const SingUp: React.FC = () => {
             img={mailIcon}
             placeholder="Email"
             type="email"
+            label="Email"
             {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email
@@ -82,6 +83,7 @@ const SingUp: React.FC = () => {
             img={hideEye}
             type="password"
             placeholder="Password"
+            label="Password"
             {...formik.getFieldProps('password')}
           />
           {formik.touched.password && formik.errors.password
@@ -99,6 +101,7 @@ const SingUp: React.FC = () => {
             img={hideEye}
             type="password"
             placeholder="Password replay"
+            label="Repeat password"
             {...formik.getFieldProps('confPassword')}
           />
           {formik.touched.confPassword && formik.errors.confPassword

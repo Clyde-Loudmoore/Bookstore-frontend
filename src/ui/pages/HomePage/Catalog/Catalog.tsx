@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import bookApi from 'api/bookApi';
@@ -13,13 +14,14 @@ import PriceSlider from '../../../components/PriceSlider';
 import Book from './Book';
 
 import { useAppDispatch, useAppSelector } from '../../../../store';
-import { getAllBooks } from '../../../../store/thunks/bookThunk';
+import bookThunk from '../../../../store/thunks/bookThunk';
 
 import hideHeart from '../../../../assets/icons/hideHeart.png';
 import showHeart from '../../../../assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
+  const [searchParams] = useSearchParams();
 
   const books = useAppSelector((store) => store.books.books);
   const dispatch = useAppDispatch();
@@ -30,14 +32,24 @@ const Catalog: React.FC = () => {
         const genre = await bookApi.getGenres();
         const arrayGenre = genre.data.genres;
         setBookGenre(arrayGenre);
-
-        dispatch(getAllBooks());
       } catch (err) {
         const error = err as Error;
         return toast.error(error.message);
       }
     })();
-  }, [dispatch]);
+  }, []);
+
+  React.useEffect(() => {
+    const genre = searchParams.get('genres') || '';
+    // const sorting = searchParams.get('sorting') || 'Name';
+    // const search = searchParams.get('search') || '';
+    // const page = Number(searchParams.get('page') || 1);
+    // const minPrice = Number(searchParams.get('minPrice') || '5');
+    // const maxPrice = Number(searchParams.get('maxPrice') || '25');
+    dispatch(
+      bookThunk.getAllFiltredBooks({ genre }),
+    );
+  }, [dispatch, searchParams]);
 
   return (
     <StyledCatalod>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
@@ -25,6 +27,8 @@ const SingInSchema =
   });
 
 const SingIn: React.FC = () => {
+  const [isError, setIsError] = React.useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -34,6 +38,7 @@ const SingIn: React.FC = () => {
 
     onSubmit: async (values, actions) => {
       try {
+        setIsError(false);
         actions.setSubmitting(false);
         const user = await authApi.singIn(values);
         dispatch(userSliceActions.setUser(user.data.user));
@@ -45,6 +50,7 @@ const SingIn: React.FC = () => {
         navigate('/');
       } catch (err) {
         if (err instanceof AxiosError && err.response?.data.error.path === 'email') {
+          setIsError(true);
           formik.setFieldError('email', err.response?.data.message);
         }
         if (err instanceof AxiosError && err.response?.data.error.path === 'password') {
@@ -69,6 +75,8 @@ const SingIn: React.FC = () => {
             img={mailIcon}
             type="email"
             placeholder="Email"
+            label="Email"
+            isError={isError}
             {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email
@@ -87,8 +95,10 @@ const SingIn: React.FC = () => {
             img={hideEye}
             type="password"
             placeholder="Password"
+            label="Password"
             {...formik.getFieldProps('password')}
           />
+
           {formik.touched.password && formik.errors.password
             ? (
               <div className="input-error">{formik.errors.password}</div>

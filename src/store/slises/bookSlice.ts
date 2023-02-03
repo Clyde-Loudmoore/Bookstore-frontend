@@ -1,12 +1,14 @@
 /* eslint-disable no-console */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getAllBooks } from '../thunks/bookThunk';
+import bookThunk from '../thunks/bookThunk';
 
 import type { BookType } from '../../types';
 
 const getInitialStore = () => ({
   books: [] as BookType[],
+  counter: 0,
+  numberPerPage: 0,
 });
 
 const bookSlice = createSlice({
@@ -15,8 +17,13 @@ const bookSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllBooks.fulfilled, (store, { payload }) => {
+      .addCase(bookThunk.getAllBooks.fulfilled, (store, { payload }) => {
         store.books = payload;
+      })
+      .addCase(bookThunk.getAllFiltredBooks.fulfilled, (store, { payload }) => {
+        store.books = payload;
+        // store.counter = payload.counter;
+        // store.numberPerPage = payload.numberPerPage;
       });
   },
 });

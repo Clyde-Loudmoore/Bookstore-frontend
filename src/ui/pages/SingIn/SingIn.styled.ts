@@ -45,6 +45,24 @@ const StyledSingIn = styled.main`
     color: ${(props) => props.theme.color.red};
   }
 
+  .sing-in__input-field {
+    max-width: 413px;
+    width: 100%;
+    margin: 0;
+    }
+  
+  .sing-in__input-field:focus-within  {
+    outline:  2px solid ${(props) => props.theme.color.dark_blue};
+
+    .search__input {
+      padding: 8px 0;
+    }
+
+    .label, .close-button {
+      display: block;
+    }
+  }
+
   @media (max-width: 927px) {
     .singInBG {
       max-width: 390px;
@@ -98,10 +116,6 @@ const StyledSingIn = styled.main`
       margin: 5px 0 20px 0;
     }
 
-    .sing-in__input-field {
-      margin: 0;
-    }
-
     .sing-in__button {
       margin: 20px 0 60px 0;
     }
@@ -111,7 +125,6 @@ const StyledSingIn = styled.main`
       font-size: ${(props) => props.theme.font_size.fs13};
       line-height: ${(props) => props.theme.line_height.lh20};
     }
-
   }
 `;
 

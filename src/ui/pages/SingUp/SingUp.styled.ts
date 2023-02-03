@@ -41,6 +41,24 @@ const StyledSingUp = styled.main`
     color: ${(props) => props.theme.color.red};
   }
 
+  .sing-up__input-field {
+    max-width: 413px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .sing-up__input-field:focus-within  {
+    outline:  2px solid ${(props) => props.theme.color.dark_blue};
+
+    .search__input {
+      padding: 8px 0;
+    }
+
+    .label, .close-button {
+      display: block;
+    }
+  }
+
   @media (max-width: 927px) {
     .singUpBG {
       max-width: 390px;

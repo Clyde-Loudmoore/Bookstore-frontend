@@ -3,7 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import _random from 'lodash/random';
 
-export const BASE_URL = 'http://localhost:4000/api';
+const BASE_URL = 'http://localhost:4000/api';
 
 const tokenHelper = {
   get: () => { return Cookies.get('token'); },
@@ -46,6 +46,7 @@ axiosInstance.interceptors.request.use(async (request) => {
 
 export default {
   axiosInstance,
+  BASE_URL,
   setApiToken,
   getApiToken,
   removeApiToken,

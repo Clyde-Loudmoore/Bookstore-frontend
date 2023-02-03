@@ -2,8 +2,10 @@ import React from 'react';
 import type { FocusEventHandler, FormEventHandler, ReactNode } from 'react';
 
 import StyledInputField from './InputField.styled';
+import Button from '../Button';
 
 import showEye from '../../../assets/icons/showEye.png';
+import closeIcon from '../../../assets/icons/close.png';
 
 export type PropsType = {
   onChange?: FormEventHandler;
@@ -20,6 +22,7 @@ export type PropsType = {
   value?: string;
   helperText?: string;
   children?: ReactNode;
+  label?: string;
 };
 
 const InputField: React.FC<PropsType> = (props) => {
@@ -36,7 +39,7 @@ const InputField: React.FC<PropsType> = (props) => {
       />
 
       <div className="center-component">
-        {props.children}
+        <label className="label">{props.label}</label>
         <input
           className="search__input"
           id={props.id}
@@ -47,9 +50,12 @@ const InputField: React.FC<PropsType> = (props) => {
           placeholder={props.placeholder}
           disabled={props.disabled}
           value={props.value}
+          autoComplete="off"
         />
       </div>
-
+      <Button className="close-button" type="button">
+        <img src={closeIcon} alt="X" />
+      </Button>
       {props.helperText && <div>{props.helperText}</div>}
     </StyledInputField>
   );

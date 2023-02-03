@@ -9,6 +9,8 @@ const theme = {
     dark_grey: '#B9BAC4',
     white: '#FFFFFF',
     red: '#C30052',
+    isErrorBG: '#FFF2F7',
+    isErrorBorder: '#ED2E7E',
   },
 
   font_weight: {

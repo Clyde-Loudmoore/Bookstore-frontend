@@ -13,6 +13,15 @@ const StyledButton = styled.button`
   border-radius: 16px;
   background-color: ${(props) => props.theme.color.dark_blue};
   cursor: pointer;
+
+  :hover {
+    background-color: ${(props) => props.theme.color.dark};
+  }
+
+  :active {
+    background-color: ${(props) => props.theme.color.dark_blue};
+    outline: 8px solid ${(props) => props.theme.color.light_grey};
+  }
 `;
 
 export default StyledButton;

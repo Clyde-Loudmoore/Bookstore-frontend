@@ -7,4 +7,6 @@ export type BookType = {
   description: string;
   binding: string;
   price: number;
+  counter: number;
+  numberPerPage: number;
 };

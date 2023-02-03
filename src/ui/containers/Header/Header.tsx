@@ -36,7 +36,7 @@ const Header: React.FC = () => {
 
       <p className="header__search-title">Catalog</p>
 
-      <SearchField img={searchIcon} placeholder="Search" />
+      <SearchField img={searchIcon} placeholder="Search" label="Search" />
       {user
         ? (
           <div className="header__small-button-wrapper">

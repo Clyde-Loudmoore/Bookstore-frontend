@@ -5,7 +5,7 @@ import Book from 'ui/pages/HomePage/Catalog/Book/Book';
 import StyledRecommendations from './Recommendations.styled';
 
 import { useAppSelector, useAppDispatch } from '../../../../store';
-import { getAllBooks } from '../../../../store/thunks/bookThunk';
+import bookThunk from '../../../../store/thunks/bookThunk';
 
 import hideHeart from '../../../../assets/icons/hideHeart.png';
 import showHeart from '../../../../assets/icons/showHeart.png';
@@ -17,7 +17,7 @@ const Recommendations: React.FC = () => {
   React.useEffect(() => {
     (async () => {
       try {
-        dispatch(getAllBooks());
+        dispatch(bookThunk.getAllBooks());
       } catch (err) {
         const error = err as Error;
         return toast.error(error.message);

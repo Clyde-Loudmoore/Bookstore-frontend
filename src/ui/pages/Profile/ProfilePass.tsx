@@ -61,6 +61,7 @@ const ProfilePass: React.FC = () => {
           type="password"
           placeholder="Password"
           disabled={passAttribute}
+          label="Old password"
           {...passFormik.getFieldProps('password')}
         >
           <label className="password__label">Your password</label>
@@ -79,6 +80,7 @@ const ProfilePass: React.FC = () => {
                 type="password"
                 placeholder="New password"
                 disabled={passAttribute}
+                label="New Password"
                 {...passFormik.getFieldProps('newPassword')}
               />
               {passFormik.touched.newPassword && passFormik.errors.newPassword
@@ -93,6 +95,7 @@ const ProfilePass: React.FC = () => {
                 type="password"
                 placeholder="Password replay"
                 disabled={passAttribute}
+                label="Repeat new password"
                 {...passFormik.getFieldProps('confPassword')}
               />
               {passFormik.touched.confPassword && passFormik.errors.confPassword

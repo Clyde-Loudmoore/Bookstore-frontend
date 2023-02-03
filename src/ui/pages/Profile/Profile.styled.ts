@@ -83,8 +83,24 @@ const StyledProfile = styled.main`
   }
 
   .information-email__input-field, .information-fullname__input-field {
-    padding: 8px 0;
     margin: 9px 0 9px 0;
+  }
+
+  
+
+  .information-email__input-field:focus-within,
+  .information-fullname__input-field:focus-within,
+  .password__input-field:focus-within,
+  .new-password__input-field:focus-within {
+    outline:  2px solid ${(props) => props.theme.color.dark_blue};
+
+    .search__input {
+      padding: 8px 0;
+    }
+
+    .label, .close-button {
+      display: block;
+    }
   }
 
   .user-info__label {
@@ -112,15 +128,10 @@ const StyledProfile = styled.main`
     color: ${(props) => props.theme.color.dark_blue};
   }
 
-  .password__input-field {
-    padding: 8px 0;
+  .password__input-field, .new-password__input-field {
     margin-bottom: 9px;
   }
 
-  .new-password__input-field {
-    margin-bottom: 9px;
-  }
-  
   .password__paragraph {
     font-weight: ${(props) => props.theme.font_weight.medium};
     font-size: ${(props) => props.theme.font_size.fs14};
@@ -195,10 +206,6 @@ const StyledProfile = styled.main`
     .user-info__label {
       font-size: ${(props) => props.theme.font_size.fs12};
     }
-    
-    .email__label{
-      top: 147px;
-    }
 
     .user-info__header {
       flex-direction: column;
@@ -209,8 +216,6 @@ const StyledProfile = styled.main`
     .password__label {
       font-size: ${(props) => props.theme.font_size.fs12};
     }
-
-
   }
 `;
 

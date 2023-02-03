@@ -30,6 +30,7 @@ const EditUserSchema =
 
 const ProfileUser: React.FC = () => {
   const [infoAttribute, setInfoAttribute] = React.useState(true);
+  const [isError, setIsError] = React.useState(false);
 
   const currentUser = useAppSelector((state) => state.user.user) as UserType;
 
@@ -58,11 +59,13 @@ const ProfileUser: React.FC = () => {
 
     onSubmit: async (values, actions) => {
       try {
+        setIsError(false);
         actions.setSubmitting(false);
         const user = await userApi.editUser(currentUser.id, values);
         dispatch(userSliceActions.setUser(user.data.updatedUser));
         setInfoAttribute(true);
       } catch (err) {
+        setIsError(true);
         if (err instanceof AxiosError) {
           userFormik.setFieldError('email', err.response?.data.message);
         }
@@ -112,6 +115,7 @@ const ProfileUser: React.FC = () => {
               type="text"
               placeholder="Your full name"
               disabled={infoAttribute}
+              label="Your name"
               {...userFormik.getFieldProps('fullName')}
             >
               <label className="user-info__label">Your name</label>
@@ -127,6 +131,8 @@ const ProfileUser: React.FC = () => {
               type="email"
               placeholder="Email"
               disabled={infoAttribute}
+              label="Your email"
+              isError={isError}
               {...userFormik.getFieldProps('email')}
             >
               <label className="user-info__label email__label">Your email</label>

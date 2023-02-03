@@ -26,7 +26,7 @@ const StyledFilterGenre = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: #c6c9c5;
     border-radius: 16px;
-    border: 3px solid grey;
+    border: 2px solid grey;
   }
 
   .poligon {

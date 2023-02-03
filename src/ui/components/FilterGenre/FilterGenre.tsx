@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import type { FormEventHandler } from 'react';
 
+import { useAppDispatch } from 'store';
 import type { GenreType } from 'types';
 
 import StyledFilterGenre from './FilterGenre.styled';
@@ -14,12 +16,40 @@ type PropsType = {
 };
 
 const FilterGenre: React.FC<PropsType> = (props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filter, setFilter] = React.useState<string[]>([]);
+
+  const dispatch = useAppDispatch();
+
+  const changeFilterState = (newFilter: string) => {
+    setFilter((prevFilter) => {
+      if (prevFilter.includes(newFilter)) {
+        return prevFilter.filter((searchFilter) => searchFilter !== newFilter);
+      }
+
+      return [...prevFilter, newFilter];
+    });
+  };
+
+  React.useEffect(() => {
+    searchParams.set('genres', filter.join());
+    if (!filter.length) {
+      searchParams.delete('genres');
+    }
+    setSearchParams(searchParams);
+  }, [dispatch, filter, searchParams, setSearchParams]);
+
   return (
     <StyledFilterGenre onClick={props.onClick}>
       <img className="poligon" src={poligon} />
       {props.genres?.map((elem) => {
         return (
-          <GenreItem text={elem.genreName} key={elem.id} />
+          <GenreItem
+          text={elem.genreName}
+          key={elem.id}
+          setState={changeFilterState}
+          filter={filter}
+          />
         );
       })}
     </StyledFilterGenre>
