@@ -44,10 +44,10 @@ const Catalog: React.FC = () => {
     // const sorting = searchParams.get('sorting') || 'Name';
     // const search = searchParams.get('search') || '';
     // const page = Number(searchParams.get('page') || 1);
-    // const minPrice = Number(searchParams.get('minPrice') || '5');
-    // const maxPrice = Number(searchParams.get('maxPrice') || '25');
+    const minPrice = Number(searchParams.get('minPrice') || '5.99');
+    const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
     dispatch(
-      bookThunk.getAllFiltredBooks({ genre }),
+      bookThunk.getAllFiltredBooks({ genre, minPrice, maxPrice }),
     );
   }, [dispatch, searchParams]);
 
