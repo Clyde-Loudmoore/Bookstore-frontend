@@ -7,6 +7,7 @@ import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
 import type { UserType } from 'types';
+import constants from 'utils/constants';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userSliceActions } from '../../../store/slises/userSlise';
@@ -75,7 +76,7 @@ const ProfileUser: React.FC = () => {
   });
 
   const avatar = currentUser.avatar;
-  const noAvatar = 'http://localhost:4000/public/avatars/null';
+  const noAvatar = constants.PATHS.WITHOUT_AVATAR;
 
   return (
     <StyledProfile>

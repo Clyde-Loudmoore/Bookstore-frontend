@@ -41,13 +41,13 @@ const Catalog: React.FC = () => {
 
   React.useEffect(() => {
     const genre = searchParams.get('genres') || '';
-    // const sorting = searchParams.get('sorting') || 'Name';
     // const search = searchParams.get('search') || '';
     // const page = Number(searchParams.get('page') || 1);
     const minPrice = Number(searchParams.get('minPrice') || '5.99');
     const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
+    const sorting = searchParams.get('sorting') || 'Name';
     dispatch(
-      bookThunk.getAllFiltredBooks({ genre, minPrice, maxPrice }),
+      bookThunk.getAllFiltredBooks({ genre, minPrice, maxPrice, sorting }),
     );
   }, [dispatch, searchParams]);
 

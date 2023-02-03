@@ -5,7 +5,7 @@ import { useAppSelector } from 'store';
 
 import Loading from '../components/Loading';
 
-import { ROUTE_PATHS } from '../../utils/constants';
+import constants from '../../utils/constants';
 
 const HomePage = React.lazy(() => import('../pages/HomePage/HomePage'));
 const SingUp = React.lazy(() => import('../pages/SingUp'));
@@ -20,24 +20,24 @@ const Navigation: React.FC = () => {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route path={ROUTE_PATHS.HOME_PAGE} element={<HomePage />} />
-        <Route path={ROUTE_PATHS.CATALOG} element={<HomePage />} />
-        <Route path={ROUTE_PATHS.SING_IN} element={<SingIn />} />
-        <Route path={ROUTE_PATHS.SING_UP} element={<SingUp />} />
-        <Route path={`${ROUTE_PATHS.BOOKS}/${ROUTE_PATHS.BOOK_ID}`} element={<BookPage />} />
+        <Route path={constants.ROUTE_PATHS.HOME_PAGE} element={<HomePage />} />
+        <Route path={constants.ROUTE_PATHS.CATALOG} element={<HomePage />} />
+        <Route path={constants.ROUTE_PATHS.SING_IN} element={<SingIn />} />
+        <Route path={constants.ROUTE_PATHS.SING_UP} element={<SingUp />} />
+        <Route path={`${constants.ROUTE_PATHS.BOOKS}/${constants.ROUTE_PATHS.BOOK_ID}`} element={<BookPage />} />
 
         {user
           ? (
             <>
               (
-              <Route path={ROUTE_PATHS.PROFILE} element={<Profile />} />
-              <Route path={ROUTE_PATHS.CART} element={<Cart />} />
+              <Route path={constants.ROUTE_PATHS.PROFILE} element={<Profile />} />
+              <Route path={constants.ROUTE_PATHS.CART} element={<Cart />} />
               )
             </>
           )
           : (
             <>
-              (<Route path={ROUTE_PATHS.PROFILE} element={<HomePage />} />)
+              (<Route path={constants.ROUTE_PATHS.PROFILE} element={<HomePage />} />)
             </>
           )}
 

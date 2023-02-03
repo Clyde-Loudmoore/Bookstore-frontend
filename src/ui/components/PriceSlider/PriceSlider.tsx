@@ -15,7 +15,6 @@ export type PropsType = {
 const PriceSlider: React.FC<PropsType> = (props) => {
   const minPrice = 5.99;
   const maxPrice = 25.99;
-  // const [dropSelect, setDropSelect] = React.useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = React.useState([minPrice, maxPrice]);
 
