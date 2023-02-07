@@ -9,4 +9,5 @@ export type BookType = {
   price: number;
   counter: number;
   numberPerPage: number;
+  rating: number;
 };

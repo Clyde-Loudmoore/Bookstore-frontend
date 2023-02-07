@@ -47,6 +47,18 @@ const StyledHeader = styled.header`
     border-radius: 50%;
   }
 
+  .search__input-field:focus-within {
+    outline:  2px solid ${(props) => props.theme.color.dark_blue};
+
+    .search__input {
+      padding: 8px 0;
+    }
+
+    .label, .close-button {
+      display: block;
+    }
+  }
+
   @media (max-width: 834px) {
     padding: 20px 11px 45px 15px;
 

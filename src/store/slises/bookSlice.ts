@@ -17,9 +17,6 @@ const bookSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(bookThunk.getAllBooks.fulfilled, (store, { payload }) => {
-        store.books = payload;
-      })
       .addCase(bookThunk.getAllFiltredBooks.fulfilled, (store, { payload }) => {
         store.books = payload;
         // store.counter = payload.counter;

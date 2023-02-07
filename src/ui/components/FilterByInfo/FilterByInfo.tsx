@@ -8,29 +8,23 @@ import constants from 'utils/constants';
 import StyledFilterByInfo from './FilterByInfo.styled';
 import InfoItem from './InfoItem/InfoItem';
 
-import poligon from '../../../assets/images/polygon .png';
+import poligon from '../../../assets/images/polygon.png';
 
 export type PropsType = {
   onClick?: FormEventHandler;
 };
 
 const FilterByInfo: React.FC<PropsType> = (props) => {
-  const [filter, setFilter] = React.useState<string[]>([]);
+  const [filter, setFilter] = React.useState<string>('Price');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleChangeSort = (newFilter: string) => {
-    setFilter((prevFilter) => {
-      if (prevFilter.includes(newFilter)) {
-        return prevFilter.filter((searchFilter) => searchFilter !== newFilter);
-      }
-
-      return [...prevFilter, newFilter];
-    });
+  const handleChangeSort = (name: string) => {
+    setFilter(name);
   };
 
   React.useEffect(() => {
-    searchParams.set('sorting', filter as unknown as string);
-    if (!filter.length) {
+    searchParams.set('sorting', filter as string);
+    if (!filter) {
       searchParams.delete('sorting');
     }
     setSearchParams(searchParams);

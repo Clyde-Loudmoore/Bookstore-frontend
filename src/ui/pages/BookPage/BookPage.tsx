@@ -23,7 +23,7 @@ const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
   const [elected, setSelected] = React.useState(true);
 
-  const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((store) => store.user.user);
 
   const electedClass = 'elected';
   const unelectedClass = 'unelected';

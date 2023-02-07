@@ -24,7 +24,7 @@ const editUserPassSchema =
 const ProfilePass: React.FC = () => {
   const [passAttribute, setPassAttribute] = React.useState(true);
 
-  const currentUser = useAppSelector((state) => state.user.user) as UserType;
+  const currentUser = useAppSelector((store) => store.user.user) as UserType;
 
   const passFormik = useFormik({
     enableReinitialize: true,

@@ -6,14 +6,14 @@ import ReactSlider from 'react-slider';
 
 import StyledPriceSlider from './PriceSlider.styled';
 
-import poligon from '../../../assets/images/polygon .png';
+import poligon from '../../../assets/images/polygon.png';
 
 export type PropsType = {
   onClick?: FormEventHandler;
 };
 
 const PriceSlider: React.FC<PropsType> = (props) => {
-  const minPrice = 5.99;
+  const minPrice = 5.67;
   const maxPrice = 25.99;
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = React.useState([minPrice, maxPrice]);

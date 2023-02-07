@@ -33,7 +33,7 @@ const ProfileUser: React.FC = () => {
   const [infoAttribute, setInfoAttribute] = React.useState(true);
   const [isError, setIsError] = React.useState(false);
 
-  const currentUser = useAppSelector((state) => state.user.user) as UserType;
+  const currentUser = useAppSelector((store) => store.user.user) as UserType;
 
   const dispatch = useAppDispatch();
 

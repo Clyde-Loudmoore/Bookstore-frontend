@@ -1,9 +1,13 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import type { ChangeEvent } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import api from 'api/api';
 import { userSliceActions } from 'store/slises/userSlise';
 import type { UserType } from 'types';
 import { useAppSelector, useAppDispatch } from 'store';
+
+import { useDebounce } from 'hooks';
 
 import Button from '../../components/Button';
 import SearchField from '../../components/InputField';
@@ -16,7 +20,12 @@ import man from '../../../assets/icons/man.png';
 import logo from '../../../assets/icons/logo-header.png';
 
 const Header: React.FC = () => {
-  const user = useAppSelector((state) => state.user.user);
+  const [filter, setFilter] = React.useState<string>('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const debouncedFilter = useDebounce(filter, 1500);
+
+  const user = useAppSelector((store) => store.user.user);
 
   const dispatch = useAppDispatch();
 
@@ -28,6 +37,20 @@ const Header: React.FC = () => {
     api.removeApiToken(token as unknown as string);
   };
 
+  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
+  };
+
+  React.useEffect(() => {
+    if (debouncedFilter) {
+      searchParams.set('search', debouncedFilter as string);
+    } else {
+      searchParams.delete('search');
+    }
+    setSearchParams(searchParams);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedFilter]);
+
   return (
     <StyledHeader>
       <Link to="/">
@@ -36,7 +59,13 @@ const Header: React.FC = () => {
 
       <p className="header__search-title">Catalog</p>
 
-      <SearchField img={searchIcon} placeholder="Search" label="Search" />
+      <SearchField
+      className="search__input-field"
+      img={searchIcon}
+      placeholder="Search"
+      label="Search"
+      onChange={handleChangeSearch}
+      />
       {user
         ? (
           <div className="header__small-button-wrapper">
