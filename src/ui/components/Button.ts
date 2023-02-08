@@ -22,6 +22,7 @@ const StyledButton = styled.button`
     background-color: ${(props) => props.theme.color.dark_blue};
     outline: 8px solid ${(props) => props.theme.color.light_grey};
   }
+
 `;
 
 export default StyledButton;

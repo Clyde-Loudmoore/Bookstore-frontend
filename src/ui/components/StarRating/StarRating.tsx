@@ -20,33 +20,31 @@ const StarRating: React.FC<PropsType> = (props) => {
 
   const { bookId } = useParams();
 
-  // const books = useAppSelector((store) => store.books.books);
+  const books = useAppSelector((store) => store.books.books);
 
   const userId = useAppSelector((store) => store.user.user?.id);
 
   const dispatch = useAppDispatch();
 
-  const handleRating = (rating: number) => {
+  const handleRating = async (rating: number) => {
     if (userId && bookId) {
-      dispatch(bookThunk.addBookRatingThunk({ userId, bookId: Number(bookId), rating }));
+      await dispatch(bookThunk.addBookRatingThunk({ userId, bookId: Number(bookId), rating }));
     }
   };
 
   React.useEffect(() => {
     (async () => {
       try {
-        if (userId && bookId) {
-          const ratingResponse = await bookApi.getBookRating(userId, Number(bookId));
-          const rating = ratingResponse.data.bookRating.rating;
-
-          setRating(Number(rating));
-        }
+        const rating = books.map((book) => book.rating);
+        rating.forEach((elem) => {
+          setRating(elem);
+        });
       } catch (err) {
         const error = err as Error;
         return toast.error(error.message);
       }
     })();
-  }, [bookId, userId]);
+  }, [bookId, books, userId]);
 
   return (
     <StyledStarRating className={props.className}>

@@ -8,8 +8,11 @@ import bookApi from '../../api/bookApi';
 const getAllFiltredBooks = createAsyncThunk('getAllFiltredBooks',
   async (filterData: FilterQueryType, { rejectWithValue }) => {
     try {
-      const books = await bookApi.getFiltredBooks(filterData);
-      return books.data.books;
+      const response = await bookApi.getFiltredBooks(filterData);
+      const books = response.data.books;
+      const maxPages = response.data.maxPages;
+
+      return { books, maxPages };
     } catch (err) {
       if (err instanceof AxiosError) {
         return rejectWithValue(err.response?.data);

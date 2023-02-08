@@ -46,12 +46,12 @@ const Catalog: React.FC = () => {
   React.useEffect(() => {
     const genre = searchParams.get('genres') || '';
     const search = searchParams.get('search') || '';
-    // const page = Number(searchParams.get('page') || 1);
+    const page = Number(searchParams.get('page') || 1);
     const minPrice = Number(searchParams.get('minPrice') || '5.99');
     const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
     const sorting = searchParams.get('sorting') || 'Name';
     dispatch(
-      bookThunk.getAllFiltredBooks({ genre, search, minPrice, maxPrice, sorting }),
+      bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),
     );
   }, [dispatch, searchParams]);
 

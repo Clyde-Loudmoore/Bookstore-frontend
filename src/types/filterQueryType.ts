@@ -3,6 +3,7 @@ export type FilterQueryType = {
   maxPrice?: number;
   minPrice?: number;
   sorting?: string;
+  maxPages?: number;
   page?: number;
   search?: string;
 };

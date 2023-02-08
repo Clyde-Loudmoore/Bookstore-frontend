@@ -8,8 +8,26 @@ const StyledPagination = styled.div`
   justify-content: space-between;
   align-items: center;
   
-  img {
-    cursor: pointer;
+  .pagination-button {
+    width: 24px;
+    height: 24px;
+    background: ${(props) => props.theme.color.white};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pagination-button:active {
+    outline: none;
+  }
+
+  .pagination__button-circle {
+    width: 13px;
+    height: 13px;
+    background: ${(props) => props.theme.color.white};
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
