@@ -5,19 +5,20 @@ import { toast } from 'react-toastify';
 
 import bookApi from 'api/bookApi';
 import type { BookType } from 'types';
-import { useAppSelector } from 'store';
+import { useAppSelector, useAppDispatch } from 'store';
+import cartThunk from 'store/thunks/cartThunk';
 
 import StarRating from 'ui/components/StarRating';
 import Button from 'ui/components/Button';
-import Comments from 'ui/components/Comments/Comments';
-import Recommendations from './Recommendations/Recommendations';
+import Comments from 'ui/components/Comments';
+import Recommendations from './Recommendations';
 import StyledBookPage from './BookPage.styled';
 import FooterBanner from '../HomePage/FooterBanner';
 
-import hideHeart from '../../../assets/icons/hideHeart.png';
-import showHeart from '../../../assets/icons/showHeart.png';
-import arrow from '../../../assets/icons/backArrow.png';
-import star from '../../../assets/icons/star.png';
+import hideHeart from '../../assets/icons/hideHeart.png';
+import showHeart from '../../assets/icons/showHeart.png';
+import arrow from '../../assets/icons/backArrow.png';
+import star from '../../assets/icons/star.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
@@ -25,10 +26,16 @@ const BookPage: React.FC = () => {
 
   const user = useAppSelector((store) => store.user.user);
 
+  const dispatch = useAppDispatch();
+
   const electedClass = 'elected';
   const unelectedClass = 'unelected';
 
   const { bookId } = useParams();
+
+  const handleAddBookInCart = (userId: number, bookId: number) => {
+    dispatch(cartThunk.addBookThunk({ userId, bookId }));
+  };
 
   React.useEffect(() => {
     (async () => {
@@ -85,7 +92,7 @@ const BookPage: React.FC = () => {
 
             <div className="hardcover-wrapper">
               <label className="label">Hardcover</label>
-              <Button className="hardcover">${oneBook?.price} USD</Button>
+              <Button className="hardcover" onClick={() => handleAddBookInCart(user!.id, Number(bookId))}>${oneBook?.price} USD</Button>
             </div>
           </div>
 

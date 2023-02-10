@@ -5,7 +5,7 @@ import FooterBanner from './FooterBanner/FooterBanner';
 import Button from '../../components/Button';
 import Catalog from './Catalog/Catalog';
 
-import reader from '../../../assets/images/reader.png';
+import reader from '../../assets/images/reader.png';
 
 import { useAppSelector } from '../../../store';
 

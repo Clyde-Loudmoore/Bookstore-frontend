@@ -4,8 +4,8 @@ import type { FormEventHandler, ReactNode } from 'react';
 
 import StyledDropdown from './Dropdown.styled';
 
-import arrowRight from '../../../assets/icons/arrowRight.png';
-import arrowBottom from '../../../assets/icons/arrowBottom.png';
+import arrowRight from '../../assets/icons/arrowRight.png';
+import arrowBottom from '../../assets/icons/arrowBottom.png';
 
 type PropsType = {
   onClick?: FormEventHandler;

@@ -8,7 +8,7 @@ import type { GenreType } from 'types';
 import StyledFilterGenre from './FilterGenre.styled';
 import GenreItem from './GenreItem';
 
-import poligon from '../../../assets/images/polygon.png';
+import poligon from '../../assets/images/polygon.png';
 
 type PropsType = {
   onClick?: FormEventHandler;

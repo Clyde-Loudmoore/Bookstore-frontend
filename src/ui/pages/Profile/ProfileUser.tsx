@@ -18,10 +18,10 @@ import InputField from '../../components/InputField';
 import ProfilePass from './ProfilePass';
 import StyledProfile from './Profile.styled';
 
-import camera from '../../../assets/icons/camera.png';
-import userName from '../../../assets/icons/username.png';
-import mail from '../../../assets/icons/mail.png';
-import noPhoto from '../../../assets/images/user-profile.png';
+import camera from '../../assets/icons/camera.png';
+import userName from '../../assets/icons/username.png';
+import mail from '../../assets/icons/mail.png';
+import noPhoto from '../../assets/images/user-profile.png';
 
 const EditUserSchema =
   yup.object({

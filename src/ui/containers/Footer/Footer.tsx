@@ -7,8 +7,8 @@ import type { UserType } from 'types';
 
 import StyledFooter from './Footer.styled';
 
-import logo from '../../../assets/icons/logo-footer.png';
-import map from '../../../assets/icons/map.png';
+import logo from '../../assets/icons/logo-footer.png';
+import map from '../../assets/icons/map.png';
 
 const Footer: React.FC = () => {
   const dispatch = useAppDispatch();

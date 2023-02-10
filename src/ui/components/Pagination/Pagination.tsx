@@ -6,10 +6,10 @@ import { useAppSelector } from 'store';
 import StyledPagination from './Pagination.styled';
 import Button from '../Button';
 
-import arrowLeft from '../../../assets/icons/paginationBack.png';
-import arrowRight from '../../../assets/icons/paginationForward.png';
-import paginationEllipse from '../../../assets/icons/paginationEllipse.png';
-import paginationCurrent from '../../../assets/icons/paginationCurrent.png';
+import arrowLeft from '../../assets/icons/paginationBack.png';
+import arrowRight from '../../assets/icons/paginationForward.png';
+import paginationEllipse from '../../assets/icons/paginationEllipse.png';
+import paginationCurrent from '../../assets/icons/paginationCurrent.png';
 
 type PropsType = {
   page?: number;

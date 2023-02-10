@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import StyledFooterBanner from './FooterBanner.styled';
 import Button from '../../../components/Button';
 
-import castle from '../../../../assets/images/castle.png';
+import castle from '../../../assets/images/castle.png';
 
 type PropsType = {
   className?: string;

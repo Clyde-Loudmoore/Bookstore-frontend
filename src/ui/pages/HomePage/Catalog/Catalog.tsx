@@ -3,6 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import bookApi from 'api/bookApi';
+import { useAppDispatch, useAppSelector } from 'store';
+import bookThunk from 'store/thunks/bookThunk';
+import cartThunk from 'store/thunks/cartThunk';
 
 import Dropdown from 'ui/components/Dropdown';
 import Pagination from 'ui/components/Pagination/Pagination';
@@ -13,22 +16,25 @@ import StyledCatalod from './Catalog.styled';
 import PriceSlider from '../../../components/PriceSlider';
 import Book from './Book';
 
-import { useAppDispatch, useAppSelector } from '../../../../store';
-import bookThunk from '../../../../store/thunks/bookThunk';
-
-import hideHeart from '../../../../assets/icons/hideHeart.png';
-import showHeart from '../../../../assets/icons/showHeart.png';
+import hideHeart from '../../../assets/icons/hideHeart.png';
+import showHeart from '../../../assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
   const [searchParams] = useSearchParams();
 
+  const user = useAppSelector((store) => store.user.user);
   const books = useAppSelector((store) => store.books.books);
+
   const dispatch = useAppDispatch();
 
   const filteredBooks = books.filter((book) => {
     return book.title.toLowerCase().includes(book.title.toLowerCase());
   });
+
+  const handleAddBookInCart = (userId: number, bookId: number) => {
+    dispatch(cartThunk.addBookThunk({ userId, bookId }));
+  };
 
   React.useEffect(() => {
     (async () => {
@@ -53,7 +59,10 @@ const Catalog: React.FC = () => {
     dispatch(
       bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),
     );
-  }, [dispatch, searchParams]);
+    if (user) {
+      dispatch(cartThunk.getCart(user.id));
+    }
+  }, [dispatch, searchParams, user]);
 
   return (
     <StyledCatalod>
@@ -90,6 +99,7 @@ const Catalog: React.FC = () => {
               title={book.title}
               author={book.author}
               price={book.price}
+              addBookInCart={() => handleAddBookInCart(user!.id, book.id)}
             />
 
           );

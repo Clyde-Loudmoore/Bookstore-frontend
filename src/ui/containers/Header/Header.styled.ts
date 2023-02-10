@@ -40,6 +40,24 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+  }
+
+  .cart-items {
+    width: 23px;
+    height: 23px;
+    font-weight: ${(props) => props.theme.font_weight.large};
+    font-size: ${(props) => props.theme.font_size.fs12};
+    line-height: ${(props) => props.theme.line_height.lh18};
+    color: ${(props) => props.theme.color.dark_blue};
+    background-color: #BFCC94;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -6px;
+    right: -8px;
   }
 
   .header__small-button-link {

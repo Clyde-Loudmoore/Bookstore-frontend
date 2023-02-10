@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledEmptyCart = styled.div`
+const StyledEmptyCart = styled.section`
   margin: 78px 0 148px 0;
   display: flex;
   justify-content: space-evenly;

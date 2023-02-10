@@ -6,7 +6,7 @@ import ReactSlider from 'react-slider';
 
 import StyledPriceSlider from './PriceSlider.styled';
 
-import poligon from '../../../assets/images/polygon.png';
+import poligon from '../../assets/images/polygon.png';
 
 export type PropsType = {
   onClick?: FormEventHandler;

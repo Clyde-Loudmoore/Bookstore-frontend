@@ -13,11 +13,11 @@ import Button from '../../components/Button';
 import SearchField from '../../components/InputField';
 import StyledHeader from './Header.styled';
 
-import searchIcon from '../../../assets/icons/search.png';
-import cart from '../../../assets/icons/cart.png';
-import heart from '../../../assets/icons/hideHeart.png';
-import man from '../../../assets/icons/man.png';
-import logo from '../../../assets/icons/logo-header.png';
+import searchIcon from '../../assets/icons/search.png';
+import cartIcon from '../../assets/icons/cart.png';
+import heartIcon from '../../assets/icons/hideHeart.png';
+import manIcon from '../../assets/icons/man.png';
+import logoIcon from '../../assets/icons/logo-header.png';
 
 const Header: React.FC = () => {
   const [filter, setFilter] = React.useState<string>('');
@@ -25,6 +25,7 @@ const Header: React.FC = () => {
 
   const debouncedFilter = useDebounce(filter, 1500);
 
+  const cart = useAppSelector((store) => store.books.cart);
   const user = useAppSelector((store) => store.user.user);
 
   const dispatch = useAppDispatch();
@@ -48,38 +49,43 @@ const Header: React.FC = () => {
       searchParams.delete('search');
     }
     setSearchParams(searchParams);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedFilter]);
 
   return (
     <StyledHeader>
       <Link to="/">
-        <img className="header__logo-image" src={logo} alt="App logo" onClick={signOut} />
+        <img className="header__logo-image" src={logoIcon} alt="App logo" onClick={signOut} />
       </Link>
 
       <p className="header__search-title">Catalog</p>
 
       <SearchField
-      className="search__input-field"
-      img={searchIcon}
-      placeholder="Search"
-      label="Search"
-      onChange={handleChangeSearch}
+        className="search__input-field"
+        img={searchIcon}
+        placeholder="Search"
+        label="Search"
+        onChange={handleChangeSearch}
       />
       {user
         ? (
           <div className="header__small-button-wrapper">
 
             <Link className="header__small-button-link" to="/cart">
-              <Button className="header__small-button"><img src={cart} /></Button>
+              <Button className="header__small-button">
+                <img src={cartIcon} />
+                <div className="cart-items">
+                  {cart!.length}
+                </div>
+              </Button>
             </Link>
 
             <Link className="header__small-button-link" to="#">
-              <Button className="header__small-button"><img src={heart} /></Button>
+              <Button className="header__small-button"><img src={heartIcon} /></Button>
             </Link>
 
             <Link className="header__small-button-link" to="profile">
-              <Button className="header__small-button"><img src={man} /></Button>
+              <Button className="header__small-button"><img src={manIcon} /></Button>
             </Link>
 
           </div>

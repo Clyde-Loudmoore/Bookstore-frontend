@@ -24,7 +24,9 @@ const InfoItem: React.FC<PropsType> = ({ setState, filter, text }) => {
   };
 
   return (
-    <StyledInfoItem onClick={() => handleChangeGenre(text)}>
+    <StyledInfoItem
+      onClick={() => handleChangeGenre(text)}
+    >
       <p className={color ? DARK_GREY : DARK_BLUE}>{text}</p>
     </StyledInfoItem>
   );

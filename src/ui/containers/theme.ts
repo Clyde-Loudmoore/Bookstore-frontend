@@ -15,12 +15,14 @@ const theme = {
 
   font_weight: {
     large: 700,
+    average: 600,
     medium: 500,
     small: 400,
   },
 
   font_size: {
     fs40: '40px',
+    fs36: '36px',
     fs32: '32px',
     fs24: '24px',
     fs20: '20px',
@@ -32,6 +34,7 @@ const theme = {
 
   line_height: {
     lh60: '60px',
+    lh54: '54px',
     lh48: '48px',
     lh36: '36px',
     lh30: '30px',

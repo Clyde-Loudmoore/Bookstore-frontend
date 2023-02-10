@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from 'ui/components/Button';
 import StyledEmptyCart from './EmptyCart.styled';
 
-import bookImg from '../../../../assets/images/bookBG3.png';
+import bookImg from '../../../assets/images/bookBG3.png';
 
 const EmptyCart: React.FC = () => {
   return (

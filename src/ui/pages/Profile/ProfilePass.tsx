@@ -12,7 +12,7 @@ import sharedValidation from '../../../utils/sharedValidationFields';
 import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 
-import hideEye from '../../../assets/icons/hideEye.png';
+import hideEye from '../../assets/icons/hideEye.png';
 
 const editUserPassSchema =
   yup.object({

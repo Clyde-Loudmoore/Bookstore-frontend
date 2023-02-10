@@ -18,7 +18,6 @@ const SORT_LIST = [
 ];
 
 const PATHS = {
-  BOOK_PATH: '/books',
   WITHOUT_AVATAR: 'http://localhost:4000/public/avatars/null',
 };
 

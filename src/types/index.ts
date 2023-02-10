@@ -9,3 +9,9 @@ export type { FilterQueryType } from './filterQueryType';
 export type { RatingBookType } from './ratingBookType';
 
 export type { AddRatingApiType } from './addRatingApiType';
+
+export type { AddBookType } from './addBookType';
+
+export type { CartType } from './cartType';
+
+export type { LikedBookType } from './likedBookType';

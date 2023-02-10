@@ -8,7 +8,7 @@ import constants from 'utils/constants';
 import StyledFilterByInfo from './FilterByInfo.styled';
 import InfoItem from './InfoItem/InfoItem';
 
-import poligon from '../../../assets/images/polygon.png';
+import poligon from '../../assets/images/polygon.png';
 
 export type PropsType = {
   onClick?: FormEventHandler;

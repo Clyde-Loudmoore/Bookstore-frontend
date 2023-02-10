@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useAppSelector } from 'store';
+
 import Button from 'ui/components/Button';
 import StarRating from 'ui/components/StarRating';
 import StyledBook from './Book.styled';
@@ -14,13 +16,30 @@ export type PropsType = {
   author?: string;
   price?: number;
   img?: string;
+  addBookInCart?: () => void;
 };
 
 const Book: React.FC<PropsType> = (props) => {
   const [elected, setSelected] = React.useState(true);
+  const [anotherButton, setAnotherButton] = React.useState(false);
+
+  const cart = useAppSelector((store) => store.books.cart);
 
   const electedClass = 'elected';
   const unelectedClass = 'unelected';
+
+  // eslint-disable-next-line no-console
+  console.log(anotherButton, cart);
+
+  React.useEffect(() => {
+    if (cart) {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].bookId === Number(props.id)) {
+          setAnotherButton(true);
+        }
+      }
+    }
+  }, [anotherButton, cart, props.id]);
 
   return (
     <StyledBook>
@@ -37,7 +56,19 @@ const Book: React.FC<PropsType> = (props) => {
 
       <StarRating />
 
-      <Button className="book-price_button" type="submit">${props.price} USD</Button>
+      {anotherButton
+        ? <Button className="dont-active">Added to cart</Button>
+        : (
+          <Button
+            className="book-price_button"
+            type="submit"
+            onClick={props.addBookInCart}
+          >
+            ${props.price} USD
+          </Button>
+        )
+      }
+
     </StyledBook>
   );
 };

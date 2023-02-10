@@ -4,8 +4,8 @@ import type { FocusEventHandler, FormEventHandler, ReactNode } from 'react';
 import StyledInputField from './InputField.styled';
 import Button from '../Button';
 
-import showEye from '../../../assets/icons/showEye.png';
-import closeIcon from '../../../assets/icons/close.png';
+import showEye from '../../assets/icons/showEye.png';
+import closeIcon from '../../assets/icons/close.png';
 
 export type PropsType = {
   onChange?: FormEventHandler;

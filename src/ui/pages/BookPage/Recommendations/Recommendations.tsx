@@ -8,8 +8,8 @@ import StyledRecommendations from './Recommendations.styled';
 import { useAppSelector, useAppDispatch } from '../../../../store';
 import bookThunk from '../../../../store/thunks/bookThunk';
 
-import hideHeart from '../../../../assets/icons/hideHeart.png';
-import showHeart from '../../../../assets/icons/showHeart.png';
+import hideHeart from '../../../assets/icons/hideHeart.png';
+import showHeart from '../../../assets/icons/showHeart.png';
 
 const Recommendations: React.FC = () => {
   const books = useAppSelector((store) => store.books.books);
@@ -21,8 +21,6 @@ const Recommendations: React.FC = () => {
     (async () => {
       try {
         const genre = searchParams.get('genres') || '';
-        // const search = searchParams.get('search') || '';
-        // const page = Number(searchParams.get('page') || 1);
         const minPrice = Number(searchParams.get('minPrice') || '5.67');
         const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
         const sorting = searchParams.get('sorting') || 'Name';

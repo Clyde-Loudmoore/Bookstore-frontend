@@ -14,9 +14,9 @@ import StyledSingUp from './SingUp.styled';
 import InputField from '../../components/InputField';
 import Button from '../../components/Button';
 
-import mailIcon from '../../../assets/icons/mail.png';
-import hideEye from '../../../assets/icons/hideEye.png';
-import singUpBG from '../../../assets/images/singUpBG.png';
+import mailIcon from '../../assets/icons/mail.png';
+import hideEye from '../../assets/icons/hideEye.png';
+import singUpBG from '../../assets/images/singUpBG.png';
 
 const SingUpSchema =
   yup.object({

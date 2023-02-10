@@ -55,6 +55,18 @@ const StyledBook = styled.div`
     margin-bottom: 60px;
   }
 
+  .dont-active {
+    color: ${(props) => props.theme.color.dark};
+    background-color: ${(props) => props.theme.color.white};
+    border: 1px solid ${(props) => props.theme.color.dark};
+    margin-bottom: 60px;
+    cursor: default;
+  }
+
+  .dont-active:active {
+    outline: none
+  }
+
   @media (max-width: 960px) {
     .book-cover {
       max-width: 254px;

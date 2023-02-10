@@ -3,8 +3,8 @@ import React from 'react';
 import Button from 'ui/components/Button';
 import StyledGenreItem from './GenreItem.styled';
 
-import cheched from '../../../../assets/icons/checked.png';
-import unchecked from '../../../../assets/icons/unchecked.png';
+import cheched from '../../../assets/icons/checked.png';
+import unchecked from '../../../assets/icons/unchecked.png';
 
 export type PropsType = {
   text: string;
