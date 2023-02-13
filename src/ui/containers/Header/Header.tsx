@@ -55,10 +55,10 @@ const Header: React.FC = () => {
   return (
     <StyledHeader>
       <Link to="/">
-        <img className="header__logo-image" src={logoIcon} alt="App logo" onClick={signOut} />
+        <img className="header__logo-image" src={logoIcon} alt="App logo" />
       </Link>
 
-      <p className="header__search-title">Catalog</p>
+      <p className="header__search-title" onClick={signOut}>Catalog</p>
 
       <SearchField
         className="search__input-field"
