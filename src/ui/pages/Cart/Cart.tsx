@@ -13,17 +13,13 @@ const Cart: React.FC = () => {
   const user = useAppSelector((store) => store.user.user);
   const cart = useAppSelector((store) => store.books.cart);
 
-  const price = cart?.map((book) => book.price);
-  const quantityOfGoods = cart?.map((book) => book.quantityOfGoods);
-  let totalPrice = 0;
+  let totalSum = 0;
 
-  if (price && quantityOfGoods) {
-    for (let i = 0; i < price.length; i++) {
-      for (let j = 0; j < quantityOfGoods.length; j++) {
-        totalPrice = +price[i] * +quantityOfGoods[j];
-      }
-    }
+  for (let i = 0; i < cart!.length; i++) {
+    totalSum += +cart![i].price * +cart![i].quantityOfGoods;
   }
+
+  const totalPrice = +totalSum.toFixed(2);
 
   const dispatch = useAppDispatch();
 

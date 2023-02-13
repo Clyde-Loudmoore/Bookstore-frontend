@@ -28,9 +28,6 @@ const Book: React.FC<PropsType> = (props) => {
   const electedClass = 'elected';
   const unelectedClass = 'unelected';
 
-  // eslint-disable-next-line no-console
-  console.log(anotherButton, cart);
-
   React.useEffect(() => {
     if (cart) {
       for (let i = 0; i < cart.length; i++) {
