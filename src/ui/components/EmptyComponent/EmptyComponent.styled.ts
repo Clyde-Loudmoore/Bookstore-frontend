@@ -5,6 +5,7 @@ const StyledEmptyComponent = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 30px;
 
   .empty-component__image {
     max-width: 433px;

@@ -12,9 +12,9 @@ const StyledCartFooter = styled.section`
     font-weight: ${(props) => props.theme.font_weight.large};
     }
 
-    .total-buttons {
-      display: flex;
-      gap: 20px;
+  .total-buttons {
+    display: flex;
+    gap: 20px;
     }
 
   .continue {
@@ -28,14 +28,35 @@ const StyledCartFooter = styled.section`
     border: 1px solid ${(props) => props.theme.dark};
   } 
 
+  .continue:hover {
+    background-color: ${(props) => props.theme.color.light_grey};
+  }
+  
   .checkout {
     max-width: 174px;
     width: 100%;
   }
 
-  .continue:hover {
-    background-color: ${(props) => props.theme.color.light_grey};
+  @media (max-width: 525px) {
+    .total {
+      font-size: ${(props) => props.theme.font_size.fs24};
+      line-height: ${(props) => props.theme.line_height.lh36};
+    }
+
+    .total-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      }
+
+    .continue, .checkout {
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
+      max-width: 290px;
+      width: 100%;
+    }
   }
+
 `;
 
 export default StyledCartFooter;

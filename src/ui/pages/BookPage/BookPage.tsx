@@ -62,11 +62,11 @@ const BookPage: React.FC = () => {
               setAnotherButton(true);
             }
           }
-          if (likedBooks) {
-            for (let j = 0; j < likedBooks.length; j++) {
-              if (likedBooks[j].bookId === Number(bookId)) {
-                setSelected(false);
-              }
+        }
+        if (likedBooks) {
+          for (let j = 0; j < likedBooks.length; j++) {
+            if (likedBooks[j].bookId === Number(bookId)) {
+              setSelected(false);
             }
           }
         }

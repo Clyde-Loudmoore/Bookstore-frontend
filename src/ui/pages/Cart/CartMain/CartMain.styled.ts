@@ -85,6 +85,57 @@ const StyledCartMain = styled.section`
   .grand-line img {
     width: 100%;
   }
+
+  @media (max-width: 834px) {
+    .cover {
+      width: 255px;
+      height: 375px;
+    }
+
+    .title {
+      font-size: ${(props) => props.theme.font_size.fs32};
+      line-height: ${(props) => props.theme.line_height.lh48};
+    }
+
+    .author {
+      font-size: ${(props) => props.theme.font_size.fs20};
+      line-height: ${(props) => props.theme.line_height.lh30};
+    }
+  }
+
+  @media (max-width: 525px) {
+    .cover {
+      width: 135px;
+      height: 202px;
+    }
+
+    .title {
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh20};
+    }
+
+    .author {
+      font-size: ${(props) => props.theme.font_size.fs12};
+      line-height: ${(props) => props.theme.line_height.lh18};
+    }
+
+    .number {
+      font-size: ${(props) => props.theme.font_size.fs14};
+      line-height: ${(props) => props.theme.line_height.lh32};
+      padding: 0 7px;
+    }
+
+    .sum {
+      font-size: ${(props) => props.theme.font_size.fs18};
+      line-height: ${(props) => props.theme.line_height.lh27};
+    }
+
+    .delete {
+      width: 18px;
+      height: 18px;
+      margin-left: 24px;
+    }
+  }
 `;
 
 export default StyledCartMain;
