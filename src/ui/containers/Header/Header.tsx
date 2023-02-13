@@ -25,8 +25,9 @@ const Header: React.FC = () => {
 
   const debouncedFilter = useDebounce(filter, 1500);
 
-  const cart = useAppSelector((store) => store.books.cart);
   const user = useAppSelector((store) => store.user.user);
+  const cart = useAppSelector((store) => store.books.cart);
+  const likedBooks = useAppSelector((store) => store.books.likedBooks);
 
   const dispatch = useAppDispatch();
 
@@ -75,16 +76,21 @@ const Header: React.FC = () => {
               <Button className="header__small-button">
                 <img src={cartIcon} />
                 <div className="cart-items">
-                  {cart!.length}
+                  {cart?.length}
                 </div>
               </Button>
             </Link>
 
-            <Link className="header__small-button-link" to="#">
-              <Button className="header__small-button"><img src={heartIcon} /></Button>
+            <Link className="header__small-button-link" to="/favorites">
+              <Button className="header__small-button">
+                <img src={heartIcon} />
+                <div className="cart-items">
+                  {likedBooks?.length}
+                </div>
+              </Button>
             </Link>
 
-            <Link className="header__small-button-link" to="profile">
+            <Link className="header__small-button-link" to="/profile">
               <Button className="header__small-button"><img src={manIcon} /></Button>
             </Link>
 
@@ -93,11 +99,11 @@ const Header: React.FC = () => {
         : (
           <div className="header__button-wrapper">
 
-            <Link className="header__button-link" to="sing-up">
+            <Link className="header__button-link" to="/sing-up">
               <Button className="header__button">Sing Up</Button>
             </Link>
 
-            <Link className="header__button-link" to="sing-in">
+            <Link className="header__button-link" to="/sing-in">
               <Button className="header__button">Sing In</Button>
             </Link>
 

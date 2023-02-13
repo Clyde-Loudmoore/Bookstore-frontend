@@ -10,7 +10,7 @@ const getInitialStore = () => ({
   books: [] as BookType[],
   book: {} as BookType,
   cart: [] as CartType[] | null,
-  likedBooks: [] as LikedBookType[],
+  likedBooks: [] as LikedBookType[] | null,
   maxPages: 0 as FilterQueryType,
 });
 
@@ -24,6 +24,15 @@ const bookSlice = createSlice({
         store.books = payload.books;
         store.maxPages = payload.maxPages;
       })
+      .addCase(bookThunk.getLikedBooks.fulfilled, (state, { payload }) => {
+        state.likedBooks = payload.books;
+      })
+      .addCase(bookThunk.deleteLikedBook.fulfilled, (state, { payload }) => {
+        state.likedBooks = payload.books;
+      })
+      .addCase(bookThunk.addLikedBook.fulfilled, (state, { payload }) => {
+        state.likedBooks = payload.books;
+      })
       .addCase(cartThunk.getCart.fulfilled, (state, { payload }) => {
         state.cart = payload.books;
       })
@@ -36,7 +45,7 @@ const bookSlice = createSlice({
       .addCase(cartThunk.deleteCopyBook.fulfilled, (state, { payload }) => {
         state.cart = payload.books;
       })
-      .addCase(cartThunk.addBookThunk.fulfilled, (state, { payload }) => {
+      .addCase(cartThunk.addBook.fulfilled, (state, { payload }) => {
         state.cart = payload.books;
       });
   },

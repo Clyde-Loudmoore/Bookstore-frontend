@@ -33,7 +33,7 @@ const Catalog: React.FC = () => {
   });
 
   const handleAddBookInCart = (userId: number, bookId: number) => {
-    dispatch(cartThunk.addBookThunk({ userId, bookId }));
+    dispatch(cartThunk.addBook({ userId, bookId }));
   };
 
   React.useEffect(() => {

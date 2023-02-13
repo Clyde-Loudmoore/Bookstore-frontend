@@ -1,5 +1,6 @@
 import cartThunk from 'store/thunks/cartThunk';
 import { useAppDispatch } from 'store';
+
 import type { CartType } from 'types';
 
 import Button from 'ui/components/Button';

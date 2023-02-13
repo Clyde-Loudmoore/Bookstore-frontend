@@ -5,8 +5,8 @@ import cartApi from 'api/cartApi';
 
 import type { AddBookType } from 'types';
 
-const addBookThunk = createAsyncThunk(
-  'addBookThunk',
+const addBook = createAsyncThunk(
+  'addBook',
   async (data: AddBookType, { rejectWithValue }) => {
     const { userId, bookId } = data;
     try {
@@ -82,7 +82,7 @@ const deleteBookInCart = createAsyncThunk(
 );
 
 export default {
-  addBookThunk,
+  addBook,
   getCart,
   addCopyBook,
   deleteCopyBook,

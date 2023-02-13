@@ -7,6 +7,7 @@ import bookApi from 'api/bookApi';
 import type { BookType } from 'types';
 import { useAppSelector, useAppDispatch } from 'store';
 import cartThunk from 'store/thunks/cartThunk';
+import bookThunk from 'store/thunks/bookThunk';
 
 import StarRating from 'ui/components/StarRating';
 import Button from 'ui/components/Button';
@@ -23,8 +24,11 @@ import star from '../../assets/icons/star.png';
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();
   const [elected, setSelected] = React.useState(true);
+  const [anotherButton, setAnotherButton] = React.useState(false);
 
   const user = useAppSelector((store) => store.user.user);
+  const likedBooks = useAppSelector((store) => store.books.likedBooks);
+  const cart = useAppSelector((store) => store.books.cart);
 
   const dispatch = useAppDispatch();
 
@@ -34,7 +38,17 @@ const BookPage: React.FC = () => {
   const { bookId } = useParams();
 
   const handleAddBookInCart = (userId: number, bookId: number) => {
-    dispatch(cartThunk.addBookThunk({ userId, bookId }));
+    dispatch(cartThunk.addBook({ userId, bookId }));
+  };
+
+  const deleteOrAddToFavorites = (bookId: number) => {
+    if (elected) {
+      dispatch(bookThunk.addLikedBook(bookId));
+      setSelected(false);
+    } else {
+      dispatch(bookThunk.deleteLikedBook(bookId));
+      setSelected(true);
+    }
   };
 
   React.useEffect(() => {
@@ -42,12 +56,26 @@ const BookPage: React.FC = () => {
       try {
         const book = await bookApi.getBook(Number(bookId));
         setOneBook(book.data.book);
+        if (cart) {
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].bookId === Number(bookId)) {
+              setAnotherButton(true);
+            }
+          }
+          if (likedBooks) {
+            for (let j = 0; j < likedBooks.length; j++) {
+              if (likedBooks[j].bookId === Number(bookId)) {
+                setSelected(false);
+              }
+            }
+          }
+        }
       } catch (err) {
         const error = err as Error;
         return toast.error(error.message);
       }
     })();
-  }, [bookId]);
+  }, [bookId, cart, likedBooks]);
 
   return (
     <StyledBookPage>
@@ -58,7 +86,7 @@ const BookPage: React.FC = () => {
           <Button
             className={`book-selected ${elected ? unelectedClass : electedClass}`}
             type="submit"
-            onClick={() => setSelected(!elected)}
+            onClick={() => deleteOrAddToFavorites(Number(bookId))}
           >
             <img src={elected ? hideHeart : showHeart} />
           </Button>
@@ -92,7 +120,19 @@ const BookPage: React.FC = () => {
 
             <div className="hardcover-wrapper">
               <label className="label">Hardcover</label>
-              <Button className="hardcover" onClick={() => handleAddBookInCart(user!.id, Number(bookId))}>${oneBook?.price} USD</Button>
+
+              {anotherButton
+                ? <Button className="dont-active">Added to cart</Button>
+                : (
+                  <Button
+                    className="hardcover"
+                    type="submit"
+                    onClick={() => handleAddBookInCart(user!.id, Number(bookId))}
+                  >
+                    ${oneBook?.price} USD
+                  </Button>
+                )
+              }
             </div>
           </div>
 

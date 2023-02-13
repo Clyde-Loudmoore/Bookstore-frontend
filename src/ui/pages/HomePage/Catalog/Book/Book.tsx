@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useAppSelector } from 'store';
+import { useAppSelector, useAppDispatch } from 'store';
+import bookThunk from 'store/thunks/bookThunk';
 
 import Button from 'ui/components/Button';
 import StarRating from 'ui/components/StarRating';
@@ -24,9 +25,22 @@ const Book: React.FC<PropsType> = (props) => {
   const [anotherButton, setAnotherButton] = React.useState(false);
 
   const cart = useAppSelector((store) => store.books.cart);
+  const likedBooks = useAppSelector((store) => store.books.likedBooks);
+
+  const dispatch = useAppDispatch();
 
   const electedClass = 'elected';
   const unelectedClass = 'unelected';
+
+  const deleteOrAddToFavorites = (bookId: number) => {
+    if (elected) {
+      dispatch(bookThunk.addLikedBook(bookId));
+      setSelected(false);
+    } else {
+      dispatch(bookThunk.deleteLikedBook(bookId));
+      setSelected(true);
+    }
+  };
 
   React.useEffect(() => {
     if (cart) {
@@ -35,13 +49,20 @@ const Book: React.FC<PropsType> = (props) => {
           setAnotherButton(true);
         }
       }
+      if (likedBooks) {
+        for (let j = 0; j < likedBooks.length; j++) {
+          if (likedBooks[j].bookId === Number(props.id)) {
+            setSelected(false);
+          }
+        }
+      }
     }
-  }, [anotherButton, cart, props.id]);
+  }, [anotherButton, cart, likedBooks, props.id]);
 
   return (
     <StyledBook>
       <div className="book-cover">
-        <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={() => setSelected(!elected)}>
+        <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={() => deleteOrAddToFavorites(Number(props.id))}>
           <img src={elected ? props.hideImg : props.showImg} />
         </Button>
         <Link className="catalog__book-cover-link" to={`/books/${props.id}`}>

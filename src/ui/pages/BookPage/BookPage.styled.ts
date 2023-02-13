@@ -118,7 +118,7 @@ const StyledBookPage = styled.section`
 
   .book-buttons__wrapper {
     display: flex;
-    gap: 80px;
+    justify-content: space-between;
   }
 
   .label {
@@ -148,6 +148,19 @@ const StyledBookPage = styled.section`
     padding: 10px, 50px;
     margin-top: 10px;
   }
+
+  .dont-active {
+    color: ${(props) => props.theme.color.dark};
+    background-color: ${(props) => props.theme.color.white};
+    border: 1px solid ${(props) => props.theme.color.dark};
+    margin-top: 10px;
+    cursor: default;
+  }
+
+  .dont-active:active {
+    outline: none
+  }
+
 
   .footer-banner {
     margin: 0 0 110px 0;

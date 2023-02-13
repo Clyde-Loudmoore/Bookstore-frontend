@@ -21,23 +21,70 @@ const getAllFiltredBooks = createAsyncThunk('getAllFiltredBooks',
     }
   });
 
-const addBookRatingThunk = createAsyncThunk(
+const addBookRating = createAsyncThunk(
   'addRatingBookThunk',
   async (data: AddRatingApiType, { rejectWithValue }) => {
     const { userId, bookId, rating } = data;
     try {
       await bookApi.addBookRating({ userId, bookId, rating });
     } catch (err) {
-      const error = err as AxiosError;
-      if (!error.response) {
-        throw err;
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err.response?.data);
       }
-      return rejectWithValue(error.response.data);
+      throw err;
+    }
+  },
+);
+
+const addLikedBook = createAsyncThunk(
+  'liked/addBook',
+  async (bookId: number, { rejectWithValue }) => {
+    try {
+      const books = await bookApi.addLikedBook(bookId);
+      return books.data;
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err.response?.data);
+      }
+      throw err;
+    }
+  },
+);
+
+const deleteLikedBook = createAsyncThunk(
+  'liked/deleteBook',
+  async (bookId: number, { rejectWithValue }) => {
+    try {
+      const books = await bookApi.deleteLikedBook(bookId);
+      return books.data;
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err.response?.data);
+      }
+      throw err;
+    }
+  },
+);
+
+const getLikedBooks = createAsyncThunk(
+  'liked/getBooks',
+  async (_, { rejectWithValue }) => {
+    try {
+      const books = await bookApi.getLikedBooks();
+      return books.data;
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err.response?.data);
+      }
+      throw err;
     }
   },
 );
 
 export default {
   getAllFiltredBooks,
-  addBookRatingThunk,
+  addBookRating,
+  addLikedBook,
+  deleteLikedBook,
+  getLikedBooks,
 };

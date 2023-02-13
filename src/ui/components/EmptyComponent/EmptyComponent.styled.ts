@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
-const StyledEmptyCart = styled.section`
+const StyledEmptyComponent = styled.section`
   margin: 78px 0 148px 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 
-  .empty-cart__image {
+  .empty-component__image {
     max-width: 433px;
     width: 100%;
     max-height: 261px;
   }
 
-  .cart-header {
+  .component-header {
     font-weight: ${(props) => props.theme.font_weight.large};
     font-size: ${(props) => props.theme.font_size.fs40};
     line-height: ${(props) => props.theme.line_height.lh60};
     margin-bottom: 20px;
   }
 
-  .cart-text {
+  .component-text {
     max-width: 465px;
     margin-bottom: 60px;
     font-weight: ${(props) => props.theme.font_weight.medium};
@@ -28,7 +28,7 @@ const StyledEmptyCart = styled.section`
     color: ${(props) => props.theme.color.dark_blue};
   }
 
-  .cart-button{
+  .component-button{
     width: 219px;
   }
 
@@ -37,18 +37,18 @@ const StyledEmptyCart = styled.section`
     margin: 60px 0 104px 0;
     gap: 62px;
 
-    .empty-cart__image {
+    .empty-component__image {
       max-width: 350px;
       width: 100%;
       max-height: 212px;
     }
 
-    .cart-header {
+    .component-header {
       font-size: ${(props) => props.theme.font_size.fs32};
       line-height: ${(props) => props.theme.line_height.lh48};
     }
 
-    .cart-text {
+    .component-text {
       max-width: 330px;
       margin-bottom: 50px;
       font-size: ${(props) => props.theme.font_size.fs16};
@@ -62,33 +62,33 @@ const StyledEmptyCart = styled.section`
     flex-direction: column-reverse;
     gap: 0;
 
-    .empty-cart__image {
+    .empty-component__image {
       max-width: 290px;
       width: 100%;
       max-height: 176px;
     }
 
-    .empty-cart {
+    .empty-component {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    .cart-header {
+    .component-header {
       margin-bottom: 15px;
       font-size: ${(props) => props.theme.font_size.fs18};
       line-height: ${(props) => props.theme.line_height.lh27};
     }
 
-    .cart-text {
+    .component-text {
       max-width: 250px;
       margin-bottom: 30px;
       font-size: ${(props) => props.theme.font_size.fs12};
       line-height: ${(props) => props.theme.line_height.lh18};
     }
 
-    .cart-button {
+    .component-button {
       padding: 10px 50px;
       width: 290px;
       margin-bottom: 40px;
@@ -98,10 +98,10 @@ const StyledEmptyCart = styled.section`
   }
 
   @media (max-width: 362px) {
-    .empty-cart {
+    .empty-component {
       align-items: flex-start;
     }
   }
 `;
 
-export default StyledEmptyCart;
+export default StyledEmptyComponent;

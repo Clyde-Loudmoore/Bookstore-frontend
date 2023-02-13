@@ -5,8 +5,8 @@ import { useAppSelector, useAppDispatch } from 'store';
 import cartThunk from 'store/thunks/cartThunk';
 
 import StyledCart from './Cart.styled';
-import EmptyCart from './EmptyCart';
-import CartMain from './CartMain/CartMain';
+import EmptyCart from '../../components/EmptyComponent';
+import CartMain from './CartMain';
 import CartFooter from './CartFooter';
 
 const Cart: React.FC = () => {
@@ -50,10 +50,24 @@ const Cart: React.FC = () => {
               />
             );
           })
-        ) : (<EmptyCart />)
+        ) : (
+          <EmptyCart
+            header="Your cart is empty"
+            text="Add items to cart to make a purchase. Go to the catalogue no."
+            textButton="Go to catalog"
+          />
+        )
       }
 
-      {cart!.length ? <CartFooter price={totalPrice} /> : <EmptyCart />}
+      {cart!.length
+        ? <CartFooter price={totalPrice} />
+        : (
+          <EmptyCart
+            header="Your cart is empty"
+            text="Add items to cart to make a purchase. Go to the catalogue no."
+            textButton="Go to catalog"
+          />
+        )}
 
     </StyledCart >
   );

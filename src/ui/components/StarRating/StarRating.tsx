@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 
 import { useAppSelector, useAppDispatch } from 'store';
 import bookThunk from 'store/thunks/bookThunk';
-import bookApi from 'api/bookApi';
 
 import StyledStarRating from './StarRating.styled';
 
@@ -28,7 +27,7 @@ const StarRating: React.FC<PropsType> = (props) => {
 
   const handleRating = async (rating: number) => {
     if (userId && bookId) {
-      await dispatch(bookThunk.addBookRatingThunk({ userId, bookId: Number(bookId), rating }));
+      await dispatch(bookThunk.addBookRating({ userId, bookId: Number(bookId), rating }));
     }
   };
 

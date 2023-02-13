@@ -7,6 +7,7 @@ const ROUTE_PATHS = {
   BOOK_ID: ':bookId',
   CATALOG: '/catalog',
   CART: '/cart',
+  FAVORITES: '/favorites',
 };
 
 const SORT_LIST = [
