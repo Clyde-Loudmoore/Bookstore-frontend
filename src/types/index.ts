@@ -15,3 +15,5 @@ export type { AddBookType } from './addBookType';
 export type { CartType } from './cartType';
 
 export type { LikedBookType } from './likedBookType';
+
+export type { CommentType } from './commentType';

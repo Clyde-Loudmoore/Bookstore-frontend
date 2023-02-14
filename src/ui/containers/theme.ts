@@ -30,6 +30,7 @@ const theme = {
     fs16: '16px',
     fs14: '14px',
     fs12: '12px',
+    fs10: '10px',
   },
 
   line_height: {

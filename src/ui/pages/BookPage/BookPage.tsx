@@ -11,7 +11,7 @@ import bookThunk from 'store/thunks/bookThunk';
 
 import StarRating from 'ui/components/StarRating';
 import Button from 'ui/components/Button';
-import Comments from 'ui/components/Comments';
+import Comments from './Comments';
 import Recommendations from './Recommendations';
 import StyledBookPage from './BookPage.styled';
 import FooterBanner from '../HomePage/FooterBanner';
@@ -141,11 +141,13 @@ const BookPage: React.FC = () => {
       </section>
 
       <Comments />
+
       {!user
         ? (
           <FooterBanner className="footer-banner" />
         )
         : null}
+
       <Recommendations />
 
     </StyledBookPage>

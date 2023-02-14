@@ -5,8 +5,6 @@ const StyledBookPage = styled.section`
 
   .book__wrapper {
     margin-bottom: 100px;
-    display: flex;
-    flex-wrap: wrap;
     display: grid;
     column-gap: 128px;
     grid-template-areas: 
@@ -118,7 +116,7 @@ const StyledBookPage = styled.section`
 
   .book-buttons__wrapper {
     display: flex;
-    justify-content: space-between;
+    gap: 82px;
   }
 
   .label {
@@ -230,7 +228,7 @@ const StyledBookPage = styled.section`
       margin-top: 14px;
     }
 
-    .hardcover {
+    .dont-active, .hardcover {
       max-width: 184px;
       width: 100%;
       margin-top: 14px;
@@ -297,7 +295,7 @@ const StyledBookPage = styled.section`
       line-height: ${(props) => props.theme.line_height.lh21};
     }
 
-    .paperback, .hardcover {
+    .paperback, .dont-active, .hardcover {
       font-size: ${(props) => props.theme.font_size.fs12};
       line-height: ${(props) => props.theme.line_height.lh18};
       max-width: 135px;

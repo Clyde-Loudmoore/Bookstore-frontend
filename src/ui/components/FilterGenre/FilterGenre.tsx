@@ -2,7 +2,6 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { FormEventHandler } from 'react';
 
-import { useAppDispatch } from 'store';
 import type { GenreType } from 'types';
 
 import StyledFilterGenre from './FilterGenre.styled';
@@ -18,8 +17,6 @@ type PropsType = {
 const FilterGenre: React.FC<PropsType> = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = React.useState<string[]>([]);
-
-  const dispatch = useAppDispatch();
 
   const changeFilterState = (newFilter: string) => {
     setFilter((prevFilter) => {
@@ -37,7 +34,7 @@ const FilterGenre: React.FC<PropsType> = (props) => {
       searchParams.delete('genres');
     }
     setSearchParams(searchParams);
-  }, [dispatch, filter, searchParams, setSearchParams]);
+  }, [filter, searchParams, setSearchParams]);
 
   return (
     <StyledFilterGenre onClick={props.onClick}>
