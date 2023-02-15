@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import bookApi from 'api/bookApi';
-import type { BookType } from 'types';
+import type { UserType, BookType } from 'types';
 import { useAppSelector, useAppDispatch } from 'store';
 import cartThunk from 'store/thunks/cartThunk';
 import bookThunk from 'store/thunks/bookThunk';
@@ -26,7 +26,7 @@ const BookPage: React.FC = () => {
   const [elected, setSelected] = React.useState(true);
   const [anotherButton, setAnotherButton] = React.useState(false);
 
-  const user = useAppSelector((store) => store.user.user);
+  const user = useAppSelector((store) => store.user.user) as UserType;
   const likedBooks = useAppSelector((store) => store.books.likedBooks);
   const cart = useAppSelector((store) => store.books.cart);
 
@@ -75,7 +75,14 @@ const BookPage: React.FC = () => {
         return toast.error(error.message);
       }
     })();
-  }, [bookId, cart, likedBooks]);
+  }, [bookId, cart, dispatch, likedBooks, user.id]);
+
+  React.useEffect(() => {
+    (async () => {
+      dispatch(cartThunk.getCart(user.id));
+      dispatch(bookThunk.getLikedBooks(user.id));
+    })();
+  }, [dispatch, user.id]);
 
   return (
     <StyledBookPage>
@@ -98,9 +105,11 @@ const BookPage: React.FC = () => {
           <h2 className="book-author">{oneBook?.author}</h2>
 
           <div className="book-rating__wrapper">
-            <StarRating className="book-rating">
+
+            <StarRating className="book-rating" starRating={Number(oneBook?.rating)}>
               <img className="rating-value__image" src={star} alt="+" />
             </StarRating>
+
             <div className="book-rate">
               <img src={arrow} alt="<-" />
               <p>Rate this book</p>
@@ -127,7 +136,7 @@ const BookPage: React.FC = () => {
                   <Button
                     className="hardcover"
                     type="submit"
-                    onClick={() => handleAddBookInCart(user!.id, Number(bookId))}
+                    onClick={() => handleAddBookInCart(user.id, Number(bookId))}
                   >
                     ${oneBook?.price} USD
                   </Button>

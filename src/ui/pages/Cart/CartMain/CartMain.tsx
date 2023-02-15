@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import cartThunk from 'store/thunks/cartThunk';
 import { useAppDispatch } from 'store';
 
@@ -30,7 +32,9 @@ const CartMain: React.FC<CartType> = (props) => {
     <StyledCartMain>
       <div>
         <div className="wrapper">
-          <img className="cover" src={props.cover} />
+          <Link className="catalog__book-cover-link" to={`/books/${props.bookId}`}>
+            <img className="cover" src={props.cover} />
+          </Link>
 
           <div className="info">
             <h1 className="title">{props.title}</h1>

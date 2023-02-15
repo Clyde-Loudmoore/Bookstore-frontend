@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { useAppSelector, useAppDispatch } from 'store';
 import bookThunk from 'store/thunks/bookThunk';
+import bookApi from 'api/bookApi';
+import type { BookType } from 'types';
 
 import Button from 'ui/components/Button';
 import StarRating from 'ui/components/StarRating';
@@ -21,9 +23,11 @@ export type PropsType = {
 };
 
 const Book: React.FC<PropsType> = (props) => {
+  const [oneBook, setOneBook] = React.useState<BookType>();
   const [elected, setSelected] = React.useState(true);
   const [anotherButton, setAnotherButton] = React.useState(false);
 
+  const books = useAppSelector((store) => store.books.books);
   const cart = useAppSelector((store) => store.books.cart);
   const likedBooks = useAppSelector((store) => store.books.likedBooks);
 
@@ -43,21 +47,26 @@ const Book: React.FC<PropsType> = (props) => {
   };
 
   React.useEffect(() => {
-    if (cart) {
-      for (let i = 0; i < cart.length; i++) {
-        if (cart[i].bookId === Number(props.id)) {
-          setAnotherButton(true);
+    (async () => {
+      const book = await bookApi.getBook(Number(props.id));
+      setOneBook(book.data.book);
+
+      if (cart) {
+        for (let i = 0; i < cart.length; i++) {
+          if (cart[i].bookId === Number(props.id)) {
+            setAnotherButton(true);
+          }
         }
-      }
-      if (likedBooks) {
-        for (let j = 0; j < likedBooks.length; j++) {
-          if (likedBooks[j].bookId === Number(props.id)) {
-            setSelected(false);
+        if (likedBooks) {
+          for (let j = 0; j < likedBooks.length; j++) {
+            if (likedBooks[j].bookId === Number(props.id)) {
+              setSelected(false);
+            }
           }
         }
       }
-    }
-  }, [anotherButton, cart, likedBooks, props.id]);
+    })();
+  }, [books, cart, likedBooks, props.id]);
 
   return (
     <StyledBook>
@@ -72,7 +81,7 @@ const Book: React.FC<PropsType> = (props) => {
       <p className="book-title">{props.title}</p>
       <p className="book-author">{props.author}</p>
 
-      <StarRating />
+      <StarRating starRating={Number(oneBook?.rating)} />
 
       {anotherButton
         ? <Button className="dont-active">Added to cart</Button>

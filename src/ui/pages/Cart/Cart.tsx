@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useAppSelector, useAppDispatch } from 'store';
 import cartThunk from 'store/thunks/cartThunk';
+import bookThunk from 'store/thunks/bookThunk';
 import type { UserType } from 'types';
 
 import StyledCart from './Cart.styled';
@@ -30,6 +31,7 @@ const Cart: React.FC = () => {
   React.useEffect(() => {
     (async () => {
       dispatch(cartThunk.getCart(user.id));
+      dispatch(bookThunk.getLikedBooks(user.id));
     })();
   }, [dispatch, user]);
 

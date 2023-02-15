@@ -11,12 +11,16 @@ const getBook = (bookId: number) => {
   return api.axiosInstance.get<{ book: BookType }>(`${BOOK_PATH}/${bookId}`);
 };
 
-const getGenres = () => {
-  return api.axiosInstance.get<{ genres: GenreType[] }>(`${BOOK_PATH}/genres`);
+const getAllBooks = () => {
+  return api.axiosInstance.get<{ books: BookType[] }>(`${BOOK_PATH}/all-books`);
 };
 
 const getFiltredBooks = (query: FilterQueryType) => {
   return api.axiosInstance.get<{ books: BookType[]; maxPages: FilterQueryType }>(`${BOOK_PATH}/filtred-books`, { params: { ...query } } as AxiosRequestConfig);
+};
+
+const getGenres = () => {
+  return api.axiosInstance.get<{ genres: GenreType[] }>(`${BOOK_PATH}/genres`);
 };
 
 const getBookRating = (userId: number, bookId: number) => {
@@ -27,8 +31,8 @@ const addBookRating = (data: { userId: number; bookId: number; rating: number })
   return api.axiosInstance.post(`${BOOK_PATH}/add`, data);
 };
 
-const getLikedBooks = () => {
-  return api.axiosInstance.get<{ books: LikedBookType[] }>(`${LIKED_BOOK_PATH}/${BOOK_PATH}`);
+const getLikedBooks = (userId: number) => {
+  return api.axiosInstance.get<{ books: LikedBookType[] }>(`${LIKED_BOOK_PATH}/${userId}`, { params: { userId } });
 };
 
 const addLikedBook = (bookId: number) => {
@@ -45,8 +49,9 @@ const deleteLikedBook = (bookId: number) => {
 
 export default {
   getBook,
-  getGenres,
+  getAllBooks,
   getFiltredBooks,
+  getGenres,
   getBookRating,
   addBookRating,
   getLikedBooks,

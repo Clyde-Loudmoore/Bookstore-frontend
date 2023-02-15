@@ -68,9 +68,9 @@ const deleteLikedBook = createAsyncThunk(
 
 const getLikedBooks = createAsyncThunk(
   'liked/getBooks',
-  async (_, { rejectWithValue }) => {
+  async (userId: number, { rejectWithValue }) => {
     try {
-      const books = await bookApi.getLikedBooks();
+      const books = await bookApi.getLikedBooks(userId);
       return books.data;
     } catch (err) {
       if (err instanceof AxiosError) {

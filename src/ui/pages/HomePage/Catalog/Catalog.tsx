@@ -21,10 +21,11 @@ import showHeart from '../../../assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
-  const [searchParams] = useSearchParams();
 
   const user = useAppSelector((store) => store.user.user);
   const books = useAppSelector((store) => store.books.books);
+
+  const [searchParams] = useSearchParams();
 
   const dispatch = useAppDispatch();
 
@@ -61,6 +62,7 @@ const Catalog: React.FC = () => {
     );
     if (user) {
       dispatch(cartThunk.getCart(user.id));
+      dispatch(bookThunk.getLikedBooks(user.id));
     }
   }, [dispatch, searchParams, user]);
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { useAppSelector, useAppDispatch } from 'store';
 import bookThunk from 'store/thunks/bookThunk';
+import cartThunk from 'store/thunks/cartThunk';
+import type { UserType } from 'types';
 
 import EmptyFavoritesPage from 'ui/components/EmptyComponent/EmptyComponent';
 import Button from 'ui/components/Button';
@@ -15,6 +17,7 @@ import grandLine from '../../assets/icons/grandLine.png';
 const FavoritesPage: React.FC = () => {
   const [elected, setSelected] = React.useState(true);
 
+  const user = useAppSelector((store) => store.user.user) as UserType;
   const likedBooks = useAppSelector((store) => store.books.likedBooks);
   const likedBookId = likedBooks?.map((book) => book.bookId);
 
@@ -33,7 +36,8 @@ const FavoritesPage: React.FC = () => {
 
   React.useEffect(() => {
     (async () => {
-      dispatch(bookThunk.getLikedBooks());
+      dispatch(bookThunk.getLikedBooks(user.id));
+      dispatch(cartThunk.getCart(user.id));
       if (likedBooks) {
         for (let i = 0; i < likedBooks.length; i++) {
           if (likedBooks[i].bookId === likedBookId![i]) {

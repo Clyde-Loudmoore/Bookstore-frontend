@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -8,6 +7,8 @@ import * as yup from 'yup';
 
 import type { UserType } from 'types';
 import constants from 'utils/constants';
+import bookThunk from 'store/thunks/bookThunk';
+import cartThunk from 'store/thunks/cartThunk';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userSliceActions } from '../../../store/slises/userSlise';
@@ -33,7 +34,7 @@ const ProfileUser: React.FC = () => {
   const [infoAttribute, setInfoAttribute] = React.useState(true);
   const [isError, setIsError] = React.useState(false);
 
-  const currentUser = useAppSelector((store) => store.user.user) as UserType;
+  const user = useAppSelector((store) => store.user.user) as UserType;
 
   const dispatch = useAppDispatch();
 
@@ -56,14 +57,14 @@ const ProfileUser: React.FC = () => {
   };
 
   const userFormik = useFormik({
-    initialValues: { fullName: currentUser.fullName, email: currentUser.email },
+    initialValues: { fullName: user.fullName, email: user.email },
 
     onSubmit: async (values, actions) => {
       try {
         setIsError(false);
         actions.setSubmitting(false);
-        const user = await userApi.editUser(currentUser.id, values);
-        dispatch(userSliceActions.setUser(user.data.updatedUser));
+        const currentUser = await userApi.editUser(user.id, values);
+        dispatch(userSliceActions.setUser(currentUser.data.updatedUser));
         setInfoAttribute(true);
       } catch (err) {
         setIsError(true);
@@ -75,8 +76,15 @@ const ProfileUser: React.FC = () => {
     validationSchema: EditUserSchema,
   });
 
-  const avatar = currentUser.avatar;
+  const avatar = user.avatar;
   const noAvatar = constants.PATHS.WITHOUT_AVATAR;
+
+  React.useEffect(() => {
+    (async () => {
+      dispatch(cartThunk.getCart(user.id));
+      dispatch(bookThunk.getLikedBooks(user.id));
+    })();
+  }, [dispatch, user.id]);
 
   return (
     <StyledProfile>
