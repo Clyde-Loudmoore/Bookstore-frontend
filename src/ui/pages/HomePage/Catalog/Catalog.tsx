@@ -56,7 +56,7 @@ const Catalog: React.FC = () => {
     const page = Number(searchParams.get('page') || 1);
     const minPrice = Number(searchParams.get('minPrice') || '5.99');
     const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
-    const sorting = searchParams.get('sorting') || 'Name';
+    const sorting = searchParams.get('sorting') || 'Price';
     dispatch(
       bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),
     );
@@ -81,7 +81,7 @@ const Catalog: React.FC = () => {
             <PriceSlider />
           </Dropdown>
 
-          <Dropdown title="Sort by">
+          <Dropdown title={`Sort by: ${searchParams.get('sorting')?.toLocaleLowerCase() || 'price'}`}>
             <FilterByInfo />
           </Dropdown>
 

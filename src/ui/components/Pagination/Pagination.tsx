@@ -22,7 +22,7 @@ const Pagination: React.FC<PropsType> = () => {
   const maxPages = useAppSelector((store) => store.books.maxPages);
 
   React.useEffect(() => {
-    const arr = [...new Array(maxPages)].map((item, index) => index + 1);
+    const arr = [...new Array(maxPages)].map((_item, index) => index + 1);
 
     setCurrentPage(arr);
     setSearchParams(searchParams);
@@ -53,7 +53,7 @@ const Pagination: React.FC<PropsType> = () => {
           onClick={() => handleSpecificPage(item)}
           disabled={item === +(searchParams.get('page') as string)}
         >
-          <img src={+(searchParams.get('page') as string) === item ? paginationCurrent : paginationEllipse} alt="o" />
+          <img src={+(searchParams.get('page') as string || 1) === item ? paginationCurrent : paginationEllipse} alt="o" />
         </Button>
       ))
       }

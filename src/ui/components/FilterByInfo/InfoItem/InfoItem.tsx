@@ -17,7 +17,7 @@ const InfoItem: React.FC<PropsType> = ({ setState, filter, text }) => {
   const handleChangeGenre = (text: string) => {
     setColor(!color);
     const index = filter.indexOf(text);
-    if (index !== -1) {
+    if (index === -1) {
       setColor(!color);
     }
     setState(text);
