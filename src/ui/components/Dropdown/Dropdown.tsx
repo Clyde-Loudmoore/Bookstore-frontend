@@ -1,7 +1,7 @@
 import React from 'react';
-import { useOnClickOutside } from 'usehooks-ts';
-
 import type { FormEventHandler, ReactNode } from 'react';
+
+import useOnClickOutside from 'hooks/useOnClickOutside';
 
 import StyledDropdown from './Dropdown.styled';
 
@@ -18,21 +18,18 @@ type PropsType = {
 const Dropdown: React.FC<PropsType> = (props) => {
   const [active, setActive] = React.useState(false);
 
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = () => {
+  const clickOutsidehandler = () => {
     setActive(false);
   };
 
-  useOnClickOutside(ref, handleClickOutside);
+  useOnClickOutside(ref, clickOutsidehandler);
 
   return (
-    <StyledDropdown
-      ref={ref}
-      onClick={() => setActive(!active)}
-    >
+    <StyledDropdown ref={ref}>
 
-      <div className="wrapper" onClick={handleClickOutside}>
+      <div className="wrapper" onClick={() => setActive(!active)}>
         <p>{props.title}</p>
         <img src={!active ? arrowRight : arrowBottom} alt="+" />
       </div>

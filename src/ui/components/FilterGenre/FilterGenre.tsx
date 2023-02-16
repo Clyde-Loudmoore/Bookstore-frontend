@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
 import type { FormEventHandler } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import type { GenreType } from 'types';
 
