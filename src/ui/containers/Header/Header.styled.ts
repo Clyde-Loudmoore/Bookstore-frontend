@@ -14,6 +14,18 @@ const StyledHeader = styled.header`
     margin: 0 43px 0 0;
   };
 
+  .header__search-title:active {
+    color: ${(props) => props.theme.color.dark};
+  }
+
+  .sing-out {
+    text-decoration: none;
+  }
+
+  .sing-out:visited {
+    color: ${(props) => props.theme.color.dark};
+  }
+
   .header__button-wrapper {
     max-width:470px;
     width: 100%;

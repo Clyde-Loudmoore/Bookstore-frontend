@@ -37,10 +37,10 @@ const Dropdown: React.FC<PropsType> = (props) => {
   useOutsideDrop(wrapperRef);
 
   const handleDropSelect = () => {
-    if (!dropSelect) {
+    if (dropSelect) {
       setDropSelect(false);
     }
-    if (dropSelect) {
+    if (!dropSelect) {
       setDropSelect(true);
     }
   };

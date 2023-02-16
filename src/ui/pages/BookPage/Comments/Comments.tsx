@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 import commentsApi from 'api/commentsApi';
 import { useAppSelector } from 'store';
@@ -16,6 +17,8 @@ const Comments: React.FC = () => {
 
   const { bookId } = useParams();
 
+  const date = dayjs();
+
   const handleChangeComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
   };
@@ -25,7 +28,7 @@ const Comments: React.FC = () => {
     const newComment: CommentType = {
       id: Math.round(Math.random() * 100),
       text,
-      createdTime: String(new Date().toLocaleDateString()),
+      createdTime: date.format('YYYY-MM-DD HH:MM:CC'),
       user: user!,
       userId,
       bookId,

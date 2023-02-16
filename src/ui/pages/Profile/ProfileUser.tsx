@@ -90,12 +90,12 @@ const ProfileUser: React.FC = () => {
     <StyledProfile>
 
       <div className="user-photo__wrapper">
-        {avatar !== noAvatar
+        {avatar === noAvatar
           ? (
-            <img className="user-avatar" src={avatar} />
+            <img className="user-no-avatar" src={noPhoto} />
           )
           : (
-            <img className="user-no-avatar" src={noPhoto} />
+            <img className="user-avatar" src={avatar} />
           )
         }
 

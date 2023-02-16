@@ -59,7 +59,9 @@ const Header: React.FC = () => {
         <img className="header__logo-image" src={logoIcon} alt="App logo" />
       </Link>
 
-      <p className="header__search-title" onClick={signOut}>Catalog</p>
+      <Link className="sing-out" to="/">
+        <p className="header__search-title" onClick={signOut}>Catalog</p>
+      </Link>
 
       <SearchField
         className="search__input-field"
@@ -68,48 +70,50 @@ const Header: React.FC = () => {
         label="Search"
         onChange={handleChangeSearch}
       />
-      {user
-        ? (
-          <div className="header__small-button-wrapper">
+      {
+        user
+          ? (
+            <div className="header__small-button-wrapper">
 
-            <Link className="header__small-button-link" to="/cart">
-              <Button className="header__small-button">
-                <img src={cartIcon} />
-                <div className="cart-items">
-                  {cart?.length}
-                </div>
-              </Button>
-            </Link>
+              <Link className="header__small-button-link" to="/cart">
+                <Button className="header__small-button">
+                  <img src={cartIcon} />
+                  <div className="cart-items">
+                    {cart?.length}
+                  </div>
+                </Button>
+              </Link>
 
-            <Link className="header__small-button-link" to="/favorites">
-              <Button className="header__small-button">
-                <img src={heartIcon} />
-                <div className="cart-items">
-                  {likedBooks?.length}
-                </div>
-              </Button>
-            </Link>
+              <Link className="header__small-button-link" to="/favorites">
+                <Button className="header__small-button">
+                  <img src={heartIcon} />
+                  <div className="cart-items">
+                    {likedBooks?.length}
+                  </div>
+                </Button>
+              </Link>
 
-            <Link className="header__small-button-link" to="/profile">
-              <Button className="header__small-button"><img src={manIcon} /></Button>
-            </Link>
+              <Link className="header__small-button-link" to="/profile">
+                <Button className="header__small-button"><img src={manIcon} /></Button>
+              </Link>
 
-          </div>
-        )
-        : (
-          <div className="header__button-wrapper">
+            </div>
+          )
+          : (
+            <div className="header__button-wrapper">
 
-            <Link className="header__button-link" to="/sing-up">
-              <Button className="header__button">Sing Up</Button>
-            </Link>
+              <Link className="header__button-link" to="/sing-up">
+                <Button className="header__button">Sing Up</Button>
+              </Link>
 
-            <Link className="header__button-link" to="/sing-in">
-              <Button className="header__button">Sing In</Button>
-            </Link>
+              <Link className="header__button-link" to="/sing-in">
+                <Button className="header__button">Sing In</Button>
+              </Link>
 
-          </div>
-        )}
-    </StyledHeader>
+            </div>
+          )
+      }
+    </StyledHeader >
   );
 };
 
