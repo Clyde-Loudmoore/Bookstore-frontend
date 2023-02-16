@@ -28,6 +28,12 @@ export type PropsType = {
 const InputField: React.FC<PropsType> = (props) => {
   const [eyeLook, setEyeLook] = React.useState(true);
 
+  const input = React.useRef(document.createElement('input'));
+
+  const handleClearInput = () => {
+    input.current.value = '';
+  };
+
   return (
     <StyledInputField className={props.className} isError={props.isError ?? false}>
 
@@ -41,6 +47,7 @@ const InputField: React.FC<PropsType> = (props) => {
       <div className="center-component">
         <label className="label">{props.label}</label>
         <input
+          ref={input}
           className="search__input"
           id={props.id}
           name={props.name}
@@ -53,7 +60,7 @@ const InputField: React.FC<PropsType> = (props) => {
           autoComplete="off"
         />
       </div>
-      <Button className="close-button" type="button">
+      <Button className="close-button" type="button" onClick={handleClearInput}>
         <img src={closeIcon} alt="X" />
       </Button>
       {props.helperText && <div>{props.helperText}</div>}
