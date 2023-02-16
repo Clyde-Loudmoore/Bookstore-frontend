@@ -14,6 +14,10 @@ const StyledInputField = styled.div<{ isError: boolean }>`
     outline:  2px solid ${(props) => props.theme.color.dark};
   }
 
+  .center-component {
+    width: 100%;
+  }
+
   .search__field-icon {
     padding: 0 20px 0 26px;
   }
