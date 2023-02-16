@@ -1,14 +1,14 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import Header from './ui/containers/Header';
-import Footer from './ui/containers/Footer';
-
-import Navigation from './ui/containers/Navigation';
-import Loading from './ui/components/Loading';
-
+import api from 'api/api';
 import { getMe } from './store/thunks/userThunk';
 import { useAppDispatch } from './store';
+
+import Header from './ui/containers/Header';
+import Footer from './ui/containers/Footer';
+import Navigation from './ui/containers/Navigation';
+import Loading from './ui/components/Loading';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(true);

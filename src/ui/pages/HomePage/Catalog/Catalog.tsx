@@ -57,7 +57,7 @@ const Catalog: React.FC = () => {
     const page = Number(searchParams.get('page') || 1);
     const minPrice = Number(searchParams.get('minPrice') || '5.99');
     const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
-    const sorting = searchParams.get('sorting') || saveSorting;
+    const sorting = searchParams.get('sorting') || saveSorting || 'Price';
 
     dispatch(
       bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),

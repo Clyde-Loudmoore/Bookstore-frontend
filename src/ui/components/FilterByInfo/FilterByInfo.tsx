@@ -15,7 +15,7 @@ export type PropsType = {
 };
 
 const FilterByInfo: React.FC<PropsType> = (props) => {
-  const [filter, setFilter] = React.useState<string>('Price');
+  const [filter, setFilter] = React.useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChangeSort = (name: string) => {
