@@ -21,8 +21,6 @@ const StarRating: React.FC<PropsType> = (props) => {
   const { bookId } = useParams();
 
   const books = useAppSelector((store) => store.books.books);
-  // const book = useAppSelector((store) => store.books.book);
-  // console.log(book);
 
   const userId = useAppSelector((store) => store.user.user?.id);
 
@@ -37,17 +35,6 @@ const StarRating: React.FC<PropsType> = (props) => {
   React.useEffect(() => {
     (async () => {
       try {
-        // for (let i = 0; i < books.length; i++) {
-        //   if (Number(bookId) === books[i].id) {
-        //     const rating = books.map((book) => book.rating);
-
-        //     rating.forEach((elem) => {
-        //       if (books[i].rating === elem) {
-        //         setRating(elem);
-        //       }
-        //     });
-        //   }
-        // }
         setRating(Number(props.starRating));
       } catch (err) {
         const error = err as Error;

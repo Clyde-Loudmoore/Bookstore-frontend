@@ -1,4 +1,5 @@
 import React from 'react';
+import { useOnClickOutside } from 'usehooks-ts';
 
 import type { FormEventHandler, ReactNode } from 'react';
 
@@ -16,46 +17,30 @@ type PropsType = {
 
 const Dropdown: React.FC<PropsType> = (props) => {
   const [active, setActive] = React.useState(false);
-  const [dropSelect, setDropSelect] = React.useState(false);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const useOutsideDrop = (ref: any) => {
-    React.useEffect(() => {
-      const handleClickOutside = (event: { target: unknown }) => {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setDropSelect(false);
-        }
-      };
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [ref]);
+  const ref = React.useRef(null);
+
+  const handleClickOutside = () => {
+    setActive(false);
   };
 
-  const wrapperRef = React.useRef(null);
-  useOutsideDrop(wrapperRef);
-
-  const handleDropSelect = () => {
-    if (dropSelect) {
-      setDropSelect(false);
-    }
-    if (!dropSelect) {
-      setDropSelect(true);
-    }
-  };
+  useOnClickOutside(ref, handleClickOutside);
 
   return (
     <StyledDropdown
-    onClick={() => handleDropSelect()}
-    ref={wrapperRef}
+      ref={ref}
+      onClick={() => setActive(!active)}
     >
-      <div className="wrapper" onClick={() => setActive(!active)}>
+
+      <div className="wrapper" onClick={handleClickOutside}>
         <p>{props.title}</p>
-        <img src={!active ? arrowRight : arrowBottom} onClick={() => setActive(!active)} alt="+" />
+        <img src={!active ? arrowRight : arrowBottom} alt="+" />
       </div>
-        {active && props.children}
+
+      {active && props.children}
+
     </StyledDropdown>
+
   );
 };
 
