@@ -1,14 +1,15 @@
 import React from 'react';
 
+import useOnClickOutside from 'hooks/useOnClickOutside';
+
 import StyledInfoItem from './infoitem.styled';
 
 export type PropsType = {
   text: string;
   setState: (newFilter: string) => void;
-  filter: string[] | string;
 };
 
-const InfoItem: React.FC<PropsType> = ({ setState, filter, text }) => {
+const InfoItem: React.FC<PropsType> = ({ setState, text }) => {
   const [color, setColor] = React.useState(true);
 
   const DARK_GREY = 'colored__dark-grey';
@@ -16,16 +17,21 @@ const InfoItem: React.FC<PropsType> = ({ setState, filter, text }) => {
 
   const handleChangeGenre = (text: string) => {
     setColor(!color);
-    const index = filter.indexOf(text);
-    if (index === -1) {
-      setColor(!color);
-    }
     setState(text);
   };
+
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const clickOutsidehandler = () => {
+    setColor(true);
+  };
+
+  useOnClickOutside(ref, clickOutsidehandler);
 
   return (
     <StyledInfoItem
       onClick={() => handleChangeGenre(text)}
+      ref={ref}
     >
       <p className={color ? DARK_GREY : DARK_BLUE}>{text}</p>
     </StyledInfoItem>

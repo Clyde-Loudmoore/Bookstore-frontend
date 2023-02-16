@@ -21,6 +21,7 @@ import showHeart from '../../../assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
+  const [saveSorting, setSaveSorting] = React.useState('');
 
   const user = useAppSelector((store) => store.user.user);
   const books = useAppSelector((store) => store.books.books);
@@ -56,7 +57,8 @@ const Catalog: React.FC = () => {
     const page = Number(searchParams.get('page') || 1);
     const minPrice = Number(searchParams.get('minPrice') || '5.99');
     const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
-    const sorting = searchParams.get('sorting') || 'Price';
+    const sorting = searchParams.get('sorting') || saveSorting;
+
     dispatch(
       bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),
     );
@@ -64,7 +66,8 @@ const Catalog: React.FC = () => {
       dispatch(cartThunk.getCart(user.id));
       dispatch(bookThunk.getLikedBooks(user.id));
     }
-  }, [dispatch, searchParams, user]);
+    setSaveSorting(sorting);
+  }, [dispatch, saveSorting, searchParams, user]);
 
   return (
     <StyledCatalod>
@@ -81,7 +84,7 @@ const Catalog: React.FC = () => {
             <PriceSlider />
           </Dropdown>
 
-          <Dropdown title={`Sort by: ${searchParams.get('sorting')?.toLocaleLowerCase() || 'price'}`}>
+          <Dropdown title={`Sort by: ${saveSorting.toLocaleLowerCase()}`}>
             <FilterByInfo />
           </Dropdown>
 

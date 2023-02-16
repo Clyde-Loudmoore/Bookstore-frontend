@@ -39,7 +39,6 @@ const FilterByInfo: React.FC<PropsType> = (props) => {
             text={elem.name}
             key={elem.id}
             setState={handleChangeSort}
-            filter={filter}
           />
         );
       })}
