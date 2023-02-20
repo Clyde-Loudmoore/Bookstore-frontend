@@ -78,7 +78,7 @@ const Header: React.FC = () => {
               <Link className="header__small-button-link" to="/cart">
                 <Button className="header__small-button">
                   <img src={cartIcon} />
-                  <div className="cart-items">
+                  <div className="items">
                     {cart?.length}
                   </div>
                 </Button>
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
               <Link className="header__small-button-link" to="/favorites">
                 <Button className="header__small-button">
                   <img src={heartIcon} />
-                  <div className="cart-items">
+                  <div className="items">
                     {likedBooks?.length}
                   </div>
                 </Button>

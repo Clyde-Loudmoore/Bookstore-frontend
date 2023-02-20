@@ -26,6 +26,7 @@ const StyledCatalod = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    gap: 20px;
   }
 
   @media (max-width: 1120px) {
@@ -95,6 +96,10 @@ const StyledCatalod = styled.section`
 
     .catalog__header {
       margin-bottom: 30px;
+    }
+
+    .catalog__books {
+      gap: 6px;
     }
 }
 `;

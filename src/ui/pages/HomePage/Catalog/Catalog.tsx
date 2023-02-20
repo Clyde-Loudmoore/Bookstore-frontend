@@ -92,6 +92,7 @@ const Catalog: React.FC = () => {
       </div>
 
       <div className="catalog__books">
+
         {filteredBooks.map((book) => {
           return (
 

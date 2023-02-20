@@ -46,6 +46,7 @@ const theme = {
     lh20: '20px',
     lh18: '18px',
     lh15: '15px',
+    lh11: '11px',
   },
 };
 
