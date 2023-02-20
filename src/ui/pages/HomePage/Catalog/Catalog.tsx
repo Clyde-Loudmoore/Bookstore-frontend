@@ -62,10 +62,9 @@ const Catalog: React.FC = () => {
     dispatch(
       bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),
     );
-    if (user) {
-      dispatch(cartThunk.getCart(user.id));
-      dispatch(bookThunk.getLikedBooks(user.id));
-    }
+    dispatch(cartThunk.getCart(user.id));
+    dispatch(bookThunk.getLikedBooks(user.id));
+
     setSaveSorting(sorting);
   }, [dispatch, saveSorting, searchParams, user]);
 

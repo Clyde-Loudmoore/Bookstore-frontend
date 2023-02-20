@@ -46,7 +46,6 @@ axiosInstance.interceptors.request.use(async (request) => {
 
 export default {
   axiosInstance,
-  BASE_URL,
   setApiToken,
   getApiToken,
   removeApiToken,
