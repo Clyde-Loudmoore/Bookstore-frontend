@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 
 import StyledFooter from 'src/ui/containers/Footer/Footer.styled';
 
@@ -19,21 +19,21 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="footer__map">
-        <Link className="footer__link" to="/">
+        <a className="footer__link" href="/">
           <p>Home Page</p>
-        </Link>
+        </a>
 
-        <Link className="footer__link" to="/catalog">
+        <Link to="catalog">
           <p>Catalog</p>
         </Link>
 
-        <Link className="footer__link" to="/profile">
+        <a className="footer__link" href="/profile">
           <p>My Account</p>
-        </Link>
+        </a>
 
-        <Link className="footer__link" to="/cart">
+        <a className="footer__link"href="/cart">
           <p>Cart</p>
-        </Link>
+        </a>
       </div>
 
       <div className="footer__location">

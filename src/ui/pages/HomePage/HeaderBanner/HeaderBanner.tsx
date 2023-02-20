@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 
 import StyledHeaderBanner from 'src/ui/pages/HomePage/HeaderBanner/HeaderBanner.styled';
 import Button from 'src/ui/components/Button';
@@ -12,7 +12,7 @@ const HeaderBanner: React.FC = () => {
         <h1 className="header-banner__header">Build your library with us</h1>
         <p className="header-banner__paragraph">Buy two books and get one for free</p>
 
-        <Link to="">
+        <Link to="catalog">
           <Button className="header-banner__button">Choose a book</Button>
         </Link>
       </div>

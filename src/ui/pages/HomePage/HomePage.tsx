@@ -1,3 +1,5 @@
+import { Element } from 'react-scroll';
+
 import { useAppSelector } from 'src/store';
 
 import FooterBanner from 'src/ui/pages/HomePage/FooterBanner';
@@ -14,13 +16,17 @@ const HomePage: React.FC = () => {
         ? (
           <>
             <HeaderBanner />
-            <Catalog />
+            <Element name="catalog">
+              <Catalog />
+            </Element>
           </>
         )
         : (
           <>
             <HeaderBanner />
-            <Catalog />
+            <Element name="catalog">
+              <Catalog />
+            </Element>
             <FooterBanner />
           </>
         )
