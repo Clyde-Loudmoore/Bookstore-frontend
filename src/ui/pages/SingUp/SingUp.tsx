@@ -4,19 +4,19 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import api from 'api/api';
-import authApi from 'api/authApi';
-import { userSliceActions } from 'store/slises/userSlise';
-import { useAppDispatch } from '../../../store';
-import sharedValidation from '../../../utils/sharedValidationFields';
+import api from 'src/api/api';
+import authApi from 'src/api/authApi';
+import { userSliceActions } from 'src/store/slises/userSlise';
+import { useAppDispatch } from 'src/store';
+import sharedValidation from 'src/utils/sharedValidationFields';
 
-import StyledSingUp from './SingUp.styled';
-import InputField from '../../components/InputField';
-import Button from '../../components/Button';
+import StyledSingUp from 'src/ui/pages/SingUp/SingUp.styled';
+import InputField from 'src/ui/components/InputField';
+import Button from 'src/ui/components/Button';
 
-import mailIcon from '../../assets/icons/mail.png';
-import hideEye from '../../assets/icons/hideEye.png';
-import singUpBG from '../../assets/images/singUpBG.png';
+import mailIcon from 'src/ui/assets/icons/mail.png';
+import hideEye from 'src/ui/assets/icons/hideEye.png';
+import singUpBG from 'src/ui/assets/images/singUpBG.png';
 
 const SingUpSchema =
   yup.object({

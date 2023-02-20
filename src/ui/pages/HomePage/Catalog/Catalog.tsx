@@ -2,22 +2,22 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import bookApi from 'api/bookApi';
-import { useAppDispatch, useAppSelector } from 'store';
-import bookThunk from 'store/thunks/bookThunk';
-import cartThunk from 'store/thunks/cartThunk';
+import bookApi from 'src/api/bookApi';
+import { useAppDispatch, useAppSelector } from 'src/store';
+import bookThunk from 'src/store/thunks/bookThunk';
+import cartThunk from 'src/store/thunks/cartThunk';
 
-import Dropdown from 'ui/components/Dropdown';
-import Pagination from 'ui/components/Pagination/Pagination';
-import FilterGenre from 'ui/components/FilterGenre';
-import FilterByInfo from 'ui/components/FilterByInfo';
-import type { GenreType } from 'types';
-import StyledCatalod from './Catalog.styled';
-import PriceSlider from '../../../components/PriceSlider';
-import Book from './Book';
+import Dropdown from 'src/ui/pages/HomePage/Catalog/Dropdown';
+import Pagination from 'src/ui/pages/HomePage/Catalog/Pagination';
+import type { GenreType } from 'src/types';
+import StyledCatalod from 'src/ui/pages/HomePage/Catalog/Catalog.styled';
+import FilterByInfo from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterByInfo';
+import FilterGenre from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterGenre';
+import PriceSlider from 'src/ui/pages/HomePage/Catalog/Dropdown/PriceSlider';
+import Book from 'src/ui/pages/HomePage/Catalog/Book';
 
-import hideHeart from '../../../assets/icons/hideHeart.png';
-import showHeart from '../../../assets/icons/showHeart.png';
+import hideHeart from 'src/ui/assets/icons/hideHeart.png';
+import showHeart from 'src/ui/assets/icons/showHeart.png';
 
 const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();

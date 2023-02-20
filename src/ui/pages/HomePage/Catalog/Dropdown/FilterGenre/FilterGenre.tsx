@@ -2,12 +2,12 @@ import React from 'react';
 import type { FormEventHandler } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import type { GenreType } from 'types';
+import type { GenreType } from 'src/types';
 
-import StyledFilterGenre from './FilterGenre.styled';
-import GenreItem from './GenreItem';
+import StyledFilterGenre from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterGenre/FilterGenre.styled';
+import GenreItem from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterGenre/GenreItem';
 
-import poligon from '../../assets/images/polygon.png';
+import poligon from 'src/ui/assets/images/polygon.png';
 
 type PropsType = {
   onClick?: FormEventHandler;
@@ -42,10 +42,10 @@ const FilterGenre: React.FC<PropsType> = (props) => {
       {props.genres?.map((elem) => {
         return (
           <GenreItem
-          text={elem.genreName}
-          key={elem.id}
-          setState={changeFilterState}
-          filter={filter}
+            text={elem.genreName}
+            key={elem.id}
+            setState={changeFilterState}
+            filter={filter}
           />
         );
       })}

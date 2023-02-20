@@ -2,16 +2,16 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import bookApi from 'api/bookApi';
-import type { BookType } from 'types';
+import bookApi from 'src/api/bookApi';
+import type { BookType } from 'src/types';
 
-import Book from 'ui/pages/HomePage/Catalog/Book';
-import StyledRecommendations from './Recommendations.styled';
+import Book from 'src/ui/pages/HomePage/Catalog/Book';
+import StyledRecommendations from 'src/ui/pages/BookPage/Recommendations/Recommendations.styled';
 
-import { useAppDispatch } from '../../../../store';
+import { useAppDispatch } from 'src/store';
 
-import hideHeart from '../../../assets/icons/hideHeart.png';
-import showHeart from '../../../assets/icons/showHeart.png';
+import hideHeart from 'src/ui/assets/icons/hideHeart.png';
+import showHeart from 'src/ui/assets/icons/showHeart.png';
 
 const Recommendations: React.FC = () => {
   const [books, setBooks] = React.useState<BookType[]>();

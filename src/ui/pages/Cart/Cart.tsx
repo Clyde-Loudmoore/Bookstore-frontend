@@ -1,14 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 
-import { useAppSelector, useAppDispatch } from 'store';
-import cartThunk from 'store/thunks/cartThunk';
-import bookThunk from 'store/thunks/bookThunk';
-import type { UserType } from 'types';
+import { useAppSelector, useAppDispatch } from 'src/store';
+import cartThunk from 'src/store/thunks/cartThunk';
+import bookThunk from 'src/store/thunks/bookThunk';
+import type { UserType } from 'src/types';
 
-import StyledCart from './Cart.styled';
-import EmptyCart from '../../components/EmptyComponent';
-import CartMain from './CartMain';
+import StyledCart from 'src/ui/pages/Cart/Cart.styled';
+import EmptyCart from 'src/ui/components/EmptyComponent';
+import CartMain from 'src/ui/pages/Cart/CartMain';
 
 import CartFooter from './CartFooter';
 

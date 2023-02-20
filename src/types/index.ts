@@ -1,19 +1,19 @@
-export type { UserType } from './userTypes';
+export type { UserType } from 'src/types/userTypes';
 
-export type { BookType } from './bookTypes';
+export type { BookType } from 'src/types/bookTypes';
 
-export type { GenreType } from './genreTypes';
+export type { GenreType } from 'src/types/genreTypes';
 
-export type { FilterQueryType } from './filterQueryType';
+export type { FilterQueryType } from 'src/types/filterQueryType';
 
-export type { RatingBookType } from './ratingBookType';
+export type { RatingBookType } from 'src/types/ratingBookType';
 
-export type { AddRatingApiType } from './addRatingApiType';
+export type { AddRatingApiType } from 'src/types/addRatingApiType';
 
-export type { AddBookType } from './addBookType';
+export type { AddBookType } from 'src/types/addBookType';
 
-export type { CartType } from './cartType';
+export type { CartType } from 'src/types/cartType';
 
-export type { LikedBookType } from './likedBookType';
+export type { LikedBookType } from 'src/types/likedBookType';
 
-export type { CommentType } from './commentType';
+export type { CommentType } from 'src/types/commentType';

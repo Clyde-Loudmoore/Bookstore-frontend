@@ -1,5 +1,5 @@
-import type { UserType } from './userTypes';
-import type { BookType } from './bookTypes';
+import type { UserType } from 'src/types/userTypes';
+import type { BookType } from 'src/types/bookTypes';
 
 export type AddBookType = {
   userId: UserType['id'];

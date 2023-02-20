@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from 'store';
-import bookThunk from 'store/thunks/bookThunk';
-import cartThunk from 'store/thunks/cartThunk';
-import type { UserType } from 'types';
+import { useAppSelector, useAppDispatch } from 'src/store';
+import bookThunk from 'src/store/thunks/bookThunk';
+import cartThunk from 'src/store/thunks/cartThunk';
+import type { UserType } from 'src/types';
 
-import EmptyFavoritesPage from 'ui/components/EmptyComponent/EmptyComponent';
-import Button from 'ui/components/Button';
-import StyledFavoritesPage from './FavoritesPage.styled';
+import EmptyFavoritesPage from 'src/ui/components/EmptyComponent/EmptyComponent';
+import Button from 'src/ui/components/Button';
+import StyledFavoritesPage from 'src/ui/pages/FaforitesPage/FavoritesPage.styled';
 
-import hideHeart from '../../assets/icons/hideHeart.png';
-import showHeart from '../../assets/icons/showHeart.png';
-import grandLine from '../../assets/icons/grandLine.png';
+import hideHeart from 'src/ui/assets/icons/hideHeart.png';
+import showHeart from 'src/ui/assets/icons/showHeart.png';
+import grandLine from 'src/ui/assets/icons/grandLine.png';
 
 const FavoritesPage: React.FC = () => {
   const [elected, setSelected] = React.useState(true);

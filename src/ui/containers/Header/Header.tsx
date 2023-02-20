@@ -2,22 +2,22 @@ import React from 'react';
 import type { ChangeEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import api from 'api/api';
-import { userSliceActions } from 'store/slises/userSlise';
-import type { UserType } from 'types';
-import { useAppSelector, useAppDispatch } from 'store';
+import api from 'src/api/api';
+import { userSliceActions } from 'src/store/slises/userSlise';
+import type { UserType } from 'src/types';
+import { useAppSelector, useAppDispatch } from 'src/store';
 
-import { useDebounce } from 'hooks';
+import { useDebounce } from 'src/hooks';
 
-import Button from '../../components/Button';
-import SearchField from '../../components/InputField';
-import StyledHeader from './Header.styled';
+import Button from 'src/ui/components/Button';
+import SearchField from 'src/ui/components/InputField';
+import StyledHeader from 'src/ui/containers/Header/Header.styled';
 
-import searchIcon from '../../assets/icons/search.png';
-import cartIcon from '../../assets/icons/cart.png';
-import heartIcon from '../../assets/icons/hideHeart.png';
-import manIcon from '../../assets/icons/man.png';
-import logoIcon from '../../assets/icons/logo-header.png';
+import searchIcon from 'src/ui/assets/icons/search.png';
+import cartIcon from 'src/ui/assets/icons/cart.png';
+import heartIcon from 'src/ui/assets/icons/hideHeart.png';
+import manIcon from 'src/ui/assets/icons/man.png';
+import logoIcon from 'src/ui/assets/icons/logo-header.png';
 
 const Header: React.FC = () => {
   const [filter, setFilter] = React.useState<string>('');

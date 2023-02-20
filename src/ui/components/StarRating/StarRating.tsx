@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import { toast } from 'react-toastify';
 
-import { useAppSelector, useAppDispatch } from 'store';
-import bookThunk from 'store/thunks/bookThunk';
+import { useAppSelector, useAppDispatch } from 'src/store';
+import bookThunk from 'src/store/thunks/bookThunk';
 
-import StyledStarRating from './StarRating.styled';
+import StyledStarRating from 'src/ui/components/StarRating/StarRating.styled';
 
 type PropsType = {
   className?: string;

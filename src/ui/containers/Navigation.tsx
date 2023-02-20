@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { useAppSelector } from 'store';
+import { useAppSelector } from 'src/store';
 
-import Loading from '../components/Loading';
+import Loading from 'src/ui/components/Loading';
 
-import constants from '../../utils/constants';
+import constants from 'src/utils/constants';
 
 const HomePage = React.lazy(() => import('../pages/HomePage/HomePage'));
 const SingUp = React.lazy(() => import('../pages/SingUp'));

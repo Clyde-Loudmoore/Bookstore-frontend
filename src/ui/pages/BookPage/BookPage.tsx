@@ -3,23 +3,23 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import bookApi from 'api/bookApi';
-import type { UserType, BookType } from 'types';
-import { useAppSelector, useAppDispatch } from 'store';
-import cartThunk from 'store/thunks/cartThunk';
-import bookThunk from 'store/thunks/bookThunk';
+import bookApi from 'src/api/bookApi';
+import type { UserType, BookType } from 'src/types';
+import { useAppSelector, useAppDispatch } from 'src/store';
+import cartThunk from 'src/store/thunks/cartThunk';
+import bookThunk from 'src/store/thunks/bookThunk';
 
-import StarRating from 'ui/components/StarRating';
-import Button from 'ui/components/Button';
-import Comments from './Comments';
-import Recommendations from './Recommendations';
-import StyledBookPage from './BookPage.styled';
-import FooterBanner from '../HomePage/FooterBanner';
+import StarRating from 'src/ui/components/StarRating';
+import Button from 'src/ui/components/Button';
+import Comments from 'src/ui/pages/BookPage/Comments';
+import Recommendations from 'src/ui/pages/BookPage/Recommendations';
+import StyledBookPage from 'src/ui/pages/BookPage/BookPage.styled';
+import FooterBanner from 'src/ui/pages/HomePage/FooterBanner';
 
-import hideHeart from '../../assets/icons/hideHeart.png';
-import showHeart from '../../assets/icons/showHeart.png';
-import arrow from '../../assets/icons/backArrow.png';
-import star from '../../assets/icons/star.png';
+import hideHeart from 'src/ui/assets/icons/hideHeart.png';
+import showHeart from 'src/ui/assets/icons/showHeart.png';
+import arrow from 'src/ui/assets/icons/backArrow.png';
+import star from 'src/ui/assets/icons/star.png';
 
 const BookPage: React.FC = () => {
   const [oneBook, setOneBook] = React.useState<BookType>();

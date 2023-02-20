@@ -1,12 +1,12 @@
 import React from 'react';
 import type { FormEventHandler, ReactNode } from 'react';
 
-import useOnClickOutside from 'hooks/useOnClickOutside';
+import useOnClickOutside from 'src/hooks/useOnClickOutside';
 
-import StyledDropdown from './Dropdown.styled';
+import StyledDropdown from 'src/ui/pages/HomePage/Catalog/Dropdown/Dropdown.styled';
 
-import arrowRight from '../../assets/icons/arrowRight.png';
-import arrowBottom from '../../assets/icons/arrowBottom.png';
+import arrowRight from 'src/ui/assets/icons/arrowRight.png';
+import arrowBottom from 'src/ui/assets/icons/arrowBottom.png';
 
 type PropsType = {
   onClick?: FormEventHandler;

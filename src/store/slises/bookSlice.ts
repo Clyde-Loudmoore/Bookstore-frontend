@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import { createSlice } from '@reduxjs/toolkit';
 
-import cartThunk from 'store/thunks/cartThunk';
-import bookThunk from 'store/thunks/bookThunk';
+import cartThunk from 'src/store/thunks/cartThunk';
+import bookThunk from 'src/store/thunks/bookThunk';
 
-import type { BookType, CartType, LikedBookType, FilterQueryType } from '../../types';
+import type { BookType, CartType, LikedBookType, FilterQueryType } from 'src/types';
 
 const getInitialStore = () => ({
   books: [] as BookType[],

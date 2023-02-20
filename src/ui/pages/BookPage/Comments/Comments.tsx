@@ -2,12 +2,12 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 
-import commentsApi from 'api/commentsApi';
-import { useAppSelector } from 'store';
-import type { CommentType } from 'types';
+import commentsApi from 'src/api/commentsApi';
+import { useAppSelector } from 'src/store';
+import type { CommentType } from 'src/types';
 
-import Button from 'ui/components/Button';
-import StyledComments from './Comments.styled';
+import Button from 'src/ui/components/Button';
+import StyledComments from 'src/ui/pages/BookPage/Comments/Comments.styled';
 
 const Comments: React.FC = () => {
   const [comment, setComment] = React.useState<CommentType[]>([]);

@@ -1,5 +1,5 @@
-import type { BookType } from './bookTypes';
-import type { UserType } from './userTypes';
+import type { BookType } from 'src/types/bookTypes';
+import type { UserType } from 'src/types/userTypes';
 
 export type RatingBookType = {
   id: number;

@@ -1,6 +1,6 @@
-import api from './api';
+import api from 'src/api/api';
 
-import type { UserType } from '../types';
+import type { UserType } from 'src/types';
 
 const AUTH_PATH = '/auth';
 

@@ -2,9 +2,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getMe } from 'store/thunks/userThunk';
+import { getMe } from 'src/store/thunks/userThunk';
 
-import type { UserType } from 'types';
+import type { UserType } from 'src/types';
 
 const getInitialStore = () => ({
   user: null as UserType | null,

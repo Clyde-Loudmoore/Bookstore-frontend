@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-import Button from 'ui/components/Button';
-import StyledCartFooter from './CartFooter.styled';
+import Button from 'src/ui/components/Button';
+import StyledCartFooter from 'src/ui/pages/Cart/CartFooter/CartFooter.styled';
 
 type PropsType = {
   price: number;

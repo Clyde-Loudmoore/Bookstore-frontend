@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
-import StyledHeaderBanner from './HeaderBanner.styled';
-import FooterBanner from './FooterBanner/FooterBanner';
-import Button from '../../components/Button';
-import Catalog from './Catalog/Catalog';
+import StyledHeaderBanner from 'src/ui/pages/HomePage/HeaderBanner.styled';
+import FooterBanner from 'src/ui/pages/HomePage/FooterBanner';
+import Button from 'src/ui/components/Button';
+import Catalog from 'src/ui/pages/HomePage/Catalog';
 
-import reader from '../../assets/images/reader.png';
+import reader from 'src/ui/assets/images/reader.png';
 
-import { useAppSelector } from '../../../store';
+import { useAppSelector } from 'src/store';
 
 const HomePage: React.FC = () => {
   const user = useAppSelector((store) => store.user.user);

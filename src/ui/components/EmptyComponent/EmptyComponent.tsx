@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import Button from 'ui/components/Button';
-import StyledEmptyCart from './EmptyComponent.styled';
+import Button from 'src/ui/components/Button';
+import StyledEmptyCart from 'src/ui/components/EmptyComponent/EmptyComponent.styled';
 
-import bookImg from '../../assets/images/bookBG3.png';
+import bookImg from 'src/ui/assets/images/bookBG3.png';
 
 type PropsType = {
   header: string;

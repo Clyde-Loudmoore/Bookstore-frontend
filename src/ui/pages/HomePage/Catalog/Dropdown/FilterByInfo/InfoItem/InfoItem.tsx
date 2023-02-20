@@ -1,8 +1,8 @@
 import React from 'react';
 
-import useOnClickOutside from 'hooks/useOnClickOutside';
+import useOnClickOutside from 'src/hooks/useOnClickOutside';
 
-import StyledInfoItem from './infoitem.styled';
+import StyledInfoItem from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterByInfo/InfoItem/infoitem.styled';
 
 export type PropsType = {
   text: string;

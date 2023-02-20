@@ -1,4 +1,4 @@
-import type { CartType } from 'types';
+import type { CartType } from 'src/types';
 
 import api from './api';
 

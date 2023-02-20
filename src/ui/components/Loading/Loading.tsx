@@ -1,8 +1,8 @@
 import { useLottie } from 'lottie-react';
 
-import StyledLoading from './StyledLoading';
+import StyledLoading from 'src/ui/components/Loading/Loading.styled';
 
-import loader from '../../../utils/loading.json';
+import loader from 'src/utils/loading.json';
 
 const Loading: React.FC = () => {
   const options = {

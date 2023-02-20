@@ -4,9 +4,9 @@ import type { FormEventHandler } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ReactSlider from 'react-slider';
 
-import StyledPriceSlider from './PriceSlider.styled';
+import StyledPriceSlider from 'src/ui/pages/HomePage/Catalog/Dropdown/PriceSlider/PriceSlider.styled';
 
-import poligon from '../../assets/images/polygon.png';
+import poligon from 'src/ui/assets/images/polygon.png';
 
 export type PropsType = {
   onClick?: FormEventHandler;

@@ -6,19 +6,19 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import api from 'api/api';
-import { useAppDispatch } from 'store';
-import authApi from 'api/authApi';
-import { userSliceActions } from 'store/slises/userSlise';
-import sharedValidation from '../../../utils/sharedValidationFields';
+import api from 'src/api/api';
+import { useAppDispatch } from 'src/store';
+import authApi from 'src/api/authApi';
+import { userSliceActions } from 'src/store/slises/userSlise';
+import sharedValidation from 'src/utils/sharedValidationFields';
 
-import StyledSingIn from './SingIn.styled';
-import Button from '../../components/Button';
-import InputField from '../../components/InputField';
+import StyledSingIn from 'src/ui/pages/SingIn/SingIn.styled';
+import Button from 'src/ui/components/Button';
+import InputField from 'src/ui/components/InputField';
 
-import mailIcon from '../../assets/icons/mail.png';
-import hideEye from '../../assets/icons/hideEye.png';
-import singInBG from '../../assets/images/singInBG.png';
+import mailIcon from 'src/ui/assets/icons/mail.png';
+import hideEye from 'src/ui/assets/icons/hideEye.png';
+import singInBG from 'src/ui/assets/images/singInBG.png';
 
 const SingInSchema =
   yup.object({

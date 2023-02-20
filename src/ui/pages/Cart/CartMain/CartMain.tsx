@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 
-import cartThunk from 'store/thunks/cartThunk';
-import { useAppDispatch } from 'store';
+import cartThunk from 'src/store/thunks/cartThunk';
+import { useAppDispatch } from 'src/store';
 
-import type { CartType } from 'types';
+import type { CartType } from 'src/types';
 
-import Button from 'ui/components/Button';
-import StyledCartMain from './CartMain.styled';
+import Button from 'src/ui/components/Button';
+import StyledCartMain from 'src/ui/pages/Cart/CartMain/CartMain.styled';
 
-import increaseIcon from '../../../assets/icons/increase.png';
-import reduceIcon from '../../../assets/icons/reduce.png';
-import deleteIcon from '../../../assets/icons/delete.png';
-import grandLine from '../../../assets/icons/grandLine.png';
+import increaseIcon from 'src/ui/assets/icons/increase.png';
+import reduceIcon from 'src/ui/assets/icons/reduce.png';
+import deleteIcon from 'src/ui/assets/icons/delete.png';
+import grandLine from 'src/ui/assets/icons/grandLine.png';
 
 const CartMain: React.FC<CartType> = (props) => {
   const dispatch = useAppDispatch();

@@ -1,9 +1,9 @@
 import { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import cartApi from 'api/cartApi';
+import cartApi from 'src/api/cartApi';
 
-import type { AddBookType } from 'types';
+import type { AddBookType } from 'src/types';
 
 const addBook = createAsyncThunk(
   'addBook',

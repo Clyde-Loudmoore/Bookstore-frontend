@@ -1,6 +1,6 @@
-import type { CommentType } from 'types';
+import type { CommentType } from 'src/types';
 
-import api from './api';
+import api from 'src/api/api';
 
 const COMMENT_PATH = '/comment';
 

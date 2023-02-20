@@ -4,15 +4,15 @@ import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import type { UserType } from 'types';
-import userApi from '../../../api/userApi';
-import { useAppSelector } from '../../../store';
-import sharedValidation from '../../../utils/sharedValidationFields';
+import type { UserType } from 'src/types';
+import userApi from 'src/api/userApi';
+import { useAppSelector } from 'src/store';
+import sharedValidation from 'src/utils/sharedValidationFields';
 
-import Button from '../../components/Button';
-import InputField from '../../components/InputField';
+import Button from 'src/ui/components/Button';
+import InputField from 'src/ui/components/InputField';
 
-import hideEye from '../../assets/icons/hideEye.png';
+import hideEye from 'src/ui/assets/icons/hideEye.png';
 
 const editUserPassSchema =
   yup.object({

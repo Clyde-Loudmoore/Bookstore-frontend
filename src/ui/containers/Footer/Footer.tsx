@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import StyledFooter from './Footer.styled';
 
-import logo from '../../assets/icons/logo-footer.png';
-import map from '../../assets/icons/map.png';
+import StyledFooter from 'src/ui/containers/Footer/Footer.styled';
+
+import logo from 'src/ui/assets/icons/logo-footer.png';
+import map from 'src/ui/assets/icons/map.png';
 
 const Footer: React.FC = () => {
   return (

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from 'store';
-import bookThunk from 'store/thunks/bookThunk';
-import bookApi from 'api/bookApi';
-import type { BookType } from 'types';
+import { useAppSelector, useAppDispatch } from 'src/store';
+import bookThunk from 'src/store/thunks/bookThunk';
+import bookApi from 'src/api/bookApi';
+import type { BookType } from 'src/types';
 
-import Button from 'ui/components/Button';
-import StarRating from 'ui/components/StarRating';
-import StyledBook from './Book.styled';
+import Button from 'src/ui/components/Button';
+import StarRating from 'src/ui/components/StarRating';
+import StyledBook from 'src/ui/pages/HomePage/Catalog/Book/Book.styled';
 
 export type PropsType = {
   showImg?: string;

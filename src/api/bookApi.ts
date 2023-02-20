@@ -1,8 +1,7 @@
 import type { AxiosRequestConfig } from 'axios';
 
-import type { BookType, GenreType, FilterQueryType, RatingBookType, LikedBookType } from '../types';
-
-import api from './api';
+import api from 'src/api/api';
+import type { BookType, GenreType, FilterQueryType, RatingBookType, LikedBookType } from 'src/types';
 
 const BOOK_PATH = '/books';
 const LIKED_BOOK_PATH = '/liked';

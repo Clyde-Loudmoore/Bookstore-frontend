@@ -5,24 +5,24 @@ import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import type { UserType } from 'types';
-import constants from 'utils/constants';
-import bookThunk from 'store/thunks/bookThunk';
-import cartThunk from 'store/thunks/cartThunk';
-import userApi from '../../../api/userApi';
-import { useAppDispatch, useAppSelector } from '../../../store';
-import { userSliceActions } from '../../../store/slises/userSlise';
-import sharedValidation from '../../../utils/sharedValidationFields';
+import type { UserType } from 'src/types';
+import constants from 'src/utils/constants';
+import bookThunk from 'src/store/thunks/bookThunk';
+import cartThunk from 'src/store/thunks/cartThunk';
+import userApi from 'src/api/userApi';
+import { useAppDispatch, useAppSelector } from 'src/store';
+import { userSliceActions } from 'src/store/slises/userSlise';
+import sharedValidation from 'src/utils/sharedValidationFields';
 
-import Button from '../../components/Button';
-import InputField from '../../components/InputField';
-import ProfilePass from './ProfilePass';
-import StyledProfile from './Profile.styled';
+import Button from 'src/ui/components/Button';
+import InputField from 'src/ui/components/InputField';
+import ProfilePass from 'src/ui/pages/Profile/ProfilePass';
+import StyledProfile from 'src/ui/pages/Profile/Profile.styled';
 
-import camera from '../../assets/icons/camera.png';
-import userName from '../../assets/icons/username.png';
-import mail from '../../assets/icons/mail.png';
-import noPhoto from '../../assets/images/user-profile.png';
+import camera from 'src/ui/assets/icons/camera.png';
+import userName from 'src/ui/assets/icons/username.png';
+import mail from 'src/ui/assets/icons/mail.png';
+import noPhoto from 'src/ui/assets/images/user-profile.png';
 
 const EditUserSchema =
   yup.object({

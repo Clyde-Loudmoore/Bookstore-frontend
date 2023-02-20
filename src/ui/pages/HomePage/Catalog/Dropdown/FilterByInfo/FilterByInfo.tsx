@@ -3,12 +3,12 @@ import React from 'react';
 import type { FormEventHandler } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import constants from 'utils/constants';
+import constants from 'src/utils/constants';
 
-import StyledFilterByInfo from './FilterByInfo.styled';
-import InfoItem from './InfoItem/InfoItem';
+import StyledFilterByInfo from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterByInfo/FilterByInfo.styled';
+import InfoItem from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterByInfo/InfoItem';
 
-import poligon from '../../assets/images/polygon.png';
+import poligon from 'src/ui/assets/images/polygon.png';
 
 export type PropsType = {
   onClick?: FormEventHandler;

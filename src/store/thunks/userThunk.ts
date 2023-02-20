@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import authApi from 'api/authApi';
+import authApi from 'src/api/authApi';
 
 export const getMe = createAsyncThunk('getMe', async () => {
   try {

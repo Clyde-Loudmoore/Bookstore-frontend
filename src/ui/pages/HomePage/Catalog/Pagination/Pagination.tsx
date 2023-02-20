@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { useAppSelector } from 'store';
+import { useAppSelector } from 'src/store';
 
-import StyledPagination from './Pagination.styled';
-import Button from '../Button';
+import StyledPagination from 'src/ui/pages/HomePage/Catalog/Pagination/Pagination.styled';
+import Button from 'src/ui/components/Button';
 
-import arrowLeft from '../../assets/icons/paginationBack.png';
-import arrowRight from '../../assets/icons/paginationForward.png';
-import paginationEllipse from '../../assets/icons/paginationEllipse.png';
-import paginationCurrent from '../../assets/icons/paginationCurrent.png';
+import arrowLeft from 'src/ui/assets/icons/paginationBack.png';
+import arrowRight from 'src/ui/assets/icons/paginationForward.png';
+import paginationEllipse from 'src/ui/assets/icons/paginationEllipse.png';
+import paginationCurrent from 'src/ui/assets/icons/paginationCurrent.png';
 
 type PropsType = {
   page?: number;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Button from 'ui/components/Button';
-import StyledGenreItem from './GenreItem.styled';
+import Button from 'src/ui/components/Button';
+import StyledGenreItem from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterGenre/GenreItem/GenreItem.styled';
 
-import cheched from '../../../assets/icons/checked.png';
-import unchecked from '../../../assets/icons/unchecked.png';
+import cheched from 'src/ui/assets/icons/checked.png';
+import unchecked from 'src/ui/assets/icons/unchecked.png';
 
 export type PropsType = {
   text: string;

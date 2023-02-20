@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
-import { isDev } from '../config';
-import userReduser from './slises/userSlise';
-import bookReduser from './slises/bookSlice';
+import { isDev } from 'src/config';
+import userReduser from 'src/store/slises/userSlise';
+import bookReduser from 'src/store/slises/bookSlice';
 
 const logger = createLogger({
   collapsed: true,

@@ -1,4 +1,4 @@
-import type { UserType } from './userTypes';
+import type { UserType } from 'src/types/userTypes';
 
 export type CommentType = {
   id: number;

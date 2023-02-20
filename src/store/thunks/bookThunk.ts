@@ -1,9 +1,9 @@
 import { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import type { FilterQueryType, AddRatingApiType } from 'types';
+import type { FilterQueryType, AddRatingApiType } from 'src/types';
 
-import bookApi from '../../api/bookApi';
+import bookApi from 'src/api/bookApi';
 
 const getAllFiltredBooks = createAsyncThunk('getAllFiltredBooks',
   async (filterData: FilterQueryType, { rejectWithValue }) => {
