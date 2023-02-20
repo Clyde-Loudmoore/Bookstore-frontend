@@ -55,7 +55,7 @@ const StarRating: React.FC<PropsType> = (props) => {
       />
       <div className="rating-value rating-value-catalog">
         {props.children}
-        {rating}
+        {String(rating).slice(0, 1)}
       </div>
     </StyledStarRating>
   );

@@ -79,6 +79,10 @@ const StyledBook = styled.div`
       top: 16px;
       left: 16px;
     }
+
+    .book-selected-img {
+      width: 14px;
+    }
   }
 
   @media (max-width: 585px) {
@@ -98,10 +102,18 @@ const StyledBook = styled.div`
       margin-bottom: 15px;
     }
 
-    .book-price_button {
+    .book-price_button, .dont-active {
       font-size: ${(props) => props.theme.font_size.fs14};
       line-height: ${(props) => props.theme.line_height.lh28};
+      max-width: 135px;
+      width: 100%;
+      padding: 3px 21px;
       margin-bottom: 29px;
+    }
+
+    .dont-active {
+      font-size: ${(props) => props.theme.font_size.fs10};
+      line-height: ${(props) => props.theme.line_height.lh28};
     }
 
     .book-selected {
@@ -112,12 +124,6 @@ const StyledBook = styled.div`
 
     .book-selected img {
       width: 13px;
-    }
-
-    .book-price_button {
-      max-width: 135px;
-      width: 100%;
-      padding: 3px 21px;
     }
   }
 `;

@@ -70,9 +70,10 @@ const Book: React.FC<PropsType> = (props) => {
 
   return (
     <StyledBook>
+
       <div className="book-cover">
         <Button className={`book-selected ${elected ? unelectedClass : electedClass}`} type="submit" onClick={() => deleteOrAddToFavorites(Number(props.id))}>
-          <img src={elected ? props.hideImg : props.showImg} />
+          <img className="book-selected-img" src={elected ? props.hideImg : props.showImg} />
         </Button>
         <Link className="catalog__book-cover-link" to={`/books/${props.id}`}>
           <img className="book-cover-img" src={props.bookCover} />

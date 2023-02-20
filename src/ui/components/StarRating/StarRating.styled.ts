@@ -6,7 +6,7 @@ const StyledStarRating = styled.div`
   justify-content: space-around;
   align-items: center;
   margin-bottom: 28px;
-  gap: 25px;
+  gap: 20px;
 
   span {
     display: flex;
