@@ -18,12 +18,7 @@ const SORT_LIST = [
   { id: 5, name: 'Date of issue' },
 ];
 
-const PATHS = {
-  WITHOUT_AVATAR: 'http://localhost:4000/public/avatars/null',
-};
-
 export default {
   ROUTE_PATHS,
   SORT_LIST,
-  PATHS,
 };

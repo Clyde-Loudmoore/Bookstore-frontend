@@ -45,8 +45,7 @@ const Catalog: React.FC = () => {
         const arrayGenre = genre.data.genres;
         setBookGenre(arrayGenre);
       } catch (err) {
-        const error = err as Error;
-        return toast.error(error.message);
+        return toast.error('Genre filtering is temporarily unavailable');
       }
     })();
   }, []);

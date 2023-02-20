@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Books from '../../assets/images/booksBG.png';
-import Books2 from '../../assets/images/booksBG2.png';
+import Books from 'src/ui/assets/images/booksBG.png';
+import Books2 from 'src/ui/assets/images/booksBG2.png';
 
 const StyledHeaderBanner = styled.section`
   margin: 0 80px 110px 80px;

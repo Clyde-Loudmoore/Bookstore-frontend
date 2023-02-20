@@ -9,6 +9,8 @@ import type { CommentType } from 'src/types';
 import Button from 'src/ui/components/Button';
 import StyledComments from 'src/ui/pages/BookPage/Comments/Comments.styled';
 
+import noPhoto from 'src/ui/assets/images/user-profile.png';
+
 const Comments: React.FC = () => {
   const [comment, setComment] = React.useState<CommentType[]>([]);
   const [commentText, setCommentText] = React.useState('');
@@ -18,6 +20,8 @@ const Comments: React.FC = () => {
   const { bookId } = useParams();
 
   const date = dayjs();
+
+  const noAvatar = 'http://localhost:4000/public/avatars/null';
 
   const handleChangeComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
@@ -50,7 +54,7 @@ const Comments: React.FC = () => {
       {comment.map((userComment) => {
         return (
           <div className="comment" key={userComment.id}>
-            <img className="avatar" src={userComment.user.avatar} />
+            <img className="avatar" src={userComment.user.avatar === noAvatar ? noPhoto : userComment.user.avatar} />
 
             <h1 className="author">{userComment.user.fullName}</h1>
             <p className="date">{userComment.createdTime}</p>

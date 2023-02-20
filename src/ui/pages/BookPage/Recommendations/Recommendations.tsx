@@ -26,8 +26,7 @@ const Recommendations: React.FC = () => {
         const allBooks = await bookApi.getAllBooks();
         setBooks(allBooks.data.books);
       } catch (err) {
-        const error = err as Error;
-        return toast.error(error.message);
+        return toast.error('Recommendations are temporarily unavailable');
       }
     })();
   }, [dispatch, searchParams]);

@@ -37,8 +37,7 @@ const StarRating: React.FC<PropsType> = (props) => {
       try {
         setRating(Number(props.starRating));
       } catch (err) {
-        const error = err as Error;
-        return toast.error(error.message);
+        return toast.error('Please try again later');
       }
     })();
   }, [bookId, books, props.starRating, userId]);

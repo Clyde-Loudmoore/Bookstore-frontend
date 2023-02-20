@@ -6,7 +6,6 @@ import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
 import type { UserType } from 'src/types';
-import constants from 'src/utils/constants';
 import bookThunk from 'src/store/thunks/bookThunk';
 import cartThunk from 'src/store/thunks/cartThunk';
 import userApi from 'src/api/userApi';
@@ -49,8 +48,7 @@ const ProfileUser: React.FC = () => {
           const user = await userApi.addAvatar(fileReader.result as string);
           dispatch(userSliceActions.setUser(user.data.updatedUser));
         } catch (err) {
-          const error = err as Error;
-          return toast.error(error.message);
+          return toast.error('The avatar is not loaded. Please try again');
         }
       };
     }
@@ -77,7 +75,7 @@ const ProfileUser: React.FC = () => {
   });
 
   const avatar = user.avatar;
-  const noAvatar = constants.PATHS.WITHOUT_AVATAR;
+  const noAvatar = 'http://localhost:4000/public/avatars/null';
 
   React.useEffect(() => {
     (async () => {

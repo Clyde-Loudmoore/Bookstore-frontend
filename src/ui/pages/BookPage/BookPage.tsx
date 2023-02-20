@@ -71,8 +71,7 @@ const BookPage: React.FC = () => {
           }
         }
       } catch (err) {
-        const error = err as Error;
-        return toast.error(error.message);
+        return toast.error('Please reload the page or log in later');
       }
     })();
   }, [bookId, cart, dispatch, likedBooks, user.id]);
