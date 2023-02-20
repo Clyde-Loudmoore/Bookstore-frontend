@@ -15,7 +15,7 @@ const CartFooter: React.FC<PropsType> = (props) => {
 
   return (
     <StyledCartFooter>
-      <h2 className="total">Total: <span>{props.price}</span></h2>
+      <h2 className="total">Total: <span>{(props.price).toFixed(2)}</span></h2>
       <div className="total-buttons">
         <Link to="/catalog">
           <Button className="continue">Continue shopping</Button>

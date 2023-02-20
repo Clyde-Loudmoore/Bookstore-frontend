@@ -38,9 +38,9 @@ const FavoritesPage: React.FC = () => {
     (async () => {
       dispatch(bookThunk.getLikedBooks(user.id));
       dispatch(cartThunk.getCart(user.id));
-      if (likedBooks) {
+      if (likedBooks && likedBookId) {
         for (let i = 0; i < likedBooks.length; i++) {
-          if (likedBooks[i].bookId === likedBookId![i]) {
+          if (likedBooks[i].bookId === likedBookId[i]) {
             setSelected(false);
           } else {
             setSelected(true);

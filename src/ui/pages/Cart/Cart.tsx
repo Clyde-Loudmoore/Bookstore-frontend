@@ -63,7 +63,7 @@ const Cart: React.FC = () => {
         )
       }
 
-      {cart!.length
+      {cart && cart.length
         ? <CartFooter price={totalPrice} />
         : (
           <EmptyCart

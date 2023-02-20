@@ -6,5 +6,5 @@ export type CommentType = {
   bookId: number;
   userId: number;
   createdTime: string;
-  user: UserType;
+  user: UserType | null;
 };

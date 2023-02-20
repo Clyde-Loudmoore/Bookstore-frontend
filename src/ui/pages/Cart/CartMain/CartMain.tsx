@@ -56,7 +56,7 @@ const CartMain: React.FC<CartType> = (props) => {
               </Button>
             </div>
 
-            <h2 className="sum">${props.price * props.quantityOfGoods} USD</h2>
+            <h2 className="sum">${(props.price * props.quantityOfGoods).toFixed(2)} USD</h2>
           </div>
         </div>
 

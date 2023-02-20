@@ -33,7 +33,7 @@ const Comments: React.FC = () => {
       id: Math.round(Math.random() * 100),
       text,
       createdTime: date.format('YYYY-MM-DD HH:MM:CC'),
-      user: user!,
+      user: user && user,
       userId,
       bookId,
     };
@@ -54,9 +54,9 @@ const Comments: React.FC = () => {
       {comment.map((userComment) => {
         return (
           <div className="comment" key={userComment.id}>
-            <img className="avatar" src={userComment.user.avatar === noAvatar ? noPhoto : userComment.user.avatar} />
+            <img className="avatar" src={userComment.user?.avatar === noAvatar ? noPhoto : userComment.user?.avatar} />
 
-            <h1 className="author">{userComment.user.fullName}</h1>
+            <h1 className="author">{userComment.user?.fullName}</h1>
             <p className="date">{userComment.createdTime}</p>
             <p className="text">{userComment.text}</p>
           </div>
@@ -75,7 +75,7 @@ const Comments: React.FC = () => {
             <Button
               className="comment_button"
               type="submit"
-              onClick={() => handleSetComment(user!.id, Number(bookId), commentText)}
+              onClick={() => handleSetComment(user.id, Number(bookId), commentText)}
             >
               Post a comment
             </Button>

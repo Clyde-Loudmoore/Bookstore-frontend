@@ -7,9 +7,10 @@ import { useAppDispatch, useAppSelector } from 'src/store';
 import bookThunk from 'src/store/thunks/bookThunk';
 import cartThunk from 'src/store/thunks/cartThunk';
 
+import type { UserType, GenreType } from 'src/types';
+
 import Dropdown from 'src/ui/pages/HomePage/Catalog/Dropdown';
 import Pagination from 'src/ui/pages/HomePage/Catalog/Pagination';
-import type { GenreType } from 'src/types';
 import StyledCatalod from 'src/ui/pages/HomePage/Catalog/Catalog.styled';
 import FilterByInfo from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterByInfo';
 import FilterGenre from 'src/ui/pages/HomePage/Catalog/Dropdown/FilterGenre';
@@ -23,7 +24,7 @@ const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
   const [saveSorting, setSaveSorting] = React.useState('');
 
-  const user = useAppSelector((store) => store.user.user);
+  const user = useAppSelector((store) => store.user.user) as UserType;
   const books = useAppSelector((store) => store.books.books);
 
   const [searchParams] = useSearchParams();
@@ -103,7 +104,7 @@ const Catalog: React.FC = () => {
               title={book.title}
               author={book.author}
               price={book.price}
-              addBookInCart={() => handleAddBookInCart(user!.id, book.id)}
+              addBookInCart={() => handleAddBookInCart(user.id, book.id)}
             />
 
           );
