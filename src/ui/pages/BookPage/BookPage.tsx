@@ -74,14 +74,17 @@ const BookPage: React.FC = () => {
         return toast.error('Please reload the page or log in later');
       }
     })();
-  }, [bookId, cart, dispatch, likedBooks, user.id]);
+  }, [bookId, cart, likedBooks]);
 
-  React.useEffect(() => {
-    (async () => {
-      dispatch(cartThunk.getCart(user.id));
-      dispatch(bookThunk.getLikedBooks(user.id));
-    })();
-  }, [dispatch, user.id]);
+  if (user) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      (async () => {
+        dispatch(cartThunk.getCart(user.id));
+        dispatch(bookThunk.getLikedBooks(user.id));
+      })();
+    }, [dispatch, user.id]);
+  }
 
   return (
     <StyledBookPage>

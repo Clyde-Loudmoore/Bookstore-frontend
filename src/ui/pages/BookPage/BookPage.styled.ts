@@ -135,6 +135,7 @@ const StyledBookPage = styled.section`
     padding: 10px, 50px;
     background-color: ${(props) => props.theme.color.dark_grey};
     margin-top: 10px;
+    cursor: default;
   }
 
   .hardcover {
@@ -155,7 +156,7 @@ const StyledBookPage = styled.section`
     cursor: default;
   }
 
-  .dont-active:active {
+  .dont-active, .paperback:active {
     outline: none
   }
 

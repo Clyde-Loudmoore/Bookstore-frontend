@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
     <StyledFooter>
       <div className="footer__feedback">
 
-        <Link to="/">
+        <a href="/">
           <img src={logo} alt="app-logo" />
-        </Link>
+        </a>
 
         <p>tranthuy.nute@gmail.com</p>
         <p>(480) 555-0103</p>
