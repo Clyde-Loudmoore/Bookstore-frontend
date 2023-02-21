@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
-import api from 'src/api/api';
+import tokenHelper from 'src/utils/tokenHelper';
 import { useAppDispatch } from 'src/store';
 import authApi from 'src/api/authApi';
 import { userSliceActions } from 'src/store/slises/userSlise';
@@ -43,7 +43,7 @@ const SingIn: React.FC = () => {
         const user = await authApi.singIn(values);
         dispatch(userSliceActions.setUser(user.data.user));
 
-        api.setApiToken(user.data.token as string);
+        tokenHelper.setApiToken(user.data.token as string);
         if (location.state && Cookies.get('token')) {
           navigate(location.state.from.pathname);
         }

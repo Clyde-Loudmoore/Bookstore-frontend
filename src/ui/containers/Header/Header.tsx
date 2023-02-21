@@ -2,7 +2,7 @@ import React from 'react';
 import type { ChangeEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import api from 'src/api/api';
+import tokenHelper from 'src/utils/tokenHelper';
 import { userSliceActions } from 'src/store/slises/userSlise';
 import type { UserType } from 'src/types';
 import { useAppSelector, useAppDispatch } from 'src/store';
@@ -33,10 +33,10 @@ const Header: React.FC = () => {
 
   const signOut = async () => {
     const currentUser = null as unknown as UserType;
-    const token = api.getApiToken('token');
+    const token = tokenHelper.getApiToken('token');
 
     dispatch(userSliceActions.setUser(currentUser));
-    api.removeApiToken(token as unknown as string);
+    tokenHelper.removeApiToken(token as unknown as string);
   };
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {

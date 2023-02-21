@@ -53,7 +53,7 @@ const Pagination: React.FC<PropsType> = () => {
           onClick={() => handleSpecificPage(item)}
           disabled={item === +(searchParams.get('page') as string)}
         >
-          <img src={+(searchParams.get('page') as string || 1) === item ? paginationCurrent : paginationEllipse} alt="o" />
+          <img src={+(searchParams.get('page') as string) === item ? paginationCurrent : paginationEllipse} alt="o" />
         </Button>
       ))
       }
