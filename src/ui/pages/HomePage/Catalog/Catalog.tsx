@@ -24,10 +24,10 @@ const Catalog: React.FC = () => {
   const [bookGenre, setBookGenre] = React.useState<GenreType[]>();
   const [saveSorting, setSaveSorting] = React.useState('');
 
+  const [searchParams, setSearchParams] = useSearchParams({});
+
   const user = useAppSelector((store) => store.user.user) as UserType;
   const books = useAppSelector((store) => store.books.books);
-
-  const [searchParams] = useSearchParams();
 
   const dispatch = useAppDispatch();
 
@@ -52,21 +52,32 @@ const Catalog: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    const genre = searchParams.get('genres') || '';
-    const search = searchParams.get('search') || '';
     const page = Number(searchParams.get('page') || 1);
+    const sorting = searchParams.get('sorting') || saveSorting || 'Price';
+    const genre = searchParams.get('genres') || '';
     const minPrice = Number(searchParams.get('minPrice') || '5.99');
     const maxPrice = Number(searchParams.get('maxPrice') || '25.99');
-    const sorting = searchParams.get('sorting') || saveSorting || 'Price';
+    const search = searchParams.get('search') || '';
+
+    setSearchParams({
+      page: String(page),
+      sorting,
+      genre,
+      minPrice: String(minPrice),
+      maxPrice: String(maxPrice),
+      search,
+    });
 
     dispatch(
       bookThunk.getAllFiltredBooks({ genre, search, page, minPrice, maxPrice, sorting }),
     );
-    dispatch(cartThunk.getCart(user.id));
-    dispatch(bookThunk.getLikedBooks(user.id));
+    if (user) {
+      dispatch(cartThunk.getCart(user.id));
+      dispatch(bookThunk.getLikedBooks(user.id));
+    }
 
     setSaveSorting(sorting);
-  }, [dispatch, saveSorting, searchParams, user]);
+  }, [dispatch, saveSorting, searchParams, setSearchParams, user]);
 
   return (
     <StyledCatalod>
