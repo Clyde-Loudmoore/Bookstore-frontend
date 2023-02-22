@@ -1,9 +1,6 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react';
 
-import { useAppSelector, useAppDispatch } from 'src/store';
-import cartThunk from 'src/store/thunks/cartThunk';
-import bookThunk from 'src/store/thunks/bookThunk';
+import { useAppSelector } from 'src/store';
 import type { UserType } from 'src/types';
 
 import StyledCart from 'src/ui/pages/Cart/Cart.styled';
@@ -25,15 +22,6 @@ const Cart: React.FC = () => {
   }
 
   const totalPrice = +totalSum.toFixed(2);
-
-  const dispatch = useAppDispatch();
-
-  React.useEffect(() => {
-    (async () => {
-      dispatch(cartThunk.getCart(user.id));
-      dispatch(bookThunk.getLikedBooks(user.id));
-    })();
-  }, [dispatch, user]);
 
   return (
     <StyledCart>

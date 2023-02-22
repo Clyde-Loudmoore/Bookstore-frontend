@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { useAppSelector, useAppDispatch } from 'src/store';
 import bookThunk from 'src/store/thunks/bookThunk';
-import bookApi from 'src/api/bookApi';
-import type { BookType } from 'src/types';
 
 import Button from 'src/ui/components/Button';
 import StarRating from 'src/ui/components/StarRating';
@@ -19,15 +17,14 @@ export type PropsType = {
   author?: string;
   price?: number;
   img?: string;
+  rating?: number;
   addBookInCart?: () => void;
 };
 
 const Book: React.FC<PropsType> = (props) => {
-  const [oneBook, setOneBook] = React.useState<BookType>();
   const [elected, setSelected] = React.useState(true);
   const [anotherButton, setAnotherButton] = React.useState(false);
 
-  const books = useAppSelector((store) => store.books.books);
   const cart = useAppSelector((store) => store.books.cart);
   const likedBooks = useAppSelector((store) => store.books.likedBooks);
 
@@ -47,26 +44,21 @@ const Book: React.FC<PropsType> = (props) => {
   };
 
   React.useEffect(() => {
-    (async () => {
-      const book = await bookApi.getBook(Number(props.id));
-      setOneBook(book.data.book);
-
-      if (cart) {
-        for (let i = 0; i < cart.length; i++) {
-          if (cart[i].bookId === Number(props.id)) {
-            setAnotherButton(true);
-          }
+    if (cart) {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].bookId === Number(props.id)) {
+          setAnotherButton(true);
         }
-        if (likedBooks) {
-          for (let j = 0; j < likedBooks.length; j++) {
-            if (likedBooks[j].bookId === Number(props.id)) {
-              setSelected(false);
-            }
+      }
+      if (likedBooks) {
+        for (let j = 0; j < likedBooks.length; j++) {
+          if (likedBooks[j].bookId === Number(props.id)) {
+            setSelected(false);
           }
         }
       }
-    })();
-  }, [books, cart, likedBooks, props.id]);
+    }
+  }, [cart, likedBooks, props.id]);
 
   return (
     <StyledBook>
@@ -82,7 +74,7 @@ const Book: React.FC<PropsType> = (props) => {
       <p className="book-title">{props.title}</p>
       <p className="book-author">{props.author}</p>
 
-      <StarRating starRating={Number(oneBook?.rating)} />
+      <StarRating starRating={Number(props.rating)} />
 
       {anotherButton
         ? <Button className="dont-active">Added to cart</Button>

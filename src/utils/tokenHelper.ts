@@ -26,6 +26,7 @@ const removeApiToken = (token: string) => {
 };
 
 export default {
+  tokenHelper,
   getAuthHeader,
   setApiToken,
   getApiToken,

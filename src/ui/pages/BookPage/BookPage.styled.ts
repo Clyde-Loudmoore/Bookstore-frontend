@@ -134,7 +134,6 @@ const StyledBookPage = styled.section`
     width: 100%;
     padding: 10px, 50px;
     background-color: ${(props) => props.theme.color.dark_grey};
-    margin-top: 10px;
     cursor: default;
   }
 
@@ -145,14 +144,12 @@ const StyledBookPage = styled.section`
     max-width: 216px;
     width: 100%;
     padding: 10px, 50px;
-    margin-top: 10px;
   }
 
   .dont-active {
     color: ${(props) => props.theme.color.dark};
     background-color: ${(props) => props.theme.color.white};
     border: 1px solid ${(props) => props.theme.color.dark};
-    margin-top: 10px;
     cursor: default;
   }
 
@@ -163,6 +160,14 @@ const StyledBookPage = styled.section`
 
   .footer-banner {
     margin: 0 0 110px 0;
+  }
+
+  .paperback-wrapper, .hardcover-wrapper {
+    max-width: 243px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   @media (max-width: 1215px) {
@@ -226,13 +231,11 @@ const StyledBookPage = styled.section`
     .paperback {
       max-width: 188px;
       width: 100%;
-      margin-top: 14px;
     }
 
     .dont-active, .hardcover {
       max-width: 184px;
       width: 100%;
-      margin-top: 14px;
     }
 
     .footer-banner {
@@ -301,11 +304,14 @@ const StyledBookPage = styled.section`
       line-height: ${(props) => props.theme.line_height.lh18};
       max-width: 135px;
       width: 100%;
-      margin-top: 17px;
     }
 
     .footer-banner {
       margin: 0 0 60px 0;
+    }
+
+    .paperback-wrapper, .hardcover-wrapper {
+      gap: 17px;
     }
   }
 

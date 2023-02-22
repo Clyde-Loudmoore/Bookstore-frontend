@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { getMe } from 'src/store/thunks/userThunk';
 import { useAppDispatch } from 'src/store';
+import tokenHelper from 'src/utils/tokenHelper';
 
 import Header from 'src/ui/containers/Header';
 import Footer from 'src/ui/containers/Footer';
@@ -16,7 +17,10 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     (async () => {
-      await dispatch(getMe());
+      const token = tokenHelper.tokenHelper.get();
+      if (token) {
+        await dispatch(getMe());
+      }
       setIsLoading(false);
     })();
   }, [dispatch]);

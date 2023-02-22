@@ -59,7 +59,7 @@ const StyledBook = styled.div`
     color: ${(props) => props.theme.color.dark};
     background-color: ${(props) => props.theme.color.white};
     border: 1px solid ${(props) => props.theme.color.dark};
-    margin-bottom: 60px;
+    margin: 0 0 60px 0;
     cursor: default;
   }
 

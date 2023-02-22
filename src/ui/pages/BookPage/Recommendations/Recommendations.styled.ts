@@ -20,6 +20,7 @@ const StyledRecommendations = styled.section`
     margin-bottom: 0;
   }
 
+
   @media (max-width: 1410px) {
     .recommendations-header {
       font-size: ${(props) => props.theme.font_size.fs32};

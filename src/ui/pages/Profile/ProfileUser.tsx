@@ -6,8 +6,6 @@ import { AxiosError } from 'axios';
 import * as yup from 'yup';
 
 import type { UserType } from 'src/types';
-import bookThunk from 'src/store/thunks/bookThunk';
-import cartThunk from 'src/store/thunks/cartThunk';
 import userApi from 'src/api/userApi';
 import { useAppDispatch, useAppSelector } from 'src/store';
 import { userSliceActions } from 'src/store/slises/userSlise';
@@ -76,13 +74,6 @@ const ProfileUser: React.FC = () => {
 
   const avatar = user.avatar;
   const noAvatar = 'http://localhost:4000/public/avatars/null';
-
-  React.useEffect(() => {
-    (async () => {
-      dispatch(cartThunk.getCart(user.id));
-      dispatch(bookThunk.getLikedBooks(user.id));
-    })();
-  }, [dispatch, user.id]);
 
   return (
     <StyledProfile>

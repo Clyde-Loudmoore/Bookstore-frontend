@@ -2,13 +2,14 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import cartThunk from 'src/store/thunks/cartThunk';
 import bookApi from 'src/api/bookApi';
-import type { BookType } from 'src/types';
+import type { BookType, UserType } from 'src/types';
 
 import Book from 'src/ui/pages/HomePage/Catalog/Book';
 import StyledRecommendations from 'src/ui/pages/BookPage/Recommendations/Recommendations.styled';
 
-import { useAppDispatch } from 'src/store';
+import { useAppSelector, useAppDispatch } from 'src/store';
 
 import hideHeart from 'src/ui/assets/icons/hideHeart.png';
 import showHeart from 'src/ui/assets/icons/showHeart.png';
@@ -16,9 +17,15 @@ import showHeart from 'src/ui/assets/icons/showHeart.png';
 const Recommendations: React.FC = () => {
   const [books, setBooks] = React.useState<BookType[]>();
 
+  const user = useAppSelector((store) => store.user.user) as UserType;
+
   const [searchParams] = useSearchParams();
 
   const dispatch = useAppDispatch();
+
+  const handleAddBookInCart = (userId: number, bookId: number) => {
+    dispatch(cartThunk.addBook({ userId, bookId }));
+  };
 
   React.useEffect(() => {
     (async () => {
@@ -49,6 +56,8 @@ const Recommendations: React.FC = () => {
                 title={book.title}
                 author={book.author}
                 price={book.price}
+                rating={book.rating}
+                addBookInCart={() => handleAddBookInCart(user.id, book.id)}
               />
             );
           }).slice(0, 4)

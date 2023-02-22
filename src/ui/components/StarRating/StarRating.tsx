@@ -20,8 +20,6 @@ const StarRating: React.FC<PropsType> = (props) => {
 
   const { bookId } = useParams();
 
-  const books = useAppSelector((store) => store.books.books);
-
   const userId = useAppSelector((store) => store.user.user?.id);
 
   const dispatch = useAppDispatch();
@@ -40,7 +38,7 @@ const StarRating: React.FC<PropsType> = (props) => {
         return toast.error('Please try again later');
       }
     })();
-  }, [bookId, books, props.starRating, userId]);
+  }, [props.starRating]);
 
   return (
     <StyledStarRating className={props.className}>

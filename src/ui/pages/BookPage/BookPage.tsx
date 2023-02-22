@@ -76,16 +76,6 @@ const BookPage: React.FC = () => {
     })();
   }, [bookId, cart, likedBooks]);
 
-  if (user) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useEffect(() => {
-      (async () => {
-        dispatch(cartThunk.getCart(user.id));
-        dispatch(bookThunk.getLikedBooks(user.id));
-      })();
-    }, [dispatch, user.id]);
-  }
-
   return (
     <StyledBookPage>
 

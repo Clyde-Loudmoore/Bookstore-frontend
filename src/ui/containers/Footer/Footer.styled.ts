@@ -40,6 +40,7 @@ const StyledFooter = styled.footer`
   .footer__link {
     color: ${(props) => props.theme.color.light};
     text-decoration: none;
+    cursor: pointer;
   }
 
   .footer__link-logo{

@@ -6,8 +6,10 @@ import tokenHelper from 'src/utils/tokenHelper';
 import { userSliceActions } from 'src/store/slises/userSlise';
 import type { UserType } from 'src/types';
 import { useAppSelector, useAppDispatch } from 'src/store';
-
 import { useDebounce } from 'src/hooks';
+
+import cartThunk from 'src/store/thunks/cartThunk';
+import bookThunk from 'src/store/thunks/bookThunk';
 
 import Button from 'src/ui/components/Button';
 import SearchField from 'src/ui/components/InputField';
@@ -21,11 +23,12 @@ import logoIcon from 'src/ui/assets/icons/logo-header.png';
 
 const Header: React.FC = () => {
   const [filter, setFilter] = React.useState<string>('');
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const debouncedFilter = useDebounce(filter, 1500);
 
-  const user = useAppSelector((store) => store.user.user);
+  const user = useAppSelector((store) => store.user.user) as UserType;
   const cart = useAppSelector((store) => store.books.cart);
   const likedBooks = useAppSelector((store) => store.books.likedBooks);
 
@@ -44,6 +47,9 @@ const Header: React.FC = () => {
   };
 
   React.useEffect(() => {
+    dispatch(cartThunk.getCart(user.id));
+    dispatch(bookThunk.getLikedBooks(user.id));
+
     if (debouncedFilter) {
       searchParams.set('search', debouncedFilter as string);
     } else {
