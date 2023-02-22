@@ -97,6 +97,13 @@ const StyledHeader = styled.header`
     }
   }
 
+  @media (max-width: 1250px) {
+    .header__small-button-wrapper{
+      margin-left: 15px;
+      gap: 18px;
+    }
+  }
+
   @media (max-width: 834px) {
     padding: 20px 11px 45px 15px;
 
@@ -118,13 +125,6 @@ const StyledHeader = styled.header`
     .header__button {
       font-size: ${(props) => props.theme.font_size.fs12};
       line-height: ${(props) => props.theme.line_height.lh18};
-    }
-  }
-
-  @media (max-width: 668px) {
-    .header__small-button-wrapper{
-      margin-left: 15px;
-      gap: 18px;
     }
   }
 

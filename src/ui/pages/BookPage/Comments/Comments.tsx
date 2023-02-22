@@ -6,8 +6,9 @@ import commentsApi from 'src/api/commentsApi';
 import { useAppSelector } from 'src/store';
 import type { CommentType } from 'src/types';
 
-import Button from 'src/ui/components/Button';
 import StyledComments from 'src/ui/pages/BookPage/Comments/Comments.styled';
+import Button from 'src/ui/components/Button';
+import NoComments from 'src/ui/pages/BookPage/Comments/NoComments';
 
 import noPhoto from 'src/ui/assets/images/user-profile.png';
 
@@ -32,7 +33,7 @@ const Comments: React.FC = () => {
     const newComment: CommentType = {
       id: Math.round(Math.random() * 100),
       text,
-      createdTime: date.format('YYYY-MM-DD HH:MM:CC'),
+      createdTime: date.format('YYYY-MM-DD'),
       user: user && user,
       userId,
       bookId,
@@ -51,7 +52,7 @@ const Comments: React.FC = () => {
   return (
     <StyledComments>
       <h1 className="header">Comments</h1>
-      {comment.map((userComment) => {
+      {comment.length ? (comment.map((userComment) => {
         return (
           <div className="comment" key={userComment.id}>
             <img className="avatar" src={userComment.user?.avatar === noAvatar ? noPhoto : userComment.user?.avatar} />
@@ -61,7 +62,7 @@ const Comments: React.FC = () => {
             <p className="text">{userComment.text}</p>
           </div>
         );
-      })}
+      })) : (<NoComments />)}
       {user
         ? (
           <>
