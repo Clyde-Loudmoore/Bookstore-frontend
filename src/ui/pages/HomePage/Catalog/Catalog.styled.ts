@@ -25,8 +25,19 @@ const StyledCatalod = styled.section`
 
   .catalog__books {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-flow: row wrap;
+  }
+
+  @media (min-width: 1600px) {
+    .catalog__books {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 1599px) {
+    .catalog__books {
+      justify-content: space-evenly;
+    }
   }
 
   @media (max-width: 1250px) {

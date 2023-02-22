@@ -67,6 +67,10 @@ const StyledBook = styled.div`
     outline: none
   }
 
+  @media (min-width: 1600px) {
+    width: calc((100% - (20px * 4)) / 5);
+  }
+
   @media (max-width: 960px) {
     .book-cover {
       max-width: 254px;
@@ -82,6 +86,7 @@ const StyledBook = styled.div`
 
     .book-selected-img {
       width: 14px;
+      height: 14px;
     }
   }
 
