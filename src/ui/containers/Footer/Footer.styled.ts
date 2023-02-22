@@ -7,10 +7,10 @@ const StyledFooter = styled.footer`
   line-height: ${(props) => props.theme.line_height.lh30};
   color: ${(props) => props.theme.color.light};
 
+  padding: 73px 80px;
   margin-top: auto;
 
   background-color: ${(props) => props.theme.color.dark};
-  padding: 73px 80px;
 
   display: flex;
   justify-content:  space-between;
@@ -50,6 +50,10 @@ const StyledFooter = styled.footer`
     padding: 0;
   }
 
+  @media (max-width: 1250px) {
+    padding: 73px 14px 30px 15px;
+  }
+
   @media (max-width: 1030px) {
     font-size: 16px;
     line-height: 24px;
@@ -65,8 +69,6 @@ const StyledFooter = styled.footer`
   }
 
   @media (max-width: 920px) {
-    padding: 73px 15px 79px 20px;
-
     .footer__map {
       margin: 0 42px 0 46px;
     }
@@ -90,10 +92,6 @@ const StyledFooter = styled.footer`
       max-width: 291px;
       width:100%;
     }
-  }
-
-  @media (max-width: 691px) {
-    padding: 73px 14px 30px 15px;
   }
 
   @media (max-width: 668px) {

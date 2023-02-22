@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const StyledCatalod = styled.section`
-  margin: 0 80px 100px 80px;
+  padding: 0 80px;
+  margin: 0 0 100px 0;
 
   .catalog__header {
     display: flex;
@@ -28,8 +29,12 @@ const StyledCatalod = styled.section`
     justify-content: space-evenly;
   }
 
+  @media (max-width: 1250px) {
+    padding: 0 15px;
+  }
+
   @media (max-width: 1120px) {
-    margin: 0 15px 87px 15px;
+    margin: 0 0 87px 0;
 
     .catalog__header {
       flex-direction: column;

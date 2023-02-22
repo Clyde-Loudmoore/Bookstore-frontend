@@ -98,14 +98,12 @@ const StyledHeader = styled.header`
   }
 
   @media (max-width: 1250px) {
+    padding: 20px 11px 45px 15px;
+    
     .header__small-button-wrapper{
       margin-left: 15px;
       gap: 18px;
     }
-  }
-
-  @media (max-width: 834px) {
-    padding: 20px 11px 45px 15px;
 
     .header__search-title {
       font-size: ${(props) => props.theme.font_size.fs14};
